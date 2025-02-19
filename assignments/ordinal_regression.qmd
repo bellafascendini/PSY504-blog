@@ -16,7 +16,7 @@ execute:
   message: false
   warning: false
 engine: knitr
-output-file: index.html
+output-file: ordinal_regression.html
 ---
 
 # Lab 3- Ordinal Regression
