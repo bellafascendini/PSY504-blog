@@ -3,7 +3,7 @@ project:
 
 website:
   title: "PSY504 Lab Assignments"
-  description: "A blog of my stats class assignments."
+  description: "A blog of my stats assignments."
   navbar:
     right:
       - icon: fa-brands fa-github
