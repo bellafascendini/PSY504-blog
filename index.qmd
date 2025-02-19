@@ -3,4 +3,6 @@ title: "PSY504 Assignments Blog"
 format: html
 ---
 
+Lab 2 [Logistic Regression Assignment](assignments/logistic_regression.html)
+
 Lab 3 [Ordinal Regression Assignment](assignments/ordinal_regression.html)
