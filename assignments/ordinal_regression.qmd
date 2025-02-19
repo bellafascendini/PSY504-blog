@@ -1,5 +1,6 @@
 ---
 title: "ordinal regression"
+output-file: ordinal_regression.html
 author: "Bella Fascendini"
 date: 2025-02-19
 categories: [Assignment]
@@ -16,7 +17,6 @@ execute:
   message: false
   warning: false
 engine: knitr
-output-file: ordinal_regression.html
 ---
 
 # Lab 3- Ordinal Regression
