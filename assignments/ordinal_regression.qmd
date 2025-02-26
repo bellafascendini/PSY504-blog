@@ -19,8 +19,6 @@ execute:
 engine: knitr
 ---
 
-# Ordinal Regression Assignment
-
 ## Instructions
 
 -   If you are fitting a model, display the model output in a neatly formatted table. (The `tidy` and `kable` functions can help!)
