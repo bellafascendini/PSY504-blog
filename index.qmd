@@ -7,4 +7,6 @@ Lab 2 [Logistic Regression Assignment](assignments/logistic_regression.html)
 
 Lab 3 [Ordinal Regression Assignment](assignments/ordinal_regression.html)
 
-Lav 4 [Multinomial Regression Assignment](assignments/multinomial_regression.html)
+Lab 4 [Multinomial Regression Assignment](assignments/multinomial_regression.html)
+
+Lab 5 [Poisson Regression Assignment](assignments/poisson_regression.html)

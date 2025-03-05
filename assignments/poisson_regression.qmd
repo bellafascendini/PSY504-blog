@@ -1,0 +1,239 @@
+---
+title: "Poisson Regression"
+author: Bella Fascendini
+date:   3/5/2025
+output-file: poisson_regression.html
+format:
+  html:
+    code-fold: true
+    code-overflow: wrap
+    highlight: github-dark
+    toc: true
+    toc_depth: 1
+    fig_height: 10
+    fig_width: 16
+execute:
+  message: false
+  warning: false
+
+---
+
+1.  To complete this lab:
+
+-   Load packages
+
+```{r}
+library(MASS)
+library(tidyverse)
+library(emmeans)
+library(ggeffects)
+library(easystats)
+library(performance)
+library(knitr)
+```
+
+- Download the dataset:
+
+```{r}
+
+library(tidyverse)
+
+data <- read_delim("https://raw.githubusercontent.com/jgeller112/psy504-advanced-stats/main/slides/Poisson/data/2010.csv")
+
+```
+
+2. Conduct the analysis described in the preregistration document
+
+a.  The number of hours per week that a person spends on the Internet ("WWWHR") will\
+    be predicted by their vocabulary ("WORDSUM"), age ("AGE"), sex ("SEX"), religiosity\
+    ("RELITEN"), political orientation ("POLVIEWS"), and how often they work from home\
+    ("WRKHOME").
+
+
+- Let's use the `naniar` package's function `replace_with_na`to clean the data. 
+
+```{r}
+library(naniar)
+
+data_pos <- data %>%
+  dplyr::select(wwwhr, wordsum, age, sex, reliten, polviews, wrkhome) %>%
+replace_with_na(.,
+             replace = list(wwwhr = c(-1, 998, 999),
+                          wordsum = c(-1, 99),
+                          reliten = c(0, 8, 9), 
+             polviews = c(0, 8, 9), 
+             wrkhome = c(0,8,9), 
+             age=c(0, 98, 99)))
+
+```
+
+Q: Can you explain what might be going on in the above code?
+
+A: The code first selects the variables of interest (wwwhr, wordsum, age, sex, reliten, polviews, and wrkhome) from the dataset. Then, using the replace_with_na function from the `naniar` package, it recodes certain placeholder values (e.g., -1, 998, 999 for wwwhr) as NA. These values likely represent missing, invalid, or out-of-range responses in the original data.
+
+Q: The next step in data cleaning would be to ensure that the data in your code are aligned with the description/ usage context of the variables
+
+- Recode sex and reliten as necessary
+
+```{r}
+
+data_pos <- data_pos |> 
+  mutate(sex = factor(ifelse(sex == -1, "Male", 
+                             ifelse(sex == 1, "Female", NA)), 
+                      levels = c("Male", "Female")),
+         reliten_recode = factor(reliten, levels = 1:5))
+
+```
+## Missingness
+```{r}
+data_pos %>%
+  dplyr::select(reliten, reliten_recode)
+
+
+library(skimr)
+skimr::skim(data_pos)
+
+```
+## Fit a Poisson model to the data.
+
+```{r}
+poisson_model <- glm(wwwhr ~ wordsum + age + sex + reliten + polviews + wrkhome,
+                    data = data_pos,
+                    family = poisson(link = "log"))
+
+summary(poisson_model)
+
+```
+## Carry out model checking
+
+Hint: performance package has the function you're looking for
+
+```{r}
+poisson_model <- glm(wwwhr ~ wordsum + age + sex + reliten + polviews + wrkhome,
+                    data = data_pos,
+                    family = poisson(link = "log"))
+
+# Check overall model performance
+check_model(poisson_model)
+
+# Check for specific issues
+model_performance(poisson_model)
+
+```
+
+## Find any outliers
+
+```{r}
+
+# Identify outliers using Cook's distance
+cooksd <- cooks.distance(poisson_model)
+plot(cooksd, pch = 20, main = "Cook's Distance")
+# Define a threshold (e.g., 4/n)
+threshold <- 4 / nrow(data_pos)
+abline(h = threshold, col = "red", lty = 2)
+outlier_indices <- which(cooksd > threshold)
+cat("Number of potential outliers (Cook's distance):", length(outlier_indices), "\n")
+
+student_resid <- rstudent(poisson_model)
+plot(student_resid, pch = 20, main = "Studentized Residuals")
+abline(h = c(-3, 3), col = "red", lty = 2)
+outlier_indices2 <- which(abs(student_resid) > 3)
+cat("Number of potential outliers (Studentized residuals):", length(outlier_indices2), "\n")
+
+all_outlier_indices <- unique(c(outlier_indices, outlier_indices2))
+cat("Total number of outliers identified:", length(all_outlier_indices), "\n")
+```
+
+## Refit the model after excludint outliers
+
+```{r}
+data_no_outliers <- data_pos[-all_outlier_indices, ]
+
+poisson_model_refit <- glm(wwwhr ~ wordsum + age + sex + reliten + polviews + wrkhome,
+                           data = data_no_outliers,
+                           family = poisson(link = "log"))
+summary(poisson_model_refit)
+
+model_parameters(poisson_model_refit) %>%
+  print_html()
+
+```
+
+
+### Check for Overdispersion 
+
+Hint: performance package has the function you're looking for
+```{r}
+
+overdispersion_result <- check_overdispersion(poisson_model_refit)
+print(overdispersion_result)
+
+```
+
+What do you notice?
+And what's a good next step forward?
+Can there be another model class that can fit the data? If so, fit this model to the data. 
+
+The dispersion ratio is 14.254 with a p-value < 0.001. This indicates that the variance is far larger than the mean, a clear sign of overdispersion in the Poisson model. Because the Poisson model assumes that the variance equals the mean, this overdispersion violates that assumption and suggests that the Poisson model isn’t the best fit for the data.
+
+A good next step is to try an alternative model that can handle overdispersion. I'll fit a negative binomial model as it includes an extra parameter to account for the extra variance.
+
+```{r}
+
+negbin_model <- glm.nb(wwwhr ~ wordsum + age + sex + reliten + polviews + wrkhome,
+                       data = data_no_outliers)
+summary(negbin_model)
+
+
+```
+
+## Which one is better- your earlier model, or later model?
+
+```{r}
+
+AIC_comparison <- AIC(poisson_model_refit, negbin_model)
+print(AIC_comparison)
+
+#Based on the AIC results, the negative binomial model (AIC = 3101.297) is the better fit compared to the poisson model (AIC = 6595.358).
+```
+
+## What is zero inflation? Is there zero-inflation in your chosen model?
+```{r}
+# Zero inflation occurs when there are more zero counts than expected under the assumed distribution.
+library(performance)
+
+performance::check_zeroinflation(negbin_model)
+
+```
+
+::: panel-tabset
+## Log Lambda
+
+```{r}
+log_lambda <- ggeffect(negbin_model, terms = "wordsum")
+plot(log_lambda) +
+  labs(title = "Predicted Log Lambda vs. WORDSUM",
+       x = "WORDSUM",
+       y = "Log Lambda")
+
+
+```
+
+## Mean Count
+
+```{r}
+mean_count <- ggeffect(negbin_model, terms = "wordsum")
+plot(mean_count) +
+  labs(title = "Predicted Mean Count (WWWHR) vs. WORDSUM",
+       x = "WORDSUM",
+       y = "Predicted WWWHR")
+```
+:::
+
+## Report your conclusions
+
+In this analysis, we started by cleaning the data and recoding the key variables according to our preregistration. After handling missing values and identifying outliers, we fit a poisson regression model to predict the number of hours per week spent on the Internet (WWWHR). Diagnostic checks revealed significant overdispersion (dispersion ratio > 14, p < 0.001). We then tried to fit a negative binomial model.
+
+Model comparisons showed that the negative binomial model (AIC ≈ 3101.3) substantially outperformed the poisson model (AIC ≈ 6595.4). In addition, the predicted values from the negative binomial model—visualized through both the log lambda and the expected mean count—illustrate a clear relationship between verbal ability (WORDSUM) and internet usage. The zero-inflation check using performance::check_zeroinflation(negbin_model) indicated no evidence of problematic excess zeros.
+
+Overall, the negative binomial model provides a better fit to the data by accommodating the observed overdispersion. This model supports our preregistered hypothesis that factors such as vocabulary, age, sex, religiosity, political orientation, and work-from-home frequency significantly predict weekly internet hours. Future research might explore further refinements or alternative models if additional complexities (e.g.potential zero-inflation) are detected.
