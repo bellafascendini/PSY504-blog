@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Multilevel Modeling Walkthrough – PSY504 Lab Assignments</title>
+<title>Intro to MLM Exercise/Walkthrough – PSY504 Lab Assignments</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -135,7 +135,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -168,22 +168,13 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#getting-to-grips-with-mlm" id="toc-getting-to-grips-with-mlm" class="nav-link active" data-scroll-target="#getting-to-grips-with-mlm">Getting to grips with MLM</a></li>
-  <li><a href="#audio-interference-in-executive-functioning-repeated-measures" id="toc-audio-interference-in-executive-functioning-repeated-measures" class="nav-link" data-scroll-target="#audio-interference-in-executive-functioning-repeated-measures">Audio Interference in Executive Functioning (Repeated Measures)</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Multilevel Modeling Walkthrough</h1>
+<h1 class="title">Intro to MLM Exercise/Walkthrough</h1>
 </div>
 
 
@@ -251,23 +242,23 @@ New Packages!
 </div><div class="column" style="width:45%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="rchnprmcdf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rchnprmcdf table {
+<div id="whiqcxlsci" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#whiqcxlsci table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rchnprmcdf thead, #rchnprmcdf tbody, #rchnprmcdf tfoot, #rchnprmcdf tr, #rchnprmcdf td, #rchnprmcdf th {
+#whiqcxlsci thead, #whiqcxlsci tbody, #whiqcxlsci tfoot, #whiqcxlsci tr, #whiqcxlsci td, #whiqcxlsci th {
   border-style: none;
 }
 
-#rchnprmcdf p {
+#whiqcxlsci p {
   margin: 0;
   padding: 0;
 }
 
-#rchnprmcdf .gt_table {
+#whiqcxlsci .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -293,12 +284,12 @@ New Packages!
   border-left-color: #D3D3D3;
 }
 
-#rchnprmcdf .gt_caption {
+#whiqcxlsci .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rchnprmcdf .gt_title {
+#whiqcxlsci .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -310,7 +301,7 @@ New Packages!
   border-bottom-width: 0;
 }
 
-#rchnprmcdf .gt_subtitle {
+#whiqcxlsci .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -322,7 +313,7 @@ New Packages!
   border-top-width: 0;
 }
 
-#rchnprmcdf .gt_heading {
+#whiqcxlsci .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -334,13 +325,13 @@ New Packages!
   border-right-color: #D3D3D3;
 }
 
-#rchnprmcdf .gt_bottom_border {
+#whiqcxlsci .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rchnprmcdf .gt_col_headings {
+#whiqcxlsci .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -355,7 +346,7 @@ New Packages!
   border-right-color: #D3D3D3;
 }
 
-#rchnprmcdf .gt_col_heading {
+#whiqcxlsci .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -375,7 +366,7 @@ New Packages!
   overflow-x: hidden;
 }
 
-#rchnprmcdf .gt_column_spanner_outer {
+#whiqcxlsci .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -387,15 +378,15 @@ New Packages!
   padding-right: 4px;
 }
 
-#rchnprmcdf .gt_column_spanner_outer:first-child {
+#whiqcxlsci .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rchnprmcdf .gt_column_spanner_outer:last-child {
+#whiqcxlsci .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rchnprmcdf .gt_column_spanner {
+#whiqcxlsci .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -407,11 +398,11 @@ New Packages!
   width: 100%;
 }
 
-#rchnprmcdf .gt_spanner_row {
+#whiqcxlsci .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rchnprmcdf .gt_group_heading {
+#whiqcxlsci .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -437,7 +428,7 @@ New Packages!
   text-align: left;
 }
 
-#rchnprmcdf .gt_empty_group_heading {
+#whiqcxlsci .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -452,15 +443,15 @@ New Packages!
   vertical-align: middle;
 }
 
-#rchnprmcdf .gt_from_md > :first-child {
+#whiqcxlsci .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rchnprmcdf .gt_from_md > :last-child {
+#whiqcxlsci .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rchnprmcdf .gt_row {
+#whiqcxlsci .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -479,7 +470,7 @@ New Packages!
   overflow-x: hidden;
 }
 
-#rchnprmcdf .gt_stub {
+#whiqcxlsci .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -492,7 +483,7 @@ New Packages!
   padding-right: 5px;
 }
 
-#rchnprmcdf .gt_stub_row_group {
+#whiqcxlsci .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -506,15 +497,15 @@ New Packages!
   vertical-align: top;
 }
 
-#rchnprmcdf .gt_row_group_first td {
+#whiqcxlsci .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rchnprmcdf .gt_row_group_first th {
+#whiqcxlsci .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rchnprmcdf .gt_summary_row {
+#whiqcxlsci .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -524,16 +515,16 @@ New Packages!
   padding-right: 5px;
 }
 
-#rchnprmcdf .gt_first_summary_row {
+#whiqcxlsci .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rchnprmcdf .gt_first_summary_row.thick {
+#whiqcxlsci .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rchnprmcdf .gt_last_summary_row {
+#whiqcxlsci .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -543,7 +534,7 @@ New Packages!
   border-bottom-color: #D3D3D3;
 }
 
-#rchnprmcdf .gt_grand_summary_row {
+#whiqcxlsci .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -553,7 +544,7 @@ New Packages!
   padding-right: 5px;
 }
 
-#rchnprmcdf .gt_first_grand_summary_row {
+#whiqcxlsci .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -563,7 +554,7 @@ New Packages!
   border-top-color: #D3D3D3;
 }
 
-#rchnprmcdf .gt_last_grand_summary_row_top {
+#whiqcxlsci .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -573,11 +564,11 @@ New Packages!
   border-bottom-color: #D3D3D3;
 }
 
-#rchnprmcdf .gt_striped {
+#whiqcxlsci .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rchnprmcdf .gt_table_body {
+#whiqcxlsci .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -586,7 +577,7 @@ New Packages!
   border-bottom-color: #D3D3D3;
 }
 
-#rchnprmcdf .gt_footnotes {
+#whiqcxlsci .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -600,7 +591,7 @@ New Packages!
   border-right-color: #D3D3D3;
 }
 
-#rchnprmcdf .gt_footnote {
+#whiqcxlsci .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -609,7 +600,7 @@ New Packages!
   padding-right: 5px;
 }
 
-#rchnprmcdf .gt_sourcenotes {
+#whiqcxlsci .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -623,7 +614,7 @@ New Packages!
   border-right-color: #D3D3D3;
 }
 
-#rchnprmcdf .gt_sourcenote {
+#whiqcxlsci .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -631,72 +622,72 @@ New Packages!
   padding-right: 5px;
 }
 
-#rchnprmcdf .gt_left {
+#whiqcxlsci .gt_left {
   text-align: left;
 }
 
-#rchnprmcdf .gt_center {
+#whiqcxlsci .gt_center {
   text-align: center;
 }
 
-#rchnprmcdf .gt_right {
+#whiqcxlsci .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rchnprmcdf .gt_font_normal {
+#whiqcxlsci .gt_font_normal {
   font-weight: normal;
 }
 
-#rchnprmcdf .gt_font_bold {
+#whiqcxlsci .gt_font_bold {
   font-weight: bold;
 }
 
-#rchnprmcdf .gt_font_italic {
+#whiqcxlsci .gt_font_italic {
   font-style: italic;
 }
 
-#rchnprmcdf .gt_super {
+#whiqcxlsci .gt_super {
   font-size: 65%;
 }
 
-#rchnprmcdf .gt_footnote_marks {
+#whiqcxlsci .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rchnprmcdf .gt_asterisk {
+#whiqcxlsci .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rchnprmcdf .gt_indent_1 {
+#whiqcxlsci .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rchnprmcdf .gt_indent_2 {
+#whiqcxlsci .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rchnprmcdf .gt_indent_3 {
+#whiqcxlsci .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rchnprmcdf .gt_indent_4 {
+#whiqcxlsci .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rchnprmcdf .gt_indent_5 {
+#whiqcxlsci .gt_indent_5 {
   text-indent: 25px;
 }
 
-#rchnprmcdf .katex-display {
+#whiqcxlsci .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#rchnprmcdf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#whiqcxlsci div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -746,8 +737,6 @@ Question 1
 <p>Lines 4-7 then plot the data, split up by each type of toy, and adds lines showing the model fitted values.</p>
 <p>Run the code and check that you get a plot. What do you notice about the lines?</p>
 <div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>lm_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(R_AGE <span class="sc">~</span> hrs_week, <span class="at">data =</span> toy2)</span>
 <span id="cb1-2"><a href="#cb1-2"></a>toy2<span class="sc">$</span>pred_lm <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_mod)</span>
 <span id="cb1-3"><a href="#cb1-3"></a></span>
@@ -755,19 +744,18 @@ Question 1
 <span id="cb1-5"><a href="#cb1-5"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> R_AGE), <span class="at">size=</span><span class="dv">1</span>, <span class="at">alpha=</span>.<span class="dv">3</span>) <span class="sc">+</span></span>
 <span id="cb1-6"><a href="#cb1-6"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>toy_type) <span class="sc">+</span></span>
 <span id="cb1-7"><a href="#cb1-7"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>pred_lm), <span class="at">col =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 </div>
 <p class="question-end">
 </p>
 <div class="solution-begin">
-
+<button id="sol-start-1" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-1', 'sol-start-1')">
+Solution
+</button>
 </div>
-<div class="solution-body">
-<p>We should get something like this:</p>
+<div id="sol-body-1" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 1</em>. </span>We should get something like this:</p>
 <div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>lm_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(R_AGE <span class="sc">~</span> hrs_week, <span class="at">data =</span> toy2)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>toy2<span class="sc">$</span>pred_lm <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_mod)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -775,11 +763,10 @@ Question 1
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> R_AGE), <span class="at">size=</span><span class="dv">1</span>, <span class="at">alpha=</span>.<span class="dv">3</span>) <span class="sc">+</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>toy_type) <span class="sc">+</span></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>pred_lm), <span class="at">col =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="multilevel_modeling_walkthrough_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+<p><img src="MLM_Intro_Questions_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
@@ -837,19 +824,16 @@ Question 2
 <p class="question-end">
 </p>
 <div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ENTER YOUR ATTEMPT AND THOUGHTS HERE: The red lines are identical across all toy types, which suggests that this model ignores toy-type differences. It assumes a single relationship between hours of practice and reading age for all toy types, which does not reflect the data accurately. Observing the plots, it is clear that different toy types have varying intercepts and possibly different slopes as well. This suggests we need models that account for group-level variations such as fixed effects or mixed effects models.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ENTER YOUR ATTEMPT AND THOUGHTS HERE:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="solution-begin">
-
+<button id="sol-start-2" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-2', 'sol-start-2')">
+Solution
+</button>
 </div>
-<div class="solution-body">
-<p>The first model has an adjustment for each toy-type (we can see this in the coefficients if we want). What this means is that the line for each type of toy is shifted up or down. We can see that the lines are now shifted up for things like “Scooby Doo” and “G.I.Joe”, and down for “transformers” and “farm animals”:</p>
+<div id="sol-body-2" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 2</em>. </span>The first model has an adjustment for each toy-type (we can see this in the coefficients if we want). What this means is that the line for each type of toy is shifted up or down. We can see that the lines are now shifted up for things like “Scooby Doo” and “G.I.Joe”, and down for “transformers” and “farm animals”:</p>
 <div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fe_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(R_AGE <span class="sc">~</span> toy_type <span class="sc">+</span> hrs_week, <span class="at">data =</span> toy2)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>toy2<span class="sc">$</span>pred_fe <span class="ot">&lt;-</span> <span class="fu">predict</span>(fe_mod)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -857,19 +841,16 @@ Question 2
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> R_AGE), <span class="at">size=</span><span class="dv">1</span>, <span class="at">alpha=</span>.<span class="dv">3</span>) <span class="sc">+</span></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>toy_type) <span class="sc">+</span></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>pred_fe), <span class="at">col =</span> <span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="multilevel_modeling_walkthrough_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+<p><img src="MLM_Intro_Questions_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>This next one <em>looks</em> very similar to the previous one, but it is conceptually doing something a bit different. Rather than separating out and estimating differences between all the toy-types, we are modelling <em>a distribution</em> of deviations for each type from some average.</p>
 <div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ri_mod <span class="ot">&lt;-</span> <span class="fu">lmer</span>(R_AGE <span class="sc">~</span> hrs_week <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> toy_type), <span class="at">data =</span> toy2)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>toy2<span class="sc">$</span>pred_ri <span class="ot">&lt;-</span> <span class="fu">predict</span>(ri_mod)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -877,19 +858,16 @@ Question 2
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> R_AGE), <span class="at">size=</span><span class="dv">1</span>, <span class="at">alpha=</span>.<span class="dv">3</span>) <span class="sc">+</span></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>toy_type) <span class="sc">+</span></span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>pred_ri), <span class="at">col =</span> <span class="st">"green"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="multilevel_modeling_walkthrough_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+<p><img src="MLM_Intro_Questions_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Finally, we can add in the random slopes of <code>hrs_week</code>. In this model, we are not only allowing toy-types to vary in their average reading age (i.e.&nbsp;shifting lines up and down), but we are also allowing them to vary in the association between hrs_week and reading age (letting the lines have different slopes). Some types of toy (Scooby Doo, Sock Puppets, Stretch Armstrong) have fairly positive slopes, and some have a flatter association (e.g, SuperZings etc).</p>
 <div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>rs_mod <span class="ot">&lt;-</span> <span class="fu">lmer</span>(R_AGE <span class="sc">~</span> hrs_week <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> hrs_week <span class="sc">|</span> toy_type), <span class="at">data =</span> toy2)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>toy2<span class="sc">$</span>pred_rs <span class="ot">&lt;-</span> <span class="fu">predict</span>(rs_mod)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -897,11 +875,10 @@ Question 2
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> R_AGE), <span class="at">size=</span><span class="dv">1</span>, <span class="at">alpha=</span>.<span class="dv">3</span>) <span class="sc">+</span></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>toy_type) <span class="sc">+</span></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>pred_rs), <span class="at">col =</span> <span class="st">"orange"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="multilevel_modeling_walkthrough_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+<p><img src="MLM_Intro_Questions_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
@@ -910,71 +887,11 @@ Question 2
 <p class="solution-end">
 </p>
 <div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ENTER TLDR ON HOW YOUR ANSWER DIFFERED FROM THE SOLUTIONS</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#fixed-effects</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>fe_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(R_AGE <span class="sc">~</span> toy_type <span class="sc">+</span> hrs_week, <span class="at">data =</span> toy2)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>toy2<span class="sc">$</span>pred_fe <span class="ot">&lt;-</span> <span class="fu">predict</span>(fe_mod)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(toy2, <span class="fu">aes</span>(<span class="at">x =</span> hrs_week)) <span class="sc">+</span> </span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> R_AGE), <span class="at">size=</span><span class="dv">1</span>, <span class="at">alpha=</span>.<span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>toy_type) <span class="sc">+</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>pred_fe), <span class="at">col =</span> <span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="multilevel_modeling_walkthrough_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#random intercepts</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>ri_mod <span class="ot">&lt;-</span> <span class="fu">lmer</span>(R_AGE <span class="sc">~</span> hrs_week <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> toy_type), <span class="at">data =</span> toy2)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>toy2<span class="sc">$</span>pred_ri <span class="ot">&lt;-</span> <span class="fu">predict</span>(ri_mod)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(toy2, <span class="fu">aes</span>(<span class="at">x =</span> hrs_week)) <span class="sc">+</span> </span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> R_AGE), <span class="at">size=</span><span class="dv">1</span>, <span class="at">alpha=</span>.<span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>toy_type) <span class="sc">+</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>pred_ri), <span class="at">col =</span> <span class="st">"green"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="multilevel_modeling_walkthrough_files/figure-html/unnamed-chunk-13-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#random slope</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>rs_mod <span class="ot">&lt;-</span> <span class="fu">lmer</span>(R_AGE <span class="sc">~</span> hrs_week <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> hrs_week <span class="sc">|</span> toy_type), <span class="at">data =</span> toy2)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>toy2<span class="sc">$</span>pred_rs <span class="ot">&lt;-</span> <span class="fu">predict</span>(rs_mod)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(toy2, <span class="fu">aes</span>(<span class="at">x =</span> hrs_week)) <span class="sc">+</span> </span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> R_AGE), <span class="at">size=</span><span class="dv">1</span>, <span class="at">alpha=</span>.<span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>toy_type) <span class="sc">+</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>pred_rs), <span class="at">col =</span> <span class="st">"orange"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="multilevel_modeling_walkthrough_files/figure-html/unnamed-chunk-13-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Fixed effects: Each toy type has a unique intercept but shares a common slope. This leads to vertically shifted lines across toy types, which accounts for differences in reading age but not how practice might affect each type differently.</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Random intercepts: The variance is explicitly modeled around a common slope. Each toy type has its own baseline (intercept), modeled as random deviations from an average intercept, which captures the group-level variability.</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Random slopes: This model allows both intercepts and slopes to vary for each toy type, which captures the potential differences in how 'practice' impacts 'reading age' differently across toy types, providing a more accurate representation of the data.</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">#... CONTINUE THIS WAY THROUGH THE ASSIGNMENT</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">#... CONTINUE THIS WAY THROUGH THE ASSIGNMENT</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="question-begin">
 Question 3
@@ -999,7 +916,7 @@ Question 3
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="multilevel_modeling_walkthrough_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<p><img src="MLM_Intro_Questions_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -1035,20 +952,15 @@ Hints
 <p class="question-end">
 </p>
 <div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ENTER YOUR ATTEMPT AND THOUGHTS HERE:</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#A1: SD of random intercepts from all toy-type lines to the black line - this is the variation in intercepts across toy types.</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#A2: Residual SD from all the individual datapoints (toys) to their respective toy-type lines  </span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#A3: Intercept - where the black line cuts the y axis  </span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#A4: Slope of the black line – represents the average effect of practice hours on reading age, assumed constant across all toy types.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ENTER YOUR ATTEMPT AND THOUGHTS HERE:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="solution-begin">
-
+<button id="sol-start-3" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-3', 'sol-start-3')">
+Solution
+</button>
 </div>
-<div class="solution-body">
+<div id="sol-body-3" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 3</em>. </span></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
@@ -1065,7 +977,7 @@ Hints
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="multilevel_modeling_walkthrough_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<p><img src="MLM_Intro_Questions_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -1145,9 +1057,12 @@ Hints
 <p class="question-end">
 </p>
 <div class="solution-begin">
-
+<button id="sol-start-4" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-4', 'sol-start-4')">
+Solution
+</button>
 </div>
-<div class="solution-body">
+<div id="sol-body-4" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 4</em>. </span></p>
 <ul>
 <li><strong>A1 =</strong> <span class="math inline">\(\sigma_{0}\)</span><br>
 </li>
@@ -1665,76 +1580,10 @@ Hints
 Question 4
 </div>
 <div class="question-body">
-<p>How many participants are there in the data?</p>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>efdat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://uoepsy.github.io/data/lmm_ef_sdmt.csv"</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># How many participants?</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>num_participants <span class="ot">&lt;-</span> <span class="fu">n_distinct</span>(efdat<span class="sc">$</span>PID)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>How many have complete data (15 trials)?</p>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># How many have complete data (15 trials)?</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>complete_data <span class="ot">&lt;-</span> efdat <span class="sc">%&gt;%</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(PID) <span class="sc">%&gt;%</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">==</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>What is the average number of trials that participants completed? What is the minimum?</p>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Average and minimum number of trials per participant:</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>trials_summary <span class="ot">&lt;-</span> efdat <span class="sc">%&gt;%</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(PID) <span class="sc">%&gt;%</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_trials =</span> <span class="fu">mean</span>(n),</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_trials =</span> <span class="fu">min</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>Does every participant have <em>some</em> data for each type of audio?</p>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>audio_per_participant <span class="ot">&lt;-</span> efdat <span class="sc">%&gt;%</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(PID, audio) <span class="sc">%&gt;%</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(PID) <span class="sc">%&gt;%</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">has_all_audio =</span> <span class="fu">all</span>(<span class="fu">c</span>(<span class="st">"no_audio"</span>, <span class="st">"white_noise"</span>, <span class="st">"music"</span>) <span class="sc">%in%</span> audio)) <span class="sc">%&gt;%</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">all_have_audio_types =</span> <span class="fu">all</span>(has_all_audio))</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>trials_summary <span class="ot">&lt;-</span> efdat <span class="sc">%&gt;%</span></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(PID) <span class="sc">%&gt;%</span></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_trials =</span> <span class="fu">mean</span>(n),</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_trials =</span> <span class="fu">min</span>(n))</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">num_participants =</span> num_participants,</span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">complete_data =</span> complete_data,</span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">trials_summary =</span> trials_summary,</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">all_audio_types_present =</span> audio_per_participant<span class="sc">$</span>all_have_audio_types</span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>$num_participants
-[1] 30
-
-$complete_data
-[1] 0
-
-$trials_summary
-# A tibble: 1 × 2
-  mean_trials min_trials
-        &lt;dbl&gt;      &lt;int&gt;
-1          12         10
-
-$all_audio_types_present
-[1] TRUE</code></pre>
-</div>
-</div>
+<p>How many participants are there in the data?<br>
+How many have complete data (15 trials)?<br>
+What is the average number of trials that participants completed? What is the minimum?<br>
+Does every participant have <em>some</em> data for each type of audio?</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1755,15 +1604,15 @@ Hints
 <p class="question-end">
 </p>
 <div class="solution-begin">
-
+<button id="sol-start-5" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-5', 'sol-start-5')">
+1 - read in the data
+</button>
 </div>
-<div class="solution-body">
+<div id="sol-body-5" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 5</em>. </span></p>
 <div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>efdat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://uoepsy.github.io/data/lmm_ef_sdmt.csv"</span>)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(efdat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>efdat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://uoepsy.github.io/data/lmm_ef_sdmt.csv"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(efdat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 4
   PID    audio       headphones  SDMT
@@ -1780,25 +1629,21 @@ Hints
 <p class="solution-end">
 </p>
 <div class="solution-begin">
-
+<button id="sol-start-6" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-6', 'sol-start-6')">
+2 - how many ppts?
+</button>
 </div>
-<div class="solution-body">
-<p>For a quick “how many?”, functions like <code>n_distinct()</code> can be handy:</p>
+<div id="sol-body-6" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 6</em>. </span>For a quick “how many?”, functions like <code>n_distinct()</code> can be handy:</p>
 <div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">n_distinct</span>(efdat<span class="sc">$</span>PID)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">n_distinct</span>(efdat<span class="sc">$</span>PID)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 30</code></pre>
 </div>
 </div>
 <p>Which is essentially the same as asking:</p>
 <div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(efdat<span class="sc">$</span>PID) <span class="sc">|&gt;</span> <span class="fu">length</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(efdat<span class="sc">$</span>PID) <span class="sc">|&gt;</span> <span class="fu">length</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 30</code></pre>
 </div>
@@ -1807,16 +1652,15 @@ Hints
 <p class="solution-end">
 </p>
 <div class="solution-begin">
-
+<button id="sol-start-7" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-7', 'sol-start-7')">
+3 - how many observations per ppt?
+</button>
 </div>
-<div class="solution-body">
-<p>Here are the counts of trials for each participant.</p>
+<div id="sol-body-7" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 7</em>. </span>Here are the counts of trials for each participant.</p>
 <div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>efdat <span class="sc">|&gt;</span> </span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(PID)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>efdat <span class="sc">|&gt;</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(PID)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
@@ -1833,12 +1677,9 @@ Hints
 </div>
 <p>We can pass that to something like <code>summary()</code> to get a quick descriptive of the <code>n</code> column, and so we can see that no participant completed all 15 trials (max is 14). Everyone completed at least 10, and the median was 12.</p>
 <div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>efdat <span class="sc">|&gt;</span> </span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(PID) <span class="sc">|&gt;</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>efdat <span class="sc">|&gt;</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(PID) <span class="sc">|&gt;</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     PID                  n     
  Length:30          Min.   :10  
@@ -1851,10 +1692,7 @@ Hints
 </div>
 <p>We could also do this easily with things like:</p>
 <div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(efdat<span class="sc">$</span>PID) <span class="sc">|&gt;</span> <span class="fu">median</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(efdat<span class="sc">$</span>PID) <span class="sc">|&gt;</span> <span class="fu">median</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 12</code></pre>
 </div>
@@ -1863,15 +1701,14 @@ Hints
 <p class="solution-end">
 </p>
 <div class="solution-begin">
-
+<button id="sol-start-8" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-8', 'sol-start-8')">
+4 - how many observations for each audio type per ppt?
+</button>
 </div>
-<div class="solution-body">
-<p>For this kind of thing I would typically default to using <code>table()</code> for smaller datasets, to see how many datapoints are in each combination of <code>PID</code> and <code>audio</code>:</p>
+<div id="sol-body-8" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 8</em>. </span>For this kind of thing I would typically default to using <code>table()</code> for smaller datasets, to see how many datapoints are in each combination of <code>PID</code> and <code>audio</code>:</p>
 <div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(efdat<span class="sc">$</span>PID, efdat<span class="sc">$</span>audio)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(efdat<span class="sc">$</span>PID, efdat<span class="sc">$</span>audio)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        
          music no_audio white_noise
@@ -1909,10 +1746,7 @@ Hints
 </div>
 <p>From the above, we can see that everyone has data from <span class="math inline">\(\geq 2\)</span> trials for a given audio type.</p>
 <div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(efdat<span class="sc">$</span>PID, efdat<span class="sc">$</span>audio) <span class="sc">|&gt;</span> <span class="fu">min</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(efdat<span class="sc">$</span>PID, efdat<span class="sc">$</span>audio) <span class="sc">|&gt;</span> <span class="fu">min</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
@@ -1931,15 +1765,12 @@ a tidyverse way:
 <div class="callout-body-container callout-body">
 <p>When tables get too big, we can do the same thing with <code>count()</code>, but we need to make sure that we are working with factors, in order to summarise all possible combinations of groups (even empty ones)</p>
 <div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>efdat <span class="sc">|&gt;</span> </span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">PID =</span> <span class="fu">factor</span>(PID),</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">audio =</span> <span class="fu">factor</span>(audio)) <span class="sc">|&gt;</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the .drop=FALSE means "keep empty groups"</span></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(PID,audio,<span class="at">.drop=</span><span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>efdat <span class="sc">|&gt;</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">PID =</span> <span class="fu">factor</span>(PID),</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">audio =</span> <span class="fu">factor</span>(audio)) <span class="sc">|&gt;</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the .drop=FALSE means "keep empty groups"</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(PID,audio,<span class="at">.drop=</span><span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      PID             audio          n    
  PPT_01 : 3   music      :30   Min.   :2  
@@ -1967,26 +1798,28 @@ Question 5
 </blockquote>
 <p>Consider the following questions about the study:</p>
 <ul>
-<li><p>What is our outcome of interest?<br>
-The outcome of interest is the executive functioning measure, specifically the SDMT scores.</p></li>
-<li><p>What variables are we seeking to investigate in terms of their impact on the outcome?<br>
-The variables we’re interested in are the type of audio (no audio, white noise, music)and whether noise-cancelling headphones are used (headphones vs speakers).</p></li>
-<li><p>What are the units of observations?<br>
-Each individual trial completed by a participant is an observation.</p></li>
-<li><p>Are the observations clustered/grouped? In what way?<br>
-Yes, observations are clustered by participant.</p></li>
-<li><p>What varies <em>within</em> these clusters?<br>
-Type of audio.</p></li>
-<li><p>What varies <em>between</em> these clusters?<br>
-Participants either always use headphones or speakers.</p></li>
+<li>What is our outcome of interest?<br>
+</li>
+<li>What variables are we seeking to investigate in terms of their impact on the outcome?<br>
+</li>
+<li>What are the units of observations?<br>
+</li>
+<li>Are the observations clustered/grouped? In what way?<br>
+</li>
+<li>What varies <em>within</em> these clusters?<br>
+</li>
+<li>What varies <em>between</em> these clusters?</li>
 </ul>
 </div>
 <p class="question-end">
 </p>
 <div class="solution-begin">
-
+<button id="sol-start-9" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-9', 'sol-start-9')">
+Solution
+</button>
 </div>
-<div class="solution-body">
+<div id="sol-body-9" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 9</em>. </span></p>
 <ul>
 <li>What is our outcome of interest?
 <ul>
@@ -2025,16 +1858,6 @@ Question 6
 </div>
 <div class="question-body">
 <p>Make factors and set the reference levels of the <code>audio</code> and <code>headphones</code> variables to “no audio” and “speakers” respectively.</p>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>efdat <span class="ot">&lt;-</span> efdat <span class="sc">%&gt;%</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">audio =</span> <span class="fu">fct_relevel</span>(<span class="fu">factor</span>(audio), <span class="st">"no_audio"</span>),</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">headphones =</span> <span class="fu">fct_relevel</span>(<span class="fu">factor</span>(headphones), <span class="st">"S"</span>)</span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -2055,18 +1878,18 @@ Hints
 <p class="question-end">
 </p>
 <div class="solution-begin">
-
+<button id="sol-start-10" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-10', 'sol-start-10')">
+Solution
+</button>
 </div>
-<div class="solution-body">
+<div id="sol-body-10" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 10</em>. </span></p>
 <div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>efdat <span class="ot">&lt;-</span> efdat <span class="sc">|&gt;</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">audio =</span> <span class="fu">fct_relevel</span>(<span class="fu">factor</span>(audio), <span class="st">"no_audio"</span>),</span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">headphones =</span> <span class="fu">fct_relevel</span>(<span class="fu">factor</span>(headphones), <span class="st">"S"</span>)</span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>efdat <span class="ot">&lt;-</span> efdat <span class="sc">|&gt;</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">audio =</span> <span class="fu">fct_relevel</span>(<span class="fu">factor</span>(audio), <span class="st">"no_audio"</span>),</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">headphones =</span> <span class="fu">fct_relevel</span>(<span class="fu">factor</span>(headphones), <span class="st">"S"</span>)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <p class="solution-end">
@@ -2090,49 +1913,6 @@ Question 7
 </li>
 <li>Think about which slopes (i.e.&nbsp;which terms in our fixed effects) could feasibly vary between the clusters. This provides you with what to put in as random slopes.</li>
 </ol>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>sdmt_mod <span class="ot">&lt;-</span> <span class="fu">lmer</span>(SDMT <span class="sc">~</span> audio <span class="sc">*</span> headphones <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> audio <span class="sc">|</span> PID), <span class="at">data =</span> efdat)</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sdmt_mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Linear mixed model fit by REML ['lmerMod']
-Formula: SDMT ~ audio * headphones + (1 + audio | PID)
-   Data: efdat
-
-REML criterion at convergence: 2376.2
-
-Scaled residuals: 
-     Min       1Q   Median       3Q      Max 
--2.34520 -0.62861  0.05762  0.60807  2.21250 
-
-Random effects:
- Groups   Name             Variance Std.Dev. Corr       
- PID      (Intercept)      51.17    7.153               
-          audiomusic       13.69    3.700     0.03      
-          audiowhite_noise 15.22    3.901    -0.25 -0.16
- Residual                  31.49    5.612               
-Number of obs: 360, groups:  PID, 30
-
-Fixed effects:
-                             Estimate Std. Error t value
-(Intercept)                  33.25799    1.98897  16.721
-audiomusic                   -8.01731    1.41149  -5.680
-audiowhite_noise             -0.03044    1.44502  -0.021
-headphonesH                   6.85313    2.81170   2.437
-audiomusic:headphonesH       -3.58748    2.00129  -1.793
-audiowhite_noise:headphonesH  8.02458    2.04498   3.924
-
-Correlation of Fixed Effects:
-            (Intr) audmsc adwht_ hdphnH adms:H
-audiomusic  -0.174                            
-audiowht_ns -0.352  0.192                     
-headphonesH -0.707  0.123  0.249              
-admsc:hdphH  0.123 -0.705 -0.135 -0.173       
-adwht_ns:hH  0.249 -0.136 -0.707 -0.351  0.191</code></pre>
-</div>
-</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -2153,10 +1933,12 @@ Hints
 <p class="question-end">
 </p>
 <div class="solution-begin">
-
+<button id="sol-start-11" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-11', 'sol-start-11')">
+1 - fixed effects
+</button>
 </div>
-<div class="solution-body">
-<p>The question<br>
+<div id="sol-body-11" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 11</em>. </span>The question<br>
 &nbsp;&nbsp;&nbsp; “<em>How do different types of audio interfere with executive functioning</em>” means we are interested in the effects of audio type (<code>audio</code>) on executive functioning (<code>SDMT</code> scores), so we will want:</p>
 <pre><code>lmer(SDMT ~ audio ...</code></pre>
 <p>However, the research aim also asks<br>
@@ -2167,10 +1949,12 @@ which suggests that we are interested in the interaction <code>SDMT ~ audio * he
 <p class="solution-end">
 </p>
 <div class="solution-begin">
-
+<button id="sol-start-12" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-12', 'sol-start-12')">
+2 - hierarchical data structure
+</button>
 </div>
-<div class="solution-body">
-<p>There are lots of ways that our data is grouped.<br>
+<div id="sol-body-12" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 12</em>. </span>There are lots of ways that our data is grouped.<br>
 We have:</p>
 <ul>
 <li>3 different groups of audio type (no_audio, white_noise, music)</li>
@@ -2185,10 +1969,12 @@ We have:</p>
 <p class="solution-end">
 </p>
 <div class="solution-begin">
-
+<button id="sol-start-13" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-13', 'sol-start-13')">
+3 - random slopes
+</button>
 </div>
-<div class="solution-body">
-<p>We can also include a random by-participant effect of <code>audio</code>.<br>
+<div id="sol-body-13" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 13</em>. </span>We can also include a random by-participant effect of <code>audio</code>.<br>
 <code>audio|PID</code> specifies that the effect of audio type on SDMT varies by participant. This seems feasible - music might be very distracting (and interfere a lot with the test) for some participants, but have a negligible effect for others.</p>
 <pre><code>lmer(SDMT ~ audio * headphones + 
               (1 + audio | PID), data = efdat)</code></pre>
@@ -2215,14 +2001,14 @@ This means that “the effect of headphones on SDMT” <em>doesn’t exist</em> 
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="multilevel_modeling_walkthrough_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+<p><img src="MLM_Intro_Questions_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="multilevel_modeling_walkthrough_files/figure-html/unnamed-chunk-39-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+<p><img src="MLM_Intro_Questions_files/figure-html/unnamed-chunk-33-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
@@ -2239,53 +2025,6 @@ Question 8
 <div class="question-body">
 <p>We now have a model, but we don’t have any p-values or confidence intervals or anything - i.e.&nbsp;we have no inferential criteria on which to draw conclusions. There are a whole load of different methods available for drawing inferences from multilevel models, which means it can be a bit of a never-ending rabbit hole. For now, we’ll just use the ‘quick and easy’ approach provided by the <strong>lmerTest</strong> package seen in the lectures.</p>
 <p>Using the <strong>lmerTest</strong> package, re-fit your model, and you should now get some p-values!</p>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmerTest)</span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>sdmt_mod_pvals <span class="ot">&lt;-</span> <span class="fu">lmer</span>(SDMT <span class="sc">~</span> audio <span class="sc">*</span> headphones <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> audio <span class="sc">|</span> PID), <span class="at">data =</span> efdat)</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sdmt_mod_pvals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Linear mixed model fit by REML. t-tests use Satterthwaite's method [
-lmerModLmerTest]
-Formula: SDMT ~ audio * headphones + (1 + audio | PID)
-   Data: efdat
-
-REML criterion at convergence: 2376.2
-
-Scaled residuals: 
-     Min       1Q   Median       3Q      Max 
--2.34520 -0.62861  0.05762  0.60807  2.21250 
-
-Random effects:
- Groups   Name             Variance Std.Dev. Corr       
- PID      (Intercept)      51.17    7.153               
-          audiomusic       13.69    3.700     0.03      
-          audiowhite_noise 15.22    3.901    -0.25 -0.16
- Residual                  31.49    5.612               
-Number of obs: 360, groups:  PID, 30
-
-Fixed effects:
-                             Estimate Std. Error       df t value Pr(&gt;|t|)    
-(Intercept)                  33.25799    1.98897 28.22065  16.721 3.54e-16 ***
-audiomusic                   -8.01731    1.41149 27.58766  -5.680 4.58e-06 ***
-audiowhite_noise             -0.03044    1.44502 26.32588  -0.021 0.983354    
-headphonesH                   6.85313    2.81170 28.19226   2.437 0.021355 *  
-audiomusic:headphonesH       -3.58748    2.00129 27.94011  -1.793 0.083875 .  
-audiowhite_noise:headphonesH  8.02458    2.04498 26.46166   3.924 0.000556 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Correlation of Fixed Effects:
-            (Intr) audmsc adwht_ hdphnH adms:H
-audiomusic  -0.174                            
-audiowht_ns -0.352  0.192                     
-headphonesH -0.707  0.123  0.249              
-admsc:hdphH  0.123 -0.705 -0.135 -0.173       
-adwht_ns:hH  0.249 -0.136 -0.707 -0.351  0.191</code></pre>
-</div>
-</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -2320,15 +2059,12 @@ optional: a model comparison
 <p>Remember, model comparison is sometimes a useful way of testing a <em>set</em> of coefficients. For instance, in this example the interaction involves estimating <em>two</em> terms: <code>audiomusic:headphonesH</code> and <code>audiowhite_noise:headphonesH</code>.</p>
 <p>To test the interaction as a whole, we can create a model without the interaction, and then compare it. The <code>SATmodcomp()</code> function from the <strong>pbkrtest</strong> package provides a way of conducting an F test with the same Satterthwaite method of approximating the degrees of freedom:</p>
 <div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>sdmt_mod <span class="ot">&lt;-</span> <span class="fu">lmer</span>(SDMT <span class="sc">~</span> audio <span class="sc">*</span> headphones <span class="sc">+</span> </span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>              (<span class="dv">1</span> <span class="sc">+</span> audio <span class="sc">|</span> PID), <span class="at">data =</span> efdat)</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>sdmt_res <span class="ot">&lt;-</span> <span class="fu">lmer</span>(SDMT <span class="sc">~</span> audio <span class="sc">+</span> headphones <span class="sc">+</span> </span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>                   (<span class="dv">1</span> <span class="sc">+</span> audio <span class="sc">|</span> PID), <span class="at">data =</span> efdat)</span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pbkrtest)</span>
-<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="fu">SATmodcomp</span>(<span class="at">largeModel =</span> sdmt_mod, <span class="at">smallModel =</span> sdmt_res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>sdmt_mod <span class="ot">&lt;-</span> <span class="fu">lmer</span>(SDMT <span class="sc">~</span> audio <span class="sc">*</span> headphones <span class="sc">+</span> </span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>              (<span class="dv">1</span> <span class="sc">+</span> audio <span class="sc">|</span> PID), <span class="at">data =</span> efdat)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>sdmt_res <span class="ot">&lt;-</span> <span class="fu">lmer</span>(SDMT <span class="sc">~</span> audio <span class="sc">+</span> headphones <span class="sc">+</span> </span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>                   (<span class="dv">1</span> <span class="sc">+</span> audio <span class="sc">|</span> PID), <span class="at">data =</span> efdat)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pbkrtest)</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="fu">SATmodcomp</span>(<span class="at">largeModel =</span> sdmt_mod, <span class="at">smallModel =</span> sdmt_res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>large : SDMT ~ audio * headphones + (1 + audio | PID)
 small (restriction matrix) : 
@@ -2348,17 +2084,17 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p class="question-end">
 </p>
 <div class="solution-begin">
-
+<button id="sol-start-14" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-14', 'sol-start-14')">
+Solution
+</button>
 </div>
-<div class="solution-body">
+<div id="sol-body-14" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 14</em>. </span></p>
 <div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>sdmt_mod <span class="ot">&lt;-</span> lmerTest<span class="sc">::</span><span class="fu">lmer</span>(SDMT <span class="sc">~</span> audio <span class="sc">*</span> headphones <span class="sc">+</span> </span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>              (<span class="dv">1</span> <span class="sc">+</span> audio <span class="sc">|</span> PID), <span class="at">data =</span> efdat)</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sdmt_mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>sdmt_mod <span class="ot">&lt;-</span> lmerTest<span class="sc">::</span><span class="fu">lmer</span>(SDMT <span class="sc">~</span> audio <span class="sc">*</span> headphones <span class="sc">+</span> </span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>              (<span class="dv">1</span> <span class="sc">+</span> audio <span class="sc">|</span> PID), <span class="at">data =</span> efdat)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sdmt_mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Linear mixed model fit by REML. t-tests use Satterthwaite's method [
 lmerModLmerTest]
@@ -2410,34 +2146,9 @@ Question 9
 <p>Using tools like the <strong>effects</strong> package can provide us with the values of the outcome across levels of a specific fixed predictor (holding other predictors at their mean).</p>
 <p>This should get you started:</p>
 <div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effects)</span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">effect</span>(<span class="at">term =</span> <span class="st">"audio*headphones"</span>, <span class="at">mod =</span> sdmt_mod) <span class="sc">|&gt;</span></span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effects)</span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>audio_effects <span class="ot">&lt;-</span> <span class="fu">effect</span>(<span class="st">"audio*headphones"</span>, sdmt_mod_pvals)</span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>audio_effects_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(audio_effects)</span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(audio_effects_df, <span class="fu">aes</span>(<span class="at">x =</span> audio, <span class="at">y =</span> fit, <span class="at">color =</span> headphones, <span class="at">group =</span> headphones)) <span class="sc">+</span></span>
-<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.2</span>), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> lower, <span class="at">ymax =</span> upper), <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.2</span>), <span class="at">width =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Audio Condition"</span>, <span class="at">y =</span> <span class="st">"Predicted SDMT Score"</span>, <span class="at">color =</span> <span class="st">"Listening Device"</span>) <span class="sc">+</span></span>
-<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="multilevel_modeling_walkthrough_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
-</figure>
-</div>
-</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effects)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">effect</span>(<span class="at">term =</span> <span class="st">"audio*headphones"</span>, <span class="at">mod =</span> sdmt_mod) <span class="sc">|&gt;</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
@@ -2459,24 +2170,24 @@ Hints
 <p class="question-end">
 </p>
 <div class="solution-begin">
-
+<button id="sol-start-15" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-15', 'sol-start-15')">
+Solution
+</button>
 </div>
-<div class="solution-body">
+<div id="sol-body-15" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 15</em>. </span></p>
 <div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effects)</span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">effect</span>(<span class="at">term =</span> <span class="st">"audio*headphones"</span>, <span class="at">mod =</span> sdmt_mod) <span class="sc">|&gt;</span></span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span></span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>audio,<span class="at">y=</span>fit,</span>
-<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">ymin=</span>lower,<span class="at">ymax=</span>upper,</span>
-<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">col=</span>headphones))<span class="sc">+</span></span>
-<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="at">size=</span><span class="dv">1</span>,<span class="at">lwd=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effects)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">effect</span>(<span class="at">term =</span> <span class="st">"audio*headphones"</span>, <span class="at">mod =</span> sdmt_mod) <span class="sc">|&gt;</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>audio,<span class="at">y=</span>fit,</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">ymin=</span>lower,<span class="at">ymax=</span>upper,</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">col=</span>headphones))<span class="sc">+</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="at">size=</span><span class="dv">1</span>,<span class="at">lwd=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="multilevel_modeling_walkthrough_files/figure-html/unnamed-chunk-45-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+<p><img src="MLM_Intro_Questions_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
@@ -2489,40 +2200,6 @@ Question 10
 </div>
 <div class="question-body">
 <p>Now we have some p-values and a plot, try to create a short write-up of the analysis and results.</p>
-<p><strong>Brief decription of the study</strong> The data analyzed in this study came from multiple healthy adult volunteers who each completed several trials of the Symbol Digit Modalities Test (SDMT). During each trial, participants were randomly assigned to perform the test while exposed to one of three audio conditions: no audio, white noise, or music. Additionally, participants were allocated into two distinct groups: one group consistently used noise-cancelling headphones, while the other group consistently used standard speakers. Each participant provided between 10 and 14 trials, with an average of approximately 12 trials per participant. Importantly, all participants had some exposure to each audio condition.</p>
-<p><strong>Research question and approach</strong> To address the research question - How do different types of audio interfere with executive functioning, and does this interference differ depending upon whether noise-cancelling headphones are used? - we ran a linear mixed-effects model. We chose this approach because it accounted for the repeated-measures design, where multiple observations (trials) were nested within individual participants.</p>
-<p><strong>The model included:</strong></p>
-<p>Fixed Effects:</p>
-<ul>
-<li>Audio condition (no audio as baseline comparison, with white noise and music as comparison conditions).</li>
-<li>Listening device (speakers as baseline, compared against noise-cancelling headphones).</li>
-<li>Interaction between audio condition and listening device to explicitly test whether the effect of audio conditions on executive functioning differs depending upon headphone use.</li>
-</ul>
-<p>Random Effects:</p>
-<ul>
-<li>Participant-level random intercepts, allowing baseline SDMT scores to vary among individuals, thus accounting for general individual differences in executive functioning.</li>
-<li>Participant-level random slopes for audio conditions, enabling the model to capture individual differences in sensitivity to audio conditions (i.e., acknowledging that some individuals may be more or less impacted by music or white noise than others).</li>
-</ul>
-<p><strong>Results</strong></p>
-<p>The statistical analysis revealed several important findings:</p>
-<ol type="1">
-<li>The interaction term between audio type and listening device was statistically significant (p &lt; .001), indicating that the impact of audio conditions on executive functioning indeed differed depending on whether participants used headphones or speakers. Specifically:</li>
-</ol>
-<ul>
-<li>Music, compared to the no-audio condition, significantly impaired executive functioning performance (lower SDMT scores). This negative effect of music was consistent across both headphone and speaker conditions.</li>
-<li>White noise did not significantly affect executive functioning performance when delivered via speakers. However, when white noise was delivered via noise-cancelling headphones, it significantly improved performance relative to the no-audio condition.</li>
-</ul>
-<p>Even without any audio playing, wearing noise-cancelling headphones alone significantly enhanced executive functioning performance compared to participants who listened via standard speakers.</p>
-<ol start="2" type="1">
-<li><p>There was substantial individual variability in participants’ baseline SDMT performance (random intercepts), as well as considerable variability in how participants responded to audio conditions (random slopes). This indicates meaningful differences among individuals in their susceptibility to audio interference and highlights the importance of modeling random effects at the participant level.</p></li>
-<li><p>Visual and Numerical Presentation of Key Results:</p></li>
-</ol>
-<ul>
-<li>Music consistently reduced performance, regardless of whether headphones or speakers were used.</li>
-<li>White noise was beneficial only when combined with headphones, showing significantly higher executive functioning scores compared to no audio and speaker conditions.</li>
-<li>Noise-cancelling headphones alone (no audio condition) improved performance compared to speakers.</li>
-</ul>
-<p>In conclusion, the present analysis demonstrates that different audio conditions significantly affect executive functioning, and this effect interacts with the method of audio delivery. Specifically, music consistently impaired executive functioning, whereas white noise offered cognitive benefits—but only when presented via noise-cancelling headphones. Additionally, the use of noise-cancelling headphones alone enhanced executive functioning, suggesting potential practical applications for minimizing environmental distractions. Substantial variability among individuals emphasizes that auditory influences on cognitive performance are subject to personal differences.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -2549,9 +2226,12 @@ Hints
 <p class="question-end">
 </p>
 <div class="solution-begin">
-
+<button id="sol-start-16" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-16', 'sol-start-16')">
+Solution
+</button>
 </div>
-<div class="solution-body">
+<div id="sol-body-16" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 16</em>. </span></p>
 <div class="imp">
 <p>Not a perfect write-up (there’s not really any such thing!).</p>
 </div>
@@ -2567,7 +2247,7 @@ Hints
 <div id="fig-efplot" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-efplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="multilevel_modeling_walkthrough_files/figure-html/fig-efplot-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+<img src="MLM_Intro_Questions_files/figure-html/fig-efplot-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-efplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Interaction between the type (no audio/white noise/music) and the delivery (speakers/ANC headphones) on executive functioning task (SDMT)
