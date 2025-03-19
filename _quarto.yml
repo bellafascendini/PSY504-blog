@@ -4,13 +4,16 @@ project:
 
 website:
   title: "PSY504 Lab Assignments"
+  site-url: "https://bellafascendini.github.io/PSY504-blog/"
   description: "A blog of my stats assignments."
   navbar:
     right:
       - icon: fa-brands fa-github
         text: GitHub
         href: "https://github.com/bellafascendini"
-
+format:
+  html:
+    self-contained: false
 blog:
   post-dir: posts 
 

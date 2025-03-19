@@ -11,4 +11,4 @@ Lab 4 [Multinomial Regression Assignment](assignments/multinomial_regression.htm
 
 Lab 5 [Poisson Regression Assignment](assignments/poisson_regression.html)
 
-Lab 6 [Multilevel Modeling Walkthrough Assignment](assignments/multilevel_modeling_walkthrough.html)
+Lab 6 [Multilevel Modeling Walkthrough Assignment](assignments/multilevel-modeling-walkthrough/multilevel_modeling_walkthrough.html)

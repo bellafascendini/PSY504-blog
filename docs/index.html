@@ -130,7 +130,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Lab 3 <a href="assignments/ordinal_regression.html">Ordinal Regression Assignment</a></p>
 <p>Lab 4 <a href="assignments/multinomial_regression.html">Multinomial Regression Assignment</a></p>
 <p>Lab 5 <a href="assignments/poisson_regression.html">Poisson Regression Assignment</a></p>
-<p>Lab 6 <a href="assignments/multilevel_modeling_walkthrough.html">Multilevel Modeling Walkthrough Assignment</a></p>
+<p>Lab 6 <a href="assignments/multilevel-modeling-walkthrough/multilevel_modeling_walkthrough.html">Multilevel Modeling Walkthrough Assignment</a></p>
 
 
 
@@ -227,7 +227,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/bellafascendini\.github\.io\/PSY504-blog\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
