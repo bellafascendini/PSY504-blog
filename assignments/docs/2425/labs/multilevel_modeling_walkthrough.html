@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Multilevel Modeling Walkthrough – MSMR</title>
+<title>Multilevel Modeling Walkthrough – PSY504 Lab Assignments</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,28 +57,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -100,24 +100,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script>
-function toggle_visibility(id1, id2) {
-var e = document.getElementById(id1);
-var f = document.getElementById(id2);
-e.style.display = ((e.style.display!='none') ? 'none' : 'block');
-if(f.classList.contains('jk-circle-right')) {
-    f.classList.add('jk-circle-down')
-    f.classList.remove('jk-circle-right')
-} else {
-    f.classList.add('jk-circle-right')
-    f.classList.remove('jk-circle-down')
-}
-}
-</script>
-
-<!---<script src="https://kit.fontawesome.com/120b08a6f5.js" crossorigin="anonymous"></script>-->
-<link href="site_libs/panelset-0.3.0/panelset.css" rel="stylesheet">
-<script src="site_libs/panelset-0.3.0/panelset.js"></script>
+<link href="../../site_libs/panelset-0.3.0/panelset.css" rel="stylesheet">
+<script src="../../site_libs/panelset-0.3.0/panelset.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -151,93 +135,38 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      MSMR
-      </li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">PSY504 Lab Assignments</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/bellafascendini"> <i class="bi bi-fa-brands fa-github" role="img">
+</i> 
+<span class="menu-text">GitHub</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">MSMR</a> 
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
- <span class="menu-text">00ex.qmd</span>
-  </li>
-        <li class="sidebar-item">
- <span class="menu-text">01ex.qmd</span>
-  </li>
-        <li class="sidebar-item">
- <span class="menu-text">02ex.qmd</span>
-  </li>
-        <li class="sidebar-item">
- <span class="menu-text">03ex.qmd</span>
-  </li>
-        <li class="sidebar-item">
- <span class="menu-text">04ex.qmd</span>
-  </li>
-        <li class="sidebar-item">
- <span class="menu-text">05ex.qmd</span>
-  </li>
-        <li class="sidebar-item">
- <span class="menu-text">07ex.qmd</span>
-  </li>
-        <li class="sidebar-item">
- <span class="menu-text">08ex.qmd</span>
-  </li>
-        <li class="sidebar-item">
- <span class="menu-text">09ex.qmd</span>
-  </li>
-        <li class="sidebar-item">
- <span class="menu-text">10ex.qmd</span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
- <span class="menu-text">Additional</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
- <span class="menu-text">00_pca.qmd</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">00_qdata.qmd</span>
-  </li>
-      </ul>
-  </li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -322,23 +251,23 @@ New Packages!
 </div><div class="column" style="width:45%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="vmafoauojw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vmafoauojw table {
+<div id="dieyzylcsf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dieyzylcsf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vmafoauojw thead, #vmafoauojw tbody, #vmafoauojw tfoot, #vmafoauojw tr, #vmafoauojw td, #vmafoauojw th {
+#dieyzylcsf thead, #dieyzylcsf tbody, #dieyzylcsf tfoot, #dieyzylcsf tr, #dieyzylcsf td, #dieyzylcsf th {
   border-style: none;
 }
 
-#vmafoauojw p {
+#dieyzylcsf p {
   margin: 0;
   padding: 0;
 }
 
-#vmafoauojw .gt_table {
+#dieyzylcsf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -364,12 +293,12 @@ New Packages!
   border-left-color: #D3D3D3;
 }
 
-#vmafoauojw .gt_caption {
+#dieyzylcsf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vmafoauojw .gt_title {
+#dieyzylcsf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -381,7 +310,7 @@ New Packages!
   border-bottom-width: 0;
 }
 
-#vmafoauojw .gt_subtitle {
+#dieyzylcsf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -393,7 +322,7 @@ New Packages!
   border-top-width: 0;
 }
 
-#vmafoauojw .gt_heading {
+#dieyzylcsf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -405,13 +334,13 @@ New Packages!
   border-right-color: #D3D3D3;
 }
 
-#vmafoauojw .gt_bottom_border {
+#dieyzylcsf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vmafoauojw .gt_col_headings {
+#dieyzylcsf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -426,7 +355,7 @@ New Packages!
   border-right-color: #D3D3D3;
 }
 
-#vmafoauojw .gt_col_heading {
+#dieyzylcsf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -446,7 +375,7 @@ New Packages!
   overflow-x: hidden;
 }
 
-#vmafoauojw .gt_column_spanner_outer {
+#dieyzylcsf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -458,15 +387,15 @@ New Packages!
   padding-right: 4px;
 }
 
-#vmafoauojw .gt_column_spanner_outer:first-child {
+#dieyzylcsf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vmafoauojw .gt_column_spanner_outer:last-child {
+#dieyzylcsf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vmafoauojw .gt_column_spanner {
+#dieyzylcsf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -478,11 +407,11 @@ New Packages!
   width: 100%;
 }
 
-#vmafoauojw .gt_spanner_row {
+#dieyzylcsf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vmafoauojw .gt_group_heading {
+#dieyzylcsf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -508,7 +437,7 @@ New Packages!
   text-align: left;
 }
 
-#vmafoauojw .gt_empty_group_heading {
+#dieyzylcsf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -523,15 +452,15 @@ New Packages!
   vertical-align: middle;
 }
 
-#vmafoauojw .gt_from_md > :first-child {
+#dieyzylcsf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vmafoauojw .gt_from_md > :last-child {
+#dieyzylcsf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vmafoauojw .gt_row {
+#dieyzylcsf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -550,7 +479,7 @@ New Packages!
   overflow-x: hidden;
 }
 
-#vmafoauojw .gt_stub {
+#dieyzylcsf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -563,7 +492,7 @@ New Packages!
   padding-right: 5px;
 }
 
-#vmafoauojw .gt_stub_row_group {
+#dieyzylcsf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -577,15 +506,15 @@ New Packages!
   vertical-align: top;
 }
 
-#vmafoauojw .gt_row_group_first td {
+#dieyzylcsf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vmafoauojw .gt_row_group_first th {
+#dieyzylcsf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vmafoauojw .gt_summary_row {
+#dieyzylcsf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -595,16 +524,16 @@ New Packages!
   padding-right: 5px;
 }
 
-#vmafoauojw .gt_first_summary_row {
+#dieyzylcsf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vmafoauojw .gt_first_summary_row.thick {
+#dieyzylcsf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vmafoauojw .gt_last_summary_row {
+#dieyzylcsf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -614,7 +543,7 @@ New Packages!
   border-bottom-color: #D3D3D3;
 }
 
-#vmafoauojw .gt_grand_summary_row {
+#dieyzylcsf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -624,7 +553,7 @@ New Packages!
   padding-right: 5px;
 }
 
-#vmafoauojw .gt_first_grand_summary_row {
+#dieyzylcsf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -634,7 +563,7 @@ New Packages!
   border-top-color: #D3D3D3;
 }
 
-#vmafoauojw .gt_last_grand_summary_row_top {
+#dieyzylcsf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -644,11 +573,11 @@ New Packages!
   border-bottom-color: #D3D3D3;
 }
 
-#vmafoauojw .gt_striped {
+#dieyzylcsf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vmafoauojw .gt_table_body {
+#dieyzylcsf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -657,7 +586,7 @@ New Packages!
   border-bottom-color: #D3D3D3;
 }
 
-#vmafoauojw .gt_footnotes {
+#dieyzylcsf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -671,7 +600,7 @@ New Packages!
   border-right-color: #D3D3D3;
 }
 
-#vmafoauojw .gt_footnote {
+#dieyzylcsf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -680,7 +609,7 @@ New Packages!
   padding-right: 5px;
 }
 
-#vmafoauojw .gt_sourcenotes {
+#dieyzylcsf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -694,7 +623,7 @@ New Packages!
   border-right-color: #D3D3D3;
 }
 
-#vmafoauojw .gt_sourcenote {
+#dieyzylcsf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -702,72 +631,72 @@ New Packages!
   padding-right: 5px;
 }
 
-#vmafoauojw .gt_left {
+#dieyzylcsf .gt_left {
   text-align: left;
 }
 
-#vmafoauojw .gt_center {
+#dieyzylcsf .gt_center {
   text-align: center;
 }
 
-#vmafoauojw .gt_right {
+#dieyzylcsf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vmafoauojw .gt_font_normal {
+#dieyzylcsf .gt_font_normal {
   font-weight: normal;
 }
 
-#vmafoauojw .gt_font_bold {
+#dieyzylcsf .gt_font_bold {
   font-weight: bold;
 }
 
-#vmafoauojw .gt_font_italic {
+#dieyzylcsf .gt_font_italic {
   font-style: italic;
 }
 
-#vmafoauojw .gt_super {
+#dieyzylcsf .gt_super {
   font-size: 65%;
 }
 
-#vmafoauojw .gt_footnote_marks {
+#dieyzylcsf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vmafoauojw .gt_asterisk {
+#dieyzylcsf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vmafoauojw .gt_indent_1 {
+#dieyzylcsf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vmafoauojw .gt_indent_2 {
+#dieyzylcsf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vmafoauojw .gt_indent_3 {
+#dieyzylcsf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vmafoauojw .gt_indent_4 {
+#dieyzylcsf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vmafoauojw .gt_indent_5 {
+#dieyzylcsf .gt_indent_5 {
   text-indent: 25px;
 }
 
-#vmafoauojw .katex-display {
+#dieyzylcsf .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#vmafoauojw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#dieyzylcsf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3192,19 +3121,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">
-      &nbsp;
-    </div>   
-    <div class="nav-footer-center">
-<p>© Copyright 2019-2025 <a href="https://www.ed.ac.uk/">The University of Edinburgh</a>. Site licensed under the <a href="https://www.gnu.org/licenses/agpl-3.0.en.html">GNU AGPLv3</a> license.</p>
-</div>
-    <div class="nav-footer-right">
-      &nbsp;
-    </div>
-  </div>
-</footer>
 
 
 

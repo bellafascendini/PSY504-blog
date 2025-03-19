@@ -1,6 +1,7 @@
 ---
 title: "Multilevel Modeling Walkthrough"
-output-file: multilevel_modeling_walkthrough.html
+output-file: "multilevel_modeling_walkthrough.html"
+
 format:
   html:
     code-fold: true
@@ -17,7 +18,6 @@ params:
   SHOW_SOLS: true
   TOGGLE: false
 ---
-
 
 ```{r}
 #| label: setup
