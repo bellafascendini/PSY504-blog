@@ -10,3 +10,5 @@ Lab 3 [Ordinal Regression Assignment](assignments/ordinal_regression.html)
 Lab 4 [Multinomial Regression Assignment](assignments/multinomial_regression.html)
 
 Lab 5 [Poisson Regression Assignment](assignments/poisson_regression.html)
+
+Lab 6 [Multilevel Modeling Walkthrough Assignment](assignments/multilevel_modeling_walkthrough.html)
