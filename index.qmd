@@ -15,3 +15,5 @@ Lab 6 [Multilevel Modeling Walkthrough Assignment](assignments/multilevel-modeli
 
 Lab 7 [Multilevel Modeling2 Assignment](assignments/multilevel_modeling2.html)
 
+Lab 8 [Bayesian Modeling Assignment](assignments/bayesian_modeling.html)
+
