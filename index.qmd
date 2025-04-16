@@ -19,3 +19,7 @@ Lab 8 [Bayesian Modeling Assignment](assignments/bayesian_modeling.html)
 
 Lab 9 [Bayesian Modeling2 Assignment](assignments/bayesian_modeling_part2.html)
 
+Lab 10a [Bayesian Modeling Priors Predictive Checks Assignment](assignments/bayes_priors_predictive_checks.html)
+
+Lab 10b [Bayesian Modeling HMC Diagnostics Assignment](assignments/bayes_HMC_diagnostics.html)
+
