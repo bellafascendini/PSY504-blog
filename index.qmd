@@ -23,3 +23,6 @@ Lab 10a [Bayesian Modeling Priors Predictive Checks Assignment](assignments/baye
 
 Lab 10b [Bayesian Modeling HMC Diagnostics Assignment](assignments/bayes_HMC_diagnostics.html)
 
+Lab 11 [Missing Data Assignment](assignments/missing_data.html)
+
+

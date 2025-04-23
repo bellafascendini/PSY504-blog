@@ -1,0 +1,214 @@
+---
+title: "Missing Data"
+output-file: missing_data.html
+format:
+  html:
+    code-fold: true
+    code-overflow: wrap
+    highlight: github-dark
+    toc: true
+    toc_depth: 1
+    fig_height: 10
+    fig_width: 16
+execute:
+  message: false
+  warning: false
+---
+
+```{r}
+#load packages
+library(skimr)
+library(naniar)
+library(tidyverse)
+library(mice)
+```
+
+Missing data is a common problem and dealing with it appropriately is extremely important. Ignoring the missing data points or filling them incorrectly may cause the models to work in unexpected ways and cause the predictions and inferences to be biased.
+
+Le'ts consider built-in dataset 'airquality' in R as a sample dataset.
+
+```{r}
+# Load the airquality dataset
+data("airquality")
+```
+
+#### Question 1:
+
+(a) Examine this dataset for missing values. While there are many ways to do this, the skim function from the library 'skimr' is elegant;
+
+```{r}
+skim(airquality)
+```
+(b) use the nanair package to visualize missing values
+
+```{r}
+vis_miss(airquality)
+```
+
+(c) even though it's hard to confirm based on visualizations alone, what do your visualizations lead you to believe about the missing data being MCAR, MAR, or MNAR?
+
+From the visualization, it appears that missing data is not completely random (MCAR) as some variables (like Ozone and Solar.R) have more missing values than others. It might be MAR (Missing at Random) if missingness in Ozone is related to other variables like Temp or Wind.
+
+(d) Carry out Little's statistical test to evaluate MCAR and report results.
+
+```{r}
+mcar_test <- mcar_test(airquality)
+print(mcar_test)
+```
+Little's MCAR test on the airquality dataset yielded a chi-square of 35.11 (df = 14) with a p-value of 0.001418, which is statistically significant. This result means we can reject the null hypothesis that the missing data is Missing Completely At Random (MCAR), suggesting that missingness is likely related to either observed variables (MAR) or the unobserved values themselves (MNAR). 
+
+(e) Creating a binary indicator for missingness allows you to test whether the presence of missing data is related to observed data.
+
+    -   For instance, you can create a dummy variable: 1 = Missing; 0 = Observed.
+    -   Next you can conduct a chi-square test or t-test:
+        -   Chi-square: Compare proportions of missingness ***across groups***.
+        -   T-test: Compare means of (other) observed variables with missingness indicators.
+
+```{r}
+# Create binary indicator for Ozone missingness
+airquality$miss_ozone <- as.factor(ifelse(is.na(airquality$Ozone), 1, 0))
+
+# Create binary indicator for Solar.R missingness
+airquality$miss_solar <- as.factor(ifelse(is.na(airquality$Solar.R), 1, 0))
+
+# T-test to see if Wind values differ between records with missing vs. non-missing Ozone
+t.test(Wind ~ miss_ozone, data = airquality)
+
+# T-test to see if Temperature values differ between records with missing vs. non-missing Ozone
+t.test(Temp ~ miss_ozone, data = airquality)
+
+# T-test to see if Wind values differ between records with missing vs. non-missing Solar.R
+t.test(Wind ~ miss_solar, data = airquality)
+
+# T-test to see if Temperature values differ between records with missing vs. non-missing Solar.R  
+t.test(Temp ~ miss_solar, data = airquality)
+
+ggplot(airquality, aes(x = miss_ozone, y = Temp)) +
+  geom_boxplot() +
+  labs(title = "Temperature by Ozone Missingness",
+       x = "Ozone Missing (1 = Yes, 0 = No)",
+       y = "Temperature")
+
+ggplot(airquality, aes(x = miss_ozone, y = Wind)) +
+  geom_boxplot() +
+  labs(title = "Wind by Ozone Missingness",
+       x = "Ozone Missing (1 = Yes, 0 = No)",
+       y = "Wind")
+```
+
+#### Question 2:
+
+Create **new and appropriately named datasets** that are based on airquality for each of the following ways of fixing the dataset:
+
+```         
+  - (a) "listwise deletion" or "complete case analysis" --- where entire records from the analysis are removed if they are missing any data point in one or more variables 
+  
+  - (b) Imputation with mean --- involves filling in the missing values with the mean of the available values in the same variable.
+  
+  - (c) Imputation with regression (use mice package)
+  
+  - (d) Imputation with stochastic regression (use mice package)
+
+  - (e) Imputation with multiple induction (use mice package, 5 imputations, and Predictive mean matching method)
+```
+
+```{r}
+# (a) Listwise deletion 
+airquality_listwise <- na.omit(airquality)
+print(paste0(nrow(airquality), " → ", nrow(airquality_listwise)))
+
+# (b) Imputation with mean
+airquality_mean <- airquality
+airquality_mean$Ozone[is.na(airquality_mean$Ozone)] <- mean(airquality_mean$Ozone, na.rm = TRUE)
+airquality_mean$Solar.R[is.na(airquality_mean$Solar.R)] <- mean(airquality_mean$Solar.R, na.rm = TRUE)
+
+# (c) Imputation with regression using mice
+set.seed(123) 
+imp_reg <- mice(airquality, method = "norm.predict", m = 1)
+airquality_reg <- complete(imp_reg)
+
+# (d) Imputation with stochastic regression using mice
+set.seed(123) 
+imp_stoch_reg <- mice(airquality, method = "norm.nob", m = 1)
+airquality_stoch_reg <- complete(imp_stoch_reg)
+
+# (e) Multiple imputation using Predictive Mean Matching (PMM)
+set.seed(123) 
+imp_mi <- mice(airquality, method = "pmm", m = 5)
+airquality_mi <- complete(imp_mi, 1)
+
+summary(imp_mi)
+```
+
+#### Question 3:
+
+Compare the eventual distribution from these datasets on the variable 'Ozone'against the orgiinal. Below is a template that considers only 2 datasets but please consider all the datasets you generated within a single plot
+
+```{r}
+# ggplot(airquality, aes(x=Ozone, fill="Original")) +
+#   geom_density(alpha=0.5) +
+#   geom_density(data=dataset_listwise_deletion, aes(x=Ozone, fill="Listwise Deletion"), alpha=0.5) +
+#   labs(title="Density Plot of Ozone: Original vs. Imputed")
+
+# Create a combined dataframe for plotting
+ozone_original <- airquality %>% 
+  select(Ozone) %>% 
+  mutate(Method = "Original") %>%
+  filter(!is.na(Ozone))
+
+ozone_listwise <- airquality_listwise %>% 
+  select(Ozone) %>% 
+  mutate(Method = "Listwise Deletion")
+
+ozone_mean <- airquality_mean %>% 
+  select(Ozone) %>% 
+  mutate(Method = "Mean Imputation")
+
+ozone_reg <- airquality_reg %>% 
+  select(Ozone) %>% 
+  mutate(Method = "Regression Imputation")
+
+ozone_stoch_reg <- airquality_stoch_reg %>% 
+  select(Ozone) %>% 
+  mutate(Method = "Stochastic Regression")
+
+ozone_mi <- airquality_mi %>% 
+  select(Ozone) %>% 
+  mutate(Method = "Multiple Imputation (PMM)")
+
+# Combine all datasets
+all_ozone <- bind_rows(ozone_original, ozone_listwise, ozone_mean, ozone_reg, ozone_stoch_reg, ozone_mi)
+
+ggplot(all_ozone, aes(x = Ozone, fill = Method)) +
+  geom_density(alpha = 0.5) +
+  labs(title = "Density Plot of Ozone: Original vs. Imputed Methods",
+       x = "Ozone",
+       y = "Density") +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Set1")
+
+ggplot(all_ozone, aes(x = Method, y = Ozone, fill = Method)) +
+  geom_boxplot() +
+  labs(title = "Boxplot of Ozone: Original vs. Imputed Methods",
+       x = "Method",
+       y = "Ozone") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_fill_brewer(palette = "Set1")
+
+```
+
+What do you observe?
+
+#### Answer:
+The density plot and boxplot comparisons of the 'Ozone' variable across different imputation methods reveal significant differences in how each method handles missing data:
+- The original data (excluding missing values) shows a natural distribution of 'Ozone' values.
+- Listwise deletion retains the original distribution but reduces the sample size.
+- Mean imputation creates an artificial peak at the mean value, which distorts the natural distribution and underestimating variance.
+- Regression imputation preserves the general shape of the distribution but doesn't capture the full variability of the data.
+- Stochastic regression imputation adds random noise to the regression predictions, which helps to better represent the variability in the data compared to regular regression imputation.
+- Multiple imputation with PMM appears to best preserve the original distribution's shape while filling in missing values, as it samples from observed values that are similar to the predicted values for missing data points.
+
+The key takeaway is that different imputation methods can significantly impact the distribution of the data. Methods like mean imputation can distort the distribution, while more sophisticated methods like PMM better preserve the original distribution's properties. The choice of imputation method should consider how well it preserves the distribution and relationships between variables in the dataset.
+
+#### Of course, each dataset you produced will lead to different modeling results, but we won't go into that in today's lab.
