@@ -1,0 +1,652 @@
+---
+title: "Logistic Regression in Developmental Research: A Practical Tutorial"
+author: "Bella Fascendini"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: show
+    code-overflow: wrap
+    code-tools: true
+    highlight-style: github
+    theme: cosmo
+    fig_height: 10
+    fig_width: 16
+date: today
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  echo = TRUE,
+  fig.width = 8,
+  fig.height = 5
+)
+```
+
+## 1. Introduction: Why Logistic Regression Matters in Developmental Research
+
+Developmental researchers frequently encounter binary outcome variables
+in their studies: a child either passes or fails a task, exhibits a
+behavior or doesn't, or demonstrates understanding or shows a lack of
+comprehension. When analyzing such binary outcomes, logistic regression
+has become an essential statistical method, which allows us to model the
+probability of a binary outcome as a function of one or more predictor
+variables, making it particularly useful for developmental research.
+
+In this tutorial, we'll work through an actual dataset from my own
+research (data available on OSF:https://osf.io/pj53f/) examining
+toddlers' intrinsic motivation to explore their competence. This study
+is particularly well-suited for logistic regression analysis because the
+main outcome variable, which toy toddlers approach first during
+exploration, is binary.
+
+### Why Linear Regression Falls Short for Binary Outcomes
+
+Before diving into logistic regression, let's understand why we need it
+in the first place. When working with binary outcomes (coded as 0 and
+1), linear regression presents several problems:
+
+1.  **Unbounded predictions**: Linear regression can predict values like
+    -0.3 or 1.5, which doesn't make sense when we're working with
+    probabilities that must be between 0 and 1.
+
+2.  **Assumption about normality**: When outcomes can only be 0 or 1,
+    the errors in the model can't follow the normal bell-shaped
+    distribution that linear regression assumes.
+
+3.  **Heteroscedasticity**: The spread of errors changes systematically
+    depending on the predictor values, violating a key assumption of
+    linear regression.
+
+Logistic regression solves these problems by modeling the log odds of
+the outcome (rather than the outcome directly), ensuring predictions
+stay between 0 and 1, and appropriately accounting for the binomial
+distribution of errors.
+
+## 2. Theoretical Foundations
+
+### Understanding Probability, Odds, and Log Odds
+
+Logistic regression uses three related concepts to model binary
+outcomes:
+
+-   **Probability**: The likelihood of an event occurring (ranges from 0
+    to 1)
+-   **Odds**: The ratio of the probability of success to the probability
+    of failure (ranges from 0 to ∞)
+-   **Log odds**: The natural logarithm of the odds (ranges from -∞ to
+    ∞)
+
+The relationships between these concepts are: - Odds = Probability /
+(1 - Probability) - Probability = Odds / (1 + Odds) - Log odds =
+ln(Odds) - Odds = e\^(Log odds)
+
+### The Logistic Function
+
+At the heart of logistic regression is the logistic function (also
+called the sigmoid function):
+
+$$P(Y=1) = \frac{1}{1 + e^{-(β_0 + β_1X_1 + β_2X_2 + ... + β_pX_p)}}$$
+
+This S-shaped curve transforms the linear predictor (β₀ + β₁X₁ + β₂X₂ +
+...) into a probability value between 0 and 1.
+
+Let's visualize the logistic function:
+
+```{r logistic-curve}
+library(ggplot2)
+
+# Create data for the logistic curve
+x <- seq(-6, 6, length.out = 200)
+y <- 1 / (1 + exp(-x))
+
+# Plot the logistic curve
+ggplot(data.frame(x = x, y = y), aes(x = x, y = y)) +
+  geom_line(color = "blue", size = 1) +
+  labs(
+    x = "Linear predictor (β₀ + β₁X₁ + β₂X₂ + ...)",
+    y = "Probability of success P(Y = 1)",
+    title = "The Logistic Function"
+  ) +
+  theme_minimal() +
+  geom_hline(yintercept = 0.5, linetype = "dashed", color = "gray") +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "gray") +
+  annotate("text", x = -3, y = 0.2, label = "As x → -∞, P(Y=1) → 0") +
+  annotate("text", x = 3, y = 0.8, label = "As x → ∞, P(Y=1) → 1")
+```
+
+### Interpreting Coefficients: Odds Ratios
+
+Unlike linear regression where coefficients represent changes in the
+outcome variable, logistic regression coefficients represent changes in
+the log odds. To make interpretation more intuitive, we often convert
+these to odds ratios by exponentiating the coefficients:
+
+Odds Ratio = e\^β
+
+An odds ratio of 1 indicates no effect. Odds ratios greater than 1
+indicate the odds of success increase when the predictor increases,
+while odds ratios less than 1 indicate the odds decrease.
+
+### Statistical Assumptions of Logistic Regression
+
+Logistic regression has fewer assumptions than linear regression: 1.
+Independence of observations (unless accounted for with mixed models) 2.
+Little or no multicollinearity among predictors 3. Linear relationship
+between predictors and log odds 4. Large sample size (rule of thumb: at
+least 10 cases per predictor)
+
+## 3. Case Study: Do Toddlers Explore Their Own Competence?
+
+Let's analyze data from one of my projects investigating whether
+toddlers are intrinsically motivated to explore their own competence.
+The researchers adapted classic exploratory play paradigms to examine
+whether two-year-olds seek to resolve uncertainty about what they can
+do.
+
+### Study Background
+
+In this study, 49 toddlers (ages 24-35 months) played with different
+pairs of toys alongside a parent. For each pair of toys:
+
+-   **Confounded condition**: The parent guided the toddler's hand while
+    playing with one toy, providing ambiguous evidence about whether the
+    child could operate the toy independently
+-   **Unconfounded condition**: The parent and child took turns playing
+    with the other toy independently, providing clear evidence about the
+    child's ability
+
+The key question was: When given a chance to freely explore the toys on
+their own, which toy would toddlers approach first? If toddlers seek to
+resolve uncertainty about their own competence, they should be more
+likely to approach the confounded toy.
+
+### Data Preparation
+
+Let's Let's start by loading and exploring the dataset:
+
+```{r load-data}
+library(tidyverse)
+library(lme4)      # For mixed-effects logistic regression
+library(ggplot2)   # For plotting
+# Load data
+data <- read.csv("case_study_data.csv")
+head(data)
+```
+
+In this dataset: - `subject_id`: Unique identifier for each child -
+`age_in_months`: Age of the child in months - `toy_pair`: Which pair of
+toys the child played with - `approached_confounded`: Binary outcome
+variable (1 if child approached the confounded toy first, 0 if
+unconfounded)
+
+Now that we've loaded the data, let's prepare it for analysis. The raw
+dataset has information about three different toy pairs that each child
+interacted with. We need to restructure it to have one row per toy pair
+per child.
+
+### Descriptive Statistics
+
+First, let's examine the overall rates of approaching the confounded
+toy:
+
+```{r}
+# Clean and reshape the data
+clean_data <- data %>%
+  select(subject_id, 
+         age,
+         pair_1_first_pick_confounding,
+         pair_2_first_pick_confounding,
+         pair_3_first_pick_confounding) %>%
+  pivot_longer(
+    cols = starts_with("pair"),
+    names_to = "pair",
+    values_to = "confounding"
+  ) %>%
+  filter(!is.na(confounding), confounding %in% c("C", "U"))
+
+# Create a binary outcome variable (1 = approached confounded toy first)
+analysis_data <- clean_data %>%
+  mutate(
+    approach_confounded = confounding == "C",
+    age_centered = scale(age, center = TRUE, scale = FALSE)[,1]  # Center age
+  )
+
+# View the prepared data
+head(analysis_data)
+```
+
+Let's also look at the overall proportions of children approaching each
+type of toy:
+
+```{r}
+# Calculate overall proportions
+overall_proportions <- clean_data %>%
+  summarize(
+    total = n(),
+    confounded = sum(confounding == "C"),
+    unconfounded = sum(confounding == "U"),
+    prop_confounded = confounded/total,
+    prop_unconfounded = unconfounded/total
+  )
+
+print("Overall Proportions:")
+print(overall_proportions)
+
+# Binomial test against chance
+binom_test <- binom.test(
+  x = overall_proportions$confounded,
+  n = overall_proportions$total,
+  p = 0.5,  
+  alternative = "two.sided"
+)
+
+# Print results
+print("Binomial Test Results:")
+print(paste0(
+  "Binomial test: observed proportion = ", 
+  round(overall_proportions$prop_confounded, 3),
+  ", p = ", 
+  round(binom_test$p.value, 3),
+  ", 95% CI [",
+  round(binom_test$conf.int[1], 3),
+  ", ",
+  round(binom_test$conf.int[2], 3),
+  "]"
+))
+```
+
+This initial analysis shows that toddlers approached the confounded toy
+first in about 62% of trials, which is significantly different from
+chance (50%).
+
+## 4. Building Logistic Regression Models
+
+Now we're ready to build our logistic regression models. Since each
+child completed multiple trials, we'll use mixed-effects logistic
+regression to account for the non-independence of observations.
+
+### Simple Logistic Regression with an Intercept Only
+
+Let's start with a simple model that just estimates the overall tendency
+to approach the confounded toy:
+
+```{r model1}
+# Simple logistic regression model with just an intercept
+model1 <- glmer(approach_confounded ~ 1 + (1|subject_id), 
+                family = binomial(link = "logit"), 
+                data = analysis_data)
+
+summary(model1)
+```
+
+In this model:
+
+The formula ‘approach_confounded \~ 1 + (1\|subject_id)’ specifies:
+
+-   approach_confounded is our binary outcome
+-   \~ 1 means we're only estimating an intercept (no predictors)
+-   
+    -   (1\|subject_id) adds a random intercept for each subject to
+        account for repeated measures
+-   family = binomial(link = "logit") specifies that we're using
+    logistic regression
+
+The intercept coefficient represents the log odds of approaching the
+confounded toy. Let's convert this to a probability and odds ratio:
+
+```{r}
+# Extract the fixed effect (intercept)
+intercept <- fixef(model1)[1]
+
+# Convert log odds to probability
+probability <- 1 / (1 + exp(-intercept))
+cat("Probability of approaching the confounded toy:", probability, "\n")
+
+# Convert to odds ratio
+odds_ratio <- exp(intercept)
+cat("Odds ratio:", odds_ratio, "\n")
+cat("This means the odds of approaching the confounded toy are", 
+    round(odds_ratio, 2), "times higher than approaching the unconfounded toy")
+```
+
+### Adding Age as a Predictor (Multiple Logistic Regression)
+
+Next, let's add age as a predictor to see if older children are more or
+less likely to approach the confounded toy:
+
+```{r model2}
+# Logistic regression model with age as predictor
+model2 <- glmer(approach_confounded ~ age_centered + (1|subject_id), 
+                family = binomial(link = "logit"), 
+                data = analysis_data)
+
+summary(model2)
+```
+
+In this model, we included age as a continuous predictor. The
+coefficient for age represents the change in log odds of approaching the
+confounded toy for each additional month of age. The results reveal a
+significant tendency for toddlers to approach confounded toys first (β =
+0.487, p \< 0.01), with the odds of selecting a confounded toy being
+1.63 times higher than selecting an unconfounded toy. Interestingly, the
+age coefficient was negative but not statistically significant (β =
+-0.045, p = 0.408), suggesting that this motivation to explore one's own
+competence remains relatively stable across the 24-35 month age range in
+our sample.
+
+These findings support our hypothesis that toddlers seek out tasks to
+explore their own abilities, similar to how they explore to understand
+the physical world around them.
+
+## 5. Model Evaluation and Selection
+
+How do we know which model best explains our data? Let's explore several
+methods for comparing our models.
+
+### Assessing Model Fit with Information Criteria
+
+First, we can compare models using information criteria such as AIC
+(Akaike Information Criterion) and BIC (Bayesian Information Criterion):
+
+```{r}
+# Compare models using AIC and BIC
+aic_values <- AIC(model1, model2)
+bic_values <- BIC(model1, model2)
+
+comparison_df <- data.frame(
+  Model = c("Intercept Only", "Age"),
+  AIC = aic_values$AIC,
+  BIC = bic_values$BIC,
+  df = c(attr(logLik(model1), "df"), attr(logLik(model2), "df"))
+)
+
+comparison_df
+```
+
+Lower AIC and BIC values indicate better model fit, with a penalty for
+model complexity. The difference in AIC values can be interpreted as
+follows:
+
+Difference of 0-2: Little support for difference between models
+Difference of 4-7: Moderate support for the model with lower AIC
+Difference \> 10: Strong support for the model with lower AIC
+
+Looking at our results, the Intercept Only model has an AIC of 188.7851
+while the Age model has an AIC of 190.0969, a difference of about 1.31.
+This small difference (\< 2) suggests there is little support for
+choosing the Intercept Only model over the Age model, despite it having
+a slightly lower AIC. The BIC values tell a similar story, with the
+Intercept Only model having a lower BIC (194.6540) compared to the Age
+model (198.9003), but the difference is still relatively small.
+
+In a nutshell, adding age to the model did not improve the better.
+
+### Comparing Nested Models with Likelihood Ratio Tests
+
+We can formally compare nested models using likelihood ratio tests:
+
+```{r compare-models}
+# Test if adding age improves the model
+anova(model1, model2)
+
+```
+
+The test produces a chi-square statistic of 0.6882 with 1 degree of
+freedom (corresponding to the one additional parameter in model2). The
+p-value is 0.4068, which is not statistically significant (p \> 0.05)
+
+This non-significant result indicates that adding age as a predictor
+does not significantly improve the model fit compared to the
+intercept-only model. In other words, the data does not provide strong
+evidence that a child's age significantly predicts whether they will
+approach the confounded toy first.
+
+### Classification Performance with ROC Curves
+
+ROC curves provide a visual way to evaluate classification performance
+across different thresholds. The Area Under the Curve (AUC) summarizes
+the overall discrimination ability of the model, with values closer to 1
+indicating better performance:
+
+```{r}
+# Calculate ROC curves for both models
+library(pROC)
+roc1 <- roc(analysis_data$approach_confounded, fitted(model1))
+roc2 <- roc(analysis_data$approach_confounded, fitted(model2))
+
+# Plot ROC curves
+plot(roc1, col = "blue", main = "ROC Curves for Model Comparison",
+     xlab = "False Positive Rate (1-Specificity)", 
+     ylab = "True Positive Rate (Sensitivity)")
+lines(roc2, col = "red")
+legend("bottomright", 
+       legend = c(paste("Model 1 (Intercept Only), AUC =", round(auc(roc1), 3)), 
+                 paste("Model 2 (Age), AUC =", round(auc(roc2), 3))),
+       col = c("blue", "red"), lwd = 2)
+
+# Compare AUC values
+cat("Model 1 AUC:", round(auc(roc1), 3), "\n")
+cat("Model 2 AUC:", round(auc(roc2), 3), "\n")
+```
+
+The graph shows the ROC curves for both models:
+
+-   The blue line represents Model 1 (Intercept Only)
+-   The red line represents Model 2 (Age)
+
+Model 1 has an AUC of 0.5, which indicates it has no discriminative
+ability beyond random chance. This makes sense for an intercept-only
+model, as it assigns the same probability to all observations regardless
+of their characteristics. Model 2 has an AUC of 0.541, which is only
+marginally better than random chance (0.5). This slight improvement
+suggests that adding age as a predictor provides very minimal
+enhancement in classification performance.
+
+This result is consistent with our AIC and BIC comparison, which also
+suggested that the additional complexity of including age as a predictor
+was not justified by a sufficient improvement in model fit.
+
+When all of these model comparison methods point to the same conclusion,
+we can be more confident in our model selection decision.
+
+## 6. Visualizing Results
+
+### Plotting Intercept-Only Model (Model 1)
+
+```{r}
+# Extract the fixed effect (intercept)
+intercept <- fixef(model1)[1]
+
+# Convert log odds to probability
+probability <- 1 / (1 + exp(-intercept))
+
+# Create a simple visualization of the intercept model
+intercept_data <- data.frame(
+  Model = "Intercept Only",
+  Probability = probability
+)
+
+# Add confidence interval
+# Extract variance of random effect
+random_effect_var <- as.data.frame(VarCorr(model1))$vcov[1]
+# Calculate standard error
+se <- sqrt(random_effect_var)
+# Calculate 95% confidence interval
+z <- qnorm(0.975)  # 1.96 for 95% CI
+lower_ci <- 1 / (1 + exp(-(intercept - z*se)))
+upper_ci <- 1 / (1 + exp(-(intercept + z*se)))
+
+# Add to dataframe
+intercept_data$lower_ci <- lower_ci
+intercept_data$upper_ci <- upper_ci
+
+# Plot
+ggplot(intercept_data, aes(x = Model, y = Probability)) +
+  geom_bar(stat = "identity", fill = "skyblue", width = 0.5) +
+  geom_errorbar(aes(ymin = lower_ci, ymax = upper_ci), width = 0.2) +
+  geom_hline(yintercept = 0.5, linetype = "dashed", color = "darkgray") +
+  labs(
+    title = "Probability of Approaching Confounded Toy (Model 1)",
+    subtitle = "Intercept-only model with 95% confidence interval",
+    y = "Probability",
+    x = ""
+  ) +
+  theme_minimal() +
+  ylim(0, 1) +
+  annotate("text", x = 1, y = 0.8, 
+           label = paste("Probability =", round(probability, 2)))
+```
+
+### Plotting Predicted Probabilities by Age
+
+```{r plot-age-effect}
+# Create a data frame with ages for prediction
+new_data <- data.frame(
+  age_centered = seq(min(analysis_data$age_centered), 
+                    max(analysis_data$age_centered), 
+                    length.out = 100),
+  subject_id = NA  # Not used in prediction when re.form = NA
+)
+
+# Add predicted probabilities
+new_data$predicted_prob <- predict(model2, newdata = new_data, 
+                                 re.form = NA, type = "response")
+
+# Convert age centered back to actual age for plotting
+# First get the mean age from the original dataset
+mean_age <- mean(analysis_data$age)
+new_data$age_in_months <- new_data$age_centered + mean_age
+
+# Plot
+ggplot(new_data, aes(x = age_in_months, y = predicted_prob)) +
+  geom_line(size = 1, color = "blue") +
+  labs(x = "Age (months)", 
+       y = "Probability of Approaching Confounded Toy",
+       title = "Predicted Probability by Age") +
+  theme_minimal() +
+  geom_hline(yintercept = 0.5, linetype = "dashed", color = "darkgray") +
+  ylim(0, 1) +
+  scale_x_continuous(breaks = seq(24, 36, by = 2))
+```
+
+## 8. Extended Applications
+
+For more complex developmental data, we may need more sophisticated
+models.
+
+### Mixed-Effects Logistic Regression for Nested Data
+
+The models we've been using already incorporate random effects for
+subjects. We can extend this to include random slopes when we have
+strong theoretical reasons to believe that the effect of a predictor
+varies across participants:
+
+```{r random-slopes, eval=FALSE}
+# Random slopes model (if we had a time-varying predictor)
+# model_random_slopes <- glmer(approached_confounded ~ age_centered + 
+#                             (1 + time|subject_id), 
+#                             family = binomial(link = "logit"), 
+#                             data = analysis_data)
+```
+
+### Longitudinal Logistic Models
+
+For longitudinal data, we can include time as a predictor and account
+for repeated measures:
+
+```{r longitudinal, eval=FALSE}
+# Longitudinal model (if we had multiple time points)
+# model_longitudinal <- glmer(approached_confounded ~ age_centered * time + 
+#                            (time|subject_id), 
+#                            family = binomial(link = "logit"), 
+#                            data = analysis_data)
+```
+
+### Handling Age as a Continuous Predictor
+
+When working with age, we might want to test for non-linear effects:
+
+```{r age-quadratic}
+# Create squared age term
+analysis_data$age_centered_squared <- analysis_data$age_centered^2
+
+# Model with quadratic age term
+model_age_quadratic <- glmer(approach_confounded ~ age_centered + 
+                            age_centered_squared + (1|subject_id), 
+                            family = binomial(link = "logit"), 
+                            data = analysis_data)
+
+summary(model_age_quadratic)
+```
+
+## 9. Troubleshooting Common Issues
+
+### Sample Size Considerations
+
+A common rule of thumb is to have at least 10 events per predictor. We
+can check this:
+
+```{r check-events}
+# Check number of events (successes)
+sum(analysis_data$approach_confounded)
+
+# Check events per variable (EPV) for model2 (or another model that exists)
+sum(analysis_data$approach_confounded) / length(fixef(model2))
+```
+
+### Multicollinearity
+
+Multicollinearity can be assessed with variance inflation factors
+(VIFs):
+
+```{r check-vif}
+# Create a linear model for VIF calculation
+model_lm <- lm(as.numeric(approach_confounded) ~ age_centered, 
+              data = analysis_data)
+
+# Calculate VIFs (requires car package)
+# car::vif(model_lm)
+```
+
+VIF values above 5 or 10 indicate problematic multicollinearity.
+
+## 10. Summary and Best Practices
+
+### When to Use Alternatives to Logistic Regression
+
+Consider alternatives when: - The outcome has more than two categories
+(use multinomial or ordinal logistic regression) - The data shows
+overdispersion (use quasi-binomial or negative binomial models) - The
+relationship between predictors and log odds is non-linear (use
+generalized additive models) - The sample size is very small (use exact
+logistic regression)
+
+### Checklist for Reporting Logistic Regression
+
+When reporting results: 1. Describe the model specification (fixed
+effects, random effects, link function) 2. Report coefficients and
+standard errors or confidence intervals 3. Include odds ratios for
+easier interpretation 4. Report model fit statistics (AIC, BIC, etc.) 5.
+Describe classification performance if relevant (accuracy, sensitivity,
+specificity) 6. Include visualizations of key effects 7. Discuss the
+findings in the context of developmental theory
+
+### Final Thoughts
+
+Logistic regression is a powerful tool for analyzing binary outcomes in
+developmental research. By properly specifying models, carefully
+interpreting results, and effectively communicating findings,
+researchers can gain valuable insights into developmental processes.
+
+The finding that toddlers systematically explore to discover their own
+competence has important implications for theories of intrinsic
+motivation and self-directed learning in early childhood. Understanding
+how children become aware of and test their own abilities can help
+parents and educators better support children's natural curiosity and
+drive for mastery.

@@ -25,4 +25,8 @@ Lab 10b [Bayesian Modeling HMC Diagnostics Assignment](assignments/bayes_HMC_dia
 
 Lab 11 [Missing Data Assignment](assignments/missing_data.html)
 
+Lab 12 [Final Project](assignments/final_project.html)
+
+
+
 
