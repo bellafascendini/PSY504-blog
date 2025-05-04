@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Bella Fascendini">
-<meta name="dcterms.date" content="2025-05-03">
+<meta name="dcterms.date" content="2025-05-04">
 
 <title>Logistic Regression in Developmental Research: A Practical Tutorial – PSY504 Lab Assignments</title>
 <style>
@@ -192,8 +192,10 @@ window.Quarto = {
   </ul></li>
   <li><a href="#exploratory-data-analysis-visualizing-binary-outcomes" id="toc-exploratory-data-analysis-visualizing-binary-outcomes" class="nav-link" data-scroll-target="#exploratory-data-analysis-visualizing-binary-outcomes">3.5 Exploratory Data Analysis: Visualizing Binary Outcomes</a>
   <ul class="collapse">
+  <li><a href="#distribution-of-approaches" id="toc-distribution-of-approaches" class="nav-link" data-scroll-target="#distribution-of-approaches">Distribution of Approaches</a></li>
   <li><a href="#why-this-matters" id="toc-why-this-matters" class="nav-link" data-scroll-target="#why-this-matters">Why this matters:</a></li>
   <li><a href="#what-to-look-for" id="toc-what-to-look-for" class="nav-link" data-scroll-target="#what-to-look-for">What to look for:</a></li>
+  <li><a href="#proportion-of-confounded-toy-choices-by-age-group" id="toc-proportion-of-confounded-toy-choices-by-age-group" class="nav-link" data-scroll-target="#proportion-of-confounded-toy-choices-by-age-group">Proportion of Confounded Toy Choices by Age Group</a></li>
   <li><a href="#why-this-matters-1" id="toc-why-this-matters-1" class="nav-link" data-scroll-target="#why-this-matters-1">Why this matters:</a></li>
   <li><a href="#what-to-look-for-1" id="toc-what-to-look-for-1" class="nav-link" data-scroll-target="#what-to-look-for-1">What to look for:</a></li>
   <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation">Interpretation:</a></li>
@@ -256,7 +258,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 3, 2025</p>
+      <p class="date">May 4, 2025</p>
     </div>
   </div>
   
@@ -341,7 +343,11 @@ window.Quarto = {
 </section>
 <section id="statistical-assumptions-of-logistic-regression" class="level3">
 <h3 class="anchored" data-anchor-id="statistical-assumptions-of-logistic-regression">Statistical Assumptions of Logistic Regression</h3>
-<p>Logistic regression has fewer assumptions than linear regression: 1. Independence of observations (unless accounted for with mixed models) 2. Little or no multicollinearity among predictors 3. Linear relationship between predictors and log odds 4. Large sample size (rule of thumb: at least 10 cases per predictor)</p>
+<p>Logistic regression has fewer assumptions than linear regression:</p>
+<p>1. Independence of observations (unless accounted for with mixed models)</p>
+<p>2. Little or no multicollinearity among predictors</p>
+<p>3. Linear relationship between predictors and log odds</p>
+<p>4. Large sample size (rule of thumb: at least 10 cases per predictor)</p>
 </section>
 </section>
 <section id="case-study-do-toddlers-explore-their-own-competence" class="level2">
@@ -358,7 +364,7 @@ window.Quarto = {
 </section>
 <section id="data-preparation" class="level3">
 <h3 class="anchored" data-anchor-id="data-preparation">Data Preparation</h3>
-<p>Let’s Let’s start by loading and exploring the dataset:</p>
+<p>Let’s start by loading and exploring the dataset:</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -555,8 +561,10 @@ window.Quarto = {
 </section>
 <section id="exploratory-data-analysis-visualizing-binary-outcomes" class="level2">
 <h2 class="anchored" data-anchor-id="exploratory-data-analysis-visualizing-binary-outcomes">3.5 Exploratory Data Analysis: Visualizing Binary Outcomes</h2>
-<p>Before building our logistic regression models, it’s useful to visually explore the outcome variable to get a sense of its distribution and possible predictors. Since our dependent variable—approach_confounded—is binary, we’ll focus on proportion-based plots rather than traditional histograms or scatterplots.</p>
-<p>###Distribution of Approaches First, let’s look at how often toddlers approached the confounded toy versus the unconfounded one.</p>
+<p>Before building our logistic regression models, it’s useful to visually explore the outcome variable to get a sense of its distribution and possible predictors. Since our dependent variable—approach_confounded—is binary, we’ll focus on proportion-based plots rather than traditional histograms or scatter plots.</p>
+<section id="distribution-of-approaches" class="level3">
+<h3 class="anchored" data-anchor-id="distribution-of-approaches">Distribution of Approaches</h3>
+<p>First, let’s look at how often toddlers approached the confounded toy versus the unconfounded one.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -579,6 +587,7 @@ window.Quarto = {
 </div>
 </div>
 <p>This plot shows the raw count of trials where toddlers approached each type of toy first.</p>
+</section>
 <section id="why-this-matters" class="level3">
 <h3 class="anchored" data-anchor-id="why-this-matters">Why this matters:</h3>
 <p>This bar plot gives a high-level view of the overall tendency across participants. If we saw roughly equal counts, it might suggest no strong preference. In this dataset, the confounded toy is chosen more often, hinting that toddlers might indeed be seeking out uncertainty about their own competence.</p>
@@ -589,7 +598,10 @@ window.Quarto = {
 <li><p>Is one bar clearly taller than the other?</p></li>
 <li><p>Does this pattern support your hypothesis?</p></li>
 </ol>
-<p>###Proportion of Confounded Toy Choices by Age Group Next, Next, we examine whether this preference for the confounded toy varies across different age groups. Age is treated here in coarse bins (e.g., 24–27 months, 28–30 months, etc.) to help spot nonlinear trends that might be hard to detect in regression.</p>
+</section>
+<section id="proportion-of-confounded-toy-choices-by-age-group" class="level3">
+<h3 class="anchored" data-anchor-id="proportion-of-confounded-toy-choices-by-age-group">Proportion of Confounded Toy Choices by Age Group</h3>
+<p>Next, we examine whether this preference for the confounded toy varies across different age groups. Age is treated here in coarse bins (e.g., 24–27 months, 28–30 months, etc.) to help spot nonlinear trends that might be hard to detect in regression.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -1116,7 +1128,11 @@ boundary (singular) fit: see help('isSingular')</code></pre>
 <h2 class="anchored" data-anchor-id="summary-and-best-practices">10. Summary and Best Practices</h2>
 <section id="when-to-use-alternatives-to-logistic-regression" class="level3">
 <h3 class="anchored" data-anchor-id="when-to-use-alternatives-to-logistic-regression">When to Use Alternatives to Logistic Regression</h3>
-<p>Consider alternatives when: - The outcome has more than two categories (use multinomial or ordinal logistic regression) - The data shows overdispersion (use quasi-binomial or negative binomial models) - The relationship between predictors and log odds is non-linear (use generalized additive models) - The sample size is very small (use exact logistic regression)</p>
+<p>Consider alternatives when:</p>
+<p>- The outcome has more than two categories (use multinomial or ordinal logistic regression)</p>
+<p>- The data shows overdispersion (use quasi-binomial or negative binomial models)</p>
+<p>- The relationship between predictors and log odds is non-linear (use generalized additive models)</p>
+<p>- The sample size is very small (use exact logistic regression)</p>
 </section>
 <section id="checklist-for-reporting-logistic-regression" class="level3">
 <h3 class="anchored" data-anchor-id="checklist-for-reporting-logistic-regression">Checklist for Reporting Logistic Regression</h3>
@@ -1742,593 +1758,628 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb46-135"><a href="#cb46-135" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-136"><a href="#cb46-136" aria-hidden="true" tabindex="-1"></a><span class="fu">### Statistical Assumptions of Logistic Regression</span></span>
 <span id="cb46-137"><a href="#cb46-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-138"><a href="#cb46-138" aria-hidden="true" tabindex="-1"></a>Logistic regression has fewer assumptions than linear regression: 1.</span>
-<span id="cb46-139"><a href="#cb46-139" aria-hidden="true" tabindex="-1"></a>Independence of observations (unless accounted for with mixed models) 2.</span>
-<span id="cb46-140"><a href="#cb46-140" aria-hidden="true" tabindex="-1"></a>Little or no multicollinearity among predictors 3. Linear relationship</span>
-<span id="cb46-141"><a href="#cb46-141" aria-hidden="true" tabindex="-1"></a>between predictors and log odds 4. Large sample size (rule of thumb: at</span>
-<span id="cb46-142"><a href="#cb46-142" aria-hidden="true" tabindex="-1"></a>least 10 cases per predictor)</span>
-<span id="cb46-143"><a href="#cb46-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-144"><a href="#cb46-144" aria-hidden="true" tabindex="-1"></a><span class="fu">## 3. Case Study: Do Toddlers Explore Their Own Competence?</span></span>
-<span id="cb46-145"><a href="#cb46-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-146"><a href="#cb46-146" aria-hidden="true" tabindex="-1"></a>Let's analyze data from one of my projects investigating whether</span>
-<span id="cb46-147"><a href="#cb46-147" aria-hidden="true" tabindex="-1"></a>toddlers are intrinsically motivated to explore their own competence.</span>
-<span id="cb46-148"><a href="#cb46-148" aria-hidden="true" tabindex="-1"></a>The researchers adapted classic exploratory play paradigms to examine</span>
-<span id="cb46-149"><a href="#cb46-149" aria-hidden="true" tabindex="-1"></a>whether two-year-olds seek to resolve uncertainty about what they can</span>
-<span id="cb46-150"><a href="#cb46-150" aria-hidden="true" tabindex="-1"></a>do.</span>
-<span id="cb46-151"><a href="#cb46-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-152"><a href="#cb46-152" aria-hidden="true" tabindex="-1"></a><span class="fu">### Study Background</span></span>
-<span id="cb46-153"><a href="#cb46-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-154"><a href="#cb46-154" aria-hidden="true" tabindex="-1"></a>In this study, 49 toddlers (ages 24-35 months) played with different</span>
-<span id="cb46-155"><a href="#cb46-155" aria-hidden="true" tabindex="-1"></a>pairs of toys alongside a parent. For each pair of toys:</span>
+<span id="cb46-138"><a href="#cb46-138" aria-hidden="true" tabindex="-1"></a>Logistic regression has fewer assumptions than linear regression:</span>
+<span id="cb46-139"><a href="#cb46-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-140"><a href="#cb46-140" aria-hidden="true" tabindex="-1"></a>1<span class="sc">\.</span> Independence of observations (unless accounted for with mixed</span>
+<span id="cb46-141"><a href="#cb46-141" aria-hidden="true" tabindex="-1"></a>models)</span>
+<span id="cb46-142"><a href="#cb46-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-143"><a href="#cb46-143" aria-hidden="true" tabindex="-1"></a>2<span class="sc">\.</span> Little or no multicollinearity among predictors</span>
+<span id="cb46-144"><a href="#cb46-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-145"><a href="#cb46-145" aria-hidden="true" tabindex="-1"></a>3<span class="sc">\.</span> Linear relationship between predictors and log odds</span>
+<span id="cb46-146"><a href="#cb46-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-147"><a href="#cb46-147" aria-hidden="true" tabindex="-1"></a>4<span class="sc">\.</span> Large sample size (rule of thumb: at least 10 cases per predictor)</span>
+<span id="cb46-148"><a href="#cb46-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-149"><a href="#cb46-149" aria-hidden="true" tabindex="-1"></a><span class="fu">## 3. Case Study: Do Toddlers Explore Their Own Competence?</span></span>
+<span id="cb46-150"><a href="#cb46-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-151"><a href="#cb46-151" aria-hidden="true" tabindex="-1"></a>Let's analyze data from one of my projects investigating whether</span>
+<span id="cb46-152"><a href="#cb46-152" aria-hidden="true" tabindex="-1"></a>toddlers are intrinsically motivated to explore their own competence.</span>
+<span id="cb46-153"><a href="#cb46-153" aria-hidden="true" tabindex="-1"></a>The researchers adapted classic exploratory play paradigms to examine</span>
+<span id="cb46-154"><a href="#cb46-154" aria-hidden="true" tabindex="-1"></a>whether two-year-olds seek to resolve uncertainty about what they can</span>
+<span id="cb46-155"><a href="#cb46-155" aria-hidden="true" tabindex="-1"></a>do.</span>
 <span id="cb46-156"><a href="#cb46-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-157"><a href="#cb46-157" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Confounded condition**: The parent guided the toddler's hand while</span>
-<span id="cb46-158"><a href="#cb46-158" aria-hidden="true" tabindex="-1"></a>    playing with one toy, providing ambiguous evidence about whether the</span>
-<span id="cb46-159"><a href="#cb46-159" aria-hidden="true" tabindex="-1"></a>    child could operate the toy independently</span>
-<span id="cb46-160"><a href="#cb46-160" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Unconfounded condition**: The parent and child took turns playing</span>
-<span id="cb46-161"><a href="#cb46-161" aria-hidden="true" tabindex="-1"></a>    with the other toy independently, providing clear evidence about the</span>
-<span id="cb46-162"><a href="#cb46-162" aria-hidden="true" tabindex="-1"></a>    child's ability</span>
-<span id="cb46-163"><a href="#cb46-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-164"><a href="#cb46-164" aria-hidden="true" tabindex="-1"></a>The key question was: When given a chance to freely explore the toys on</span>
-<span id="cb46-165"><a href="#cb46-165" aria-hidden="true" tabindex="-1"></a>their own, which toy would toddlers approach first? If toddlers seek to</span>
-<span id="cb46-166"><a href="#cb46-166" aria-hidden="true" tabindex="-1"></a>resolve uncertainty about their own competence, they should be more</span>
-<span id="cb46-167"><a href="#cb46-167" aria-hidden="true" tabindex="-1"></a>likely to approach the confounded toy.</span>
+<span id="cb46-157"><a href="#cb46-157" aria-hidden="true" tabindex="-1"></a><span class="fu">### Study Background</span></span>
+<span id="cb46-158"><a href="#cb46-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-159"><a href="#cb46-159" aria-hidden="true" tabindex="-1"></a>In this study, 49 toddlers (ages 24-35 months) played with different</span>
+<span id="cb46-160"><a href="#cb46-160" aria-hidden="true" tabindex="-1"></a>pairs of toys alongside a parent. For each pair of toys:</span>
+<span id="cb46-161"><a href="#cb46-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-162"><a href="#cb46-162" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Confounded condition**: The parent guided the toddler's hand while</span>
+<span id="cb46-163"><a href="#cb46-163" aria-hidden="true" tabindex="-1"></a>    playing with one toy, providing ambiguous evidence about whether the</span>
+<span id="cb46-164"><a href="#cb46-164" aria-hidden="true" tabindex="-1"></a>    child could operate the toy independently</span>
+<span id="cb46-165"><a href="#cb46-165" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Unconfounded condition**: The parent and child took turns playing</span>
+<span id="cb46-166"><a href="#cb46-166" aria-hidden="true" tabindex="-1"></a>    with the other toy independently, providing clear evidence about the</span>
+<span id="cb46-167"><a href="#cb46-167" aria-hidden="true" tabindex="-1"></a>    child's ability</span>
 <span id="cb46-168"><a href="#cb46-168" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-169"><a href="#cb46-169" aria-hidden="true" tabindex="-1"></a><span class="fu">### Data Preparation</span></span>
-<span id="cb46-170"><a href="#cb46-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-171"><a href="#cb46-171" aria-hidden="true" tabindex="-1"></a>Let's Let's start by loading and exploring the dataset:</span>
-<span id="cb46-172"><a href="#cb46-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-173"><a href="#cb46-173" aria-hidden="true" tabindex="-1"></a><span class="in">```{r load-data}</span></span>
-<span id="cb46-174"><a href="#cb46-174" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse)</span></span>
-<span id="cb46-175"><a href="#cb46-175" aria-hidden="true" tabindex="-1"></a><span class="in">library(lme4)      # For mixed-effects logistic regression</span></span>
-<span id="cb46-176"><a href="#cb46-176" aria-hidden="true" tabindex="-1"></a><span class="in">library(ggplot2)   # For plotting</span></span>
-<span id="cb46-177"><a href="#cb46-177" aria-hidden="true" tabindex="-1"></a><span class="in"># Load data</span></span>
-<span id="cb46-178"><a href="#cb46-178" aria-hidden="true" tabindex="-1"></a><span class="in">data &lt;- read.csv("case_study_data.csv")</span></span>
-<span id="cb46-179"><a href="#cb46-179" aria-hidden="true" tabindex="-1"></a><span class="in">head(data)</span></span>
-<span id="cb46-180"><a href="#cb46-180" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-181"><a href="#cb46-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-182"><a href="#cb46-182" aria-hidden="true" tabindex="-1"></a>In this dataset: - <span class="in">`subject_id`</span>: Unique identifier for each child -</span>
-<span id="cb46-183"><a href="#cb46-183" aria-hidden="true" tabindex="-1"></a><span class="in">`age_in_months`</span>: Age of the child in months - <span class="in">`toy_pair`</span>: Which pair of</span>
-<span id="cb46-184"><a href="#cb46-184" aria-hidden="true" tabindex="-1"></a>toys the child played with - <span class="in">`approached_confounded`</span>: Binary outcome</span>
-<span id="cb46-185"><a href="#cb46-185" aria-hidden="true" tabindex="-1"></a>variable (1 if child approached the confounded toy first, 0 if</span>
-<span id="cb46-186"><a href="#cb46-186" aria-hidden="true" tabindex="-1"></a>unconfounded)</span>
-<span id="cb46-187"><a href="#cb46-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-188"><a href="#cb46-188" aria-hidden="true" tabindex="-1"></a>Now that we've loaded the data, let's prepare it for analysis. The raw</span>
-<span id="cb46-189"><a href="#cb46-189" aria-hidden="true" tabindex="-1"></a>dataset has information about three different toy pairs that each child</span>
-<span id="cb46-190"><a href="#cb46-190" aria-hidden="true" tabindex="-1"></a>interacted with. We need to restructure it to have one row per toy pair</span>
-<span id="cb46-191"><a href="#cb46-191" aria-hidden="true" tabindex="-1"></a>per child.</span>
+<span id="cb46-169"><a href="#cb46-169" aria-hidden="true" tabindex="-1"></a>The key question was: When given a chance to freely explore the toys on</span>
+<span id="cb46-170"><a href="#cb46-170" aria-hidden="true" tabindex="-1"></a>their own, which toy would toddlers approach first? If toddlers seek to</span>
+<span id="cb46-171"><a href="#cb46-171" aria-hidden="true" tabindex="-1"></a>resolve uncertainty about their own competence, they should be more</span>
+<span id="cb46-172"><a href="#cb46-172" aria-hidden="true" tabindex="-1"></a>likely to approach the confounded toy.</span>
+<span id="cb46-173"><a href="#cb46-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-174"><a href="#cb46-174" aria-hidden="true" tabindex="-1"></a><span class="fu">### Data Preparation</span></span>
+<span id="cb46-175"><a href="#cb46-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-176"><a href="#cb46-176" aria-hidden="true" tabindex="-1"></a>Let's start by loading and exploring the dataset:</span>
+<span id="cb46-177"><a href="#cb46-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-178"><a href="#cb46-178" aria-hidden="true" tabindex="-1"></a><span class="in">```{r load-data}</span></span>
+<span id="cb46-179"><a href="#cb46-179" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse)</span></span>
+<span id="cb46-180"><a href="#cb46-180" aria-hidden="true" tabindex="-1"></a><span class="in">library(lme4)      # For mixed-effects logistic regression</span></span>
+<span id="cb46-181"><a href="#cb46-181" aria-hidden="true" tabindex="-1"></a><span class="in">library(ggplot2)   # For plotting</span></span>
+<span id="cb46-182"><a href="#cb46-182" aria-hidden="true" tabindex="-1"></a><span class="in"># Load data</span></span>
+<span id="cb46-183"><a href="#cb46-183" aria-hidden="true" tabindex="-1"></a><span class="in">data &lt;- read.csv("case_study_data.csv")</span></span>
+<span id="cb46-184"><a href="#cb46-184" aria-hidden="true" tabindex="-1"></a><span class="in">head(data)</span></span>
+<span id="cb46-185"><a href="#cb46-185" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb46-186"><a href="#cb46-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-187"><a href="#cb46-187" aria-hidden="true" tabindex="-1"></a>In this dataset: - <span class="in">`subject_id`</span>: Unique identifier for each child -</span>
+<span id="cb46-188"><a href="#cb46-188" aria-hidden="true" tabindex="-1"></a><span class="in">`age_in_months`</span>: Age of the child in months - <span class="in">`toy_pair`</span>: Which pair of</span>
+<span id="cb46-189"><a href="#cb46-189" aria-hidden="true" tabindex="-1"></a>toys the child played with - <span class="in">`approached_confounded`</span>: Binary outcome</span>
+<span id="cb46-190"><a href="#cb46-190" aria-hidden="true" tabindex="-1"></a>variable (1 if child approached the confounded toy first, 0 if</span>
+<span id="cb46-191"><a href="#cb46-191" aria-hidden="true" tabindex="-1"></a>unconfounded)</span>
 <span id="cb46-192"><a href="#cb46-192" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-193"><a href="#cb46-193" aria-hidden="true" tabindex="-1"></a><span class="fu">### Descriptive Statistics</span></span>
-<span id="cb46-194"><a href="#cb46-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-195"><a href="#cb46-195" aria-hidden="true" tabindex="-1"></a>First, let's examine the overall rates of approaching the confounded</span>
-<span id="cb46-196"><a href="#cb46-196" aria-hidden="true" tabindex="-1"></a>toy:</span>
+<span id="cb46-193"><a href="#cb46-193" aria-hidden="true" tabindex="-1"></a>Now that we've loaded the data, let's prepare it for analysis. The raw</span>
+<span id="cb46-194"><a href="#cb46-194" aria-hidden="true" tabindex="-1"></a>dataset has information about three different toy pairs that each child</span>
+<span id="cb46-195"><a href="#cb46-195" aria-hidden="true" tabindex="-1"></a>interacted with. We need to restructure it to have one row per toy pair</span>
+<span id="cb46-196"><a href="#cb46-196" aria-hidden="true" tabindex="-1"></a>per child.</span>
 <span id="cb46-197"><a href="#cb46-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-200"><a href="#cb46-200" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb46-201"><a href="#cb46-201" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean and reshape the data</span></span>
-<span id="cb46-202"><a href="#cb46-202" aria-hidden="true" tabindex="-1"></a>clean_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb46-203"><a href="#cb46-203" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(subject_id, </span>
-<span id="cb46-204"><a href="#cb46-204" aria-hidden="true" tabindex="-1"></a>         age,</span>
-<span id="cb46-205"><a href="#cb46-205" aria-hidden="true" tabindex="-1"></a>         pair_1_first_pick_confounding,</span>
-<span id="cb46-206"><a href="#cb46-206" aria-hidden="true" tabindex="-1"></a>         pair_2_first_pick_confounding,</span>
-<span id="cb46-207"><a href="#cb46-207" aria-hidden="true" tabindex="-1"></a>         pair_3_first_pick_confounding) <span class="sc">%&gt;%</span></span>
-<span id="cb46-208"><a href="#cb46-208" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb46-209"><a href="#cb46-209" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"pair"</span>),</span>
-<span id="cb46-210"><a href="#cb46-210" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"pair"</span>,</span>
-<span id="cb46-211"><a href="#cb46-211" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"confounding"</span></span>
-<span id="cb46-212"><a href="#cb46-212" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb46-213"><a href="#cb46-213" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(confounding), confounding <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"C"</span>, <span class="st">"U"</span>))</span>
-<span id="cb46-214"><a href="#cb46-214" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-215"><a href="#cb46-215" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a binary outcome variable (1 = approached confounded toy first)</span></span>
-<span id="cb46-216"><a href="#cb46-216" aria-hidden="true" tabindex="-1"></a>analysis_data <span class="ot">&lt;-</span> clean_data <span class="sc">%&gt;%</span></span>
-<span id="cb46-217"><a href="#cb46-217" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb46-218"><a href="#cb46-218" aria-hidden="true" tabindex="-1"></a>    <span class="at">approach_confounded =</span> confounding <span class="sc">==</span> <span class="st">"C"</span>,</span>
-<span id="cb46-219"><a href="#cb46-219" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_centered =</span> <span class="fu">scale</span>(age, <span class="at">center =</span> <span class="cn">TRUE</span>, <span class="at">scale =</span> <span class="cn">FALSE</span>)[,<span class="dv">1</span>]  <span class="co"># Center age</span></span>
-<span id="cb46-220"><a href="#cb46-220" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb46-221"><a href="#cb46-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-222"><a href="#cb46-222" aria-hidden="true" tabindex="-1"></a><span class="co"># View the prepared data</span></span>
-<span id="cb46-223"><a href="#cb46-223" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(analysis_data)</span>
-<span id="cb46-224"><a href="#cb46-224" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-225"><a href="#cb46-225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-226"><a href="#cb46-226" aria-hidden="true" tabindex="-1"></a>Let's also look at the overall proportions of children approaching each</span>
-<span id="cb46-227"><a href="#cb46-227" aria-hidden="true" tabindex="-1"></a>type of toy:</span>
-<span id="cb46-228"><a href="#cb46-228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-231"><a href="#cb46-231" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb46-232"><a href="#cb46-232" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate overall proportions</span></span>
-<span id="cb46-233"><a href="#cb46-233" aria-hidden="true" tabindex="-1"></a>overall_proportions <span class="ot">&lt;-</span> clean_data <span class="sc">%&gt;%</span></span>
-<span id="cb46-234"><a href="#cb46-234" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb46-235"><a href="#cb46-235" aria-hidden="true" tabindex="-1"></a>    <span class="at">total =</span> <span class="fu">n</span>(),</span>
-<span id="cb46-236"><a href="#cb46-236" aria-hidden="true" tabindex="-1"></a>    <span class="at">confounded =</span> <span class="fu">sum</span>(confounding <span class="sc">==</span> <span class="st">"C"</span>),</span>
-<span id="cb46-237"><a href="#cb46-237" aria-hidden="true" tabindex="-1"></a>    <span class="at">unconfounded =</span> <span class="fu">sum</span>(confounding <span class="sc">==</span> <span class="st">"U"</span>),</span>
-<span id="cb46-238"><a href="#cb46-238" aria-hidden="true" tabindex="-1"></a>    <span class="at">prop_confounded =</span> confounded<span class="sc">/</span>total,</span>
-<span id="cb46-239"><a href="#cb46-239" aria-hidden="true" tabindex="-1"></a>    <span class="at">prop_unconfounded =</span> unconfounded<span class="sc">/</span>total</span>
-<span id="cb46-240"><a href="#cb46-240" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb46-241"><a href="#cb46-241" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-242"><a href="#cb46-242" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Overall Proportions:"</span>)</span>
-<span id="cb46-243"><a href="#cb46-243" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(overall_proportions)</span>
-<span id="cb46-244"><a href="#cb46-244" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-245"><a href="#cb46-245" aria-hidden="true" tabindex="-1"></a><span class="co"># Binomial test against chance</span></span>
-<span id="cb46-246"><a href="#cb46-246" aria-hidden="true" tabindex="-1"></a>binom_test <span class="ot">&lt;-</span> <span class="fu">binom.test</span>(</span>
-<span id="cb46-247"><a href="#cb46-247" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> overall_proportions<span class="sc">$</span>confounded,</span>
-<span id="cb46-248"><a href="#cb46-248" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> overall_proportions<span class="sc">$</span>total,</span>
-<span id="cb46-249"><a href="#cb46-249" aria-hidden="true" tabindex="-1"></a>  <span class="at">p =</span> <span class="fl">0.5</span>,  </span>
-<span id="cb46-250"><a href="#cb46-250" aria-hidden="true" tabindex="-1"></a>  <span class="at">alternative =</span> <span class="st">"two.sided"</span></span>
-<span id="cb46-251"><a href="#cb46-251" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb46-252"><a href="#cb46-252" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-253"><a href="#cb46-253" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
-<span id="cb46-254"><a href="#cb46-254" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Binomial Test Results:"</span>)</span>
-<span id="cb46-255"><a href="#cb46-255" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(</span>
-<span id="cb46-256"><a href="#cb46-256" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Binomial test: observed proportion = "</span>, </span>
-<span id="cb46-257"><a href="#cb46-257" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(overall_proportions<span class="sc">$</span>prop_confounded, <span class="dv">3</span>),</span>
-<span id="cb46-258"><a href="#cb46-258" aria-hidden="true" tabindex="-1"></a>  <span class="st">", p = "</span>, </span>
-<span id="cb46-259"><a href="#cb46-259" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(binom_test<span class="sc">$</span>p.value, <span class="dv">3</span>),</span>
-<span id="cb46-260"><a href="#cb46-260" aria-hidden="true" tabindex="-1"></a>  <span class="st">", 95% CI ["</span>,</span>
-<span id="cb46-261"><a href="#cb46-261" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(binom_test<span class="sc">$</span>conf.int[<span class="dv">1</span>], <span class="dv">3</span>),</span>
-<span id="cb46-262"><a href="#cb46-262" aria-hidden="true" tabindex="-1"></a>  <span class="st">", "</span>,</span>
-<span id="cb46-263"><a href="#cb46-263" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(binom_test<span class="sc">$</span>conf.int[<span class="dv">2</span>], <span class="dv">3</span>),</span>
-<span id="cb46-264"><a href="#cb46-264" aria-hidden="true" tabindex="-1"></a>  <span class="st">"]"</span></span>
-<span id="cb46-265"><a href="#cb46-265" aria-hidden="true" tabindex="-1"></a>))</span>
-<span id="cb46-266"><a href="#cb46-266" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-267"><a href="#cb46-267" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-268"><a href="#cb46-268" aria-hidden="true" tabindex="-1"></a>This initial analysis shows that toddlers approached the confounded toy</span>
-<span id="cb46-269"><a href="#cb46-269" aria-hidden="true" tabindex="-1"></a>first in about 62% of trials, which is significantly different from</span>
-<span id="cb46-270"><a href="#cb46-270" aria-hidden="true" tabindex="-1"></a>chance (50%).</span>
-<span id="cb46-271"><a href="#cb46-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-198"><a href="#cb46-198" aria-hidden="true" tabindex="-1"></a><span class="fu">### Descriptive Statistics</span></span>
+<span id="cb46-199"><a href="#cb46-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-200"><a href="#cb46-200" aria-hidden="true" tabindex="-1"></a>First, let's examine the overall rates of approaching the confounded</span>
+<span id="cb46-201"><a href="#cb46-201" aria-hidden="true" tabindex="-1"></a>toy:</span>
+<span id="cb46-202"><a href="#cb46-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-205"><a href="#cb46-205" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb46-206"><a href="#cb46-206" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean and reshape the data</span></span>
+<span id="cb46-207"><a href="#cb46-207" aria-hidden="true" tabindex="-1"></a>clean_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb46-208"><a href="#cb46-208" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(subject_id, </span>
+<span id="cb46-209"><a href="#cb46-209" aria-hidden="true" tabindex="-1"></a>         age,</span>
+<span id="cb46-210"><a href="#cb46-210" aria-hidden="true" tabindex="-1"></a>         pair_1_first_pick_confounding,</span>
+<span id="cb46-211"><a href="#cb46-211" aria-hidden="true" tabindex="-1"></a>         pair_2_first_pick_confounding,</span>
+<span id="cb46-212"><a href="#cb46-212" aria-hidden="true" tabindex="-1"></a>         pair_3_first_pick_confounding) <span class="sc">%&gt;%</span></span>
+<span id="cb46-213"><a href="#cb46-213" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb46-214"><a href="#cb46-214" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"pair"</span>),</span>
+<span id="cb46-215"><a href="#cb46-215" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"pair"</span>,</span>
+<span id="cb46-216"><a href="#cb46-216" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"confounding"</span></span>
+<span id="cb46-217"><a href="#cb46-217" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb46-218"><a href="#cb46-218" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(confounding), confounding <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"C"</span>, <span class="st">"U"</span>))</span>
+<span id="cb46-219"><a href="#cb46-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-220"><a href="#cb46-220" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a binary outcome variable (1 = approached confounded toy first)</span></span>
+<span id="cb46-221"><a href="#cb46-221" aria-hidden="true" tabindex="-1"></a>analysis_data <span class="ot">&lt;-</span> clean_data <span class="sc">%&gt;%</span></span>
+<span id="cb46-222"><a href="#cb46-222" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb46-223"><a href="#cb46-223" aria-hidden="true" tabindex="-1"></a>    <span class="at">approach_confounded =</span> confounding <span class="sc">==</span> <span class="st">"C"</span>,</span>
+<span id="cb46-224"><a href="#cb46-224" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_centered =</span> <span class="fu">scale</span>(age, <span class="at">center =</span> <span class="cn">TRUE</span>, <span class="at">scale =</span> <span class="cn">FALSE</span>)[,<span class="dv">1</span>]  <span class="co"># Center age</span></span>
+<span id="cb46-225"><a href="#cb46-225" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb46-226"><a href="#cb46-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-227"><a href="#cb46-227" aria-hidden="true" tabindex="-1"></a><span class="co"># View the prepared data</span></span>
+<span id="cb46-228"><a href="#cb46-228" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(analysis_data)</span>
+<span id="cb46-229"><a href="#cb46-229" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb46-230"><a href="#cb46-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-231"><a href="#cb46-231" aria-hidden="true" tabindex="-1"></a>Let's also look at the overall proportions of children approaching each</span>
+<span id="cb46-232"><a href="#cb46-232" aria-hidden="true" tabindex="-1"></a>type of toy:</span>
+<span id="cb46-233"><a href="#cb46-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-236"><a href="#cb46-236" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb46-237"><a href="#cb46-237" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate overall proportions</span></span>
+<span id="cb46-238"><a href="#cb46-238" aria-hidden="true" tabindex="-1"></a>overall_proportions <span class="ot">&lt;-</span> clean_data <span class="sc">%&gt;%</span></span>
+<span id="cb46-239"><a href="#cb46-239" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb46-240"><a href="#cb46-240" aria-hidden="true" tabindex="-1"></a>    <span class="at">total =</span> <span class="fu">n</span>(),</span>
+<span id="cb46-241"><a href="#cb46-241" aria-hidden="true" tabindex="-1"></a>    <span class="at">confounded =</span> <span class="fu">sum</span>(confounding <span class="sc">==</span> <span class="st">"C"</span>),</span>
+<span id="cb46-242"><a href="#cb46-242" aria-hidden="true" tabindex="-1"></a>    <span class="at">unconfounded =</span> <span class="fu">sum</span>(confounding <span class="sc">==</span> <span class="st">"U"</span>),</span>
+<span id="cb46-243"><a href="#cb46-243" aria-hidden="true" tabindex="-1"></a>    <span class="at">prop_confounded =</span> confounded<span class="sc">/</span>total,</span>
+<span id="cb46-244"><a href="#cb46-244" aria-hidden="true" tabindex="-1"></a>    <span class="at">prop_unconfounded =</span> unconfounded<span class="sc">/</span>total</span>
+<span id="cb46-245"><a href="#cb46-245" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb46-246"><a href="#cb46-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-247"><a href="#cb46-247" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Overall Proportions:"</span>)</span>
+<span id="cb46-248"><a href="#cb46-248" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(overall_proportions)</span>
+<span id="cb46-249"><a href="#cb46-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-250"><a href="#cb46-250" aria-hidden="true" tabindex="-1"></a><span class="co"># Binomial test against chance</span></span>
+<span id="cb46-251"><a href="#cb46-251" aria-hidden="true" tabindex="-1"></a>binom_test <span class="ot">&lt;-</span> <span class="fu">binom.test</span>(</span>
+<span id="cb46-252"><a href="#cb46-252" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> overall_proportions<span class="sc">$</span>confounded,</span>
+<span id="cb46-253"><a href="#cb46-253" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> overall_proportions<span class="sc">$</span>total,</span>
+<span id="cb46-254"><a href="#cb46-254" aria-hidden="true" tabindex="-1"></a>  <span class="at">p =</span> <span class="fl">0.5</span>,  </span>
+<span id="cb46-255"><a href="#cb46-255" aria-hidden="true" tabindex="-1"></a>  <span class="at">alternative =</span> <span class="st">"two.sided"</span></span>
+<span id="cb46-256"><a href="#cb46-256" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb46-257"><a href="#cb46-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-258"><a href="#cb46-258" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
+<span id="cb46-259"><a href="#cb46-259" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Binomial Test Results:"</span>)</span>
+<span id="cb46-260"><a href="#cb46-260" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(</span>
+<span id="cb46-261"><a href="#cb46-261" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Binomial test: observed proportion = "</span>, </span>
+<span id="cb46-262"><a href="#cb46-262" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(overall_proportions<span class="sc">$</span>prop_confounded, <span class="dv">3</span>),</span>
+<span id="cb46-263"><a href="#cb46-263" aria-hidden="true" tabindex="-1"></a>  <span class="st">", p = "</span>, </span>
+<span id="cb46-264"><a href="#cb46-264" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(binom_test<span class="sc">$</span>p.value, <span class="dv">3</span>),</span>
+<span id="cb46-265"><a href="#cb46-265" aria-hidden="true" tabindex="-1"></a>  <span class="st">", 95% CI ["</span>,</span>
+<span id="cb46-266"><a href="#cb46-266" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(binom_test<span class="sc">$</span>conf.int[<span class="dv">1</span>], <span class="dv">3</span>),</span>
+<span id="cb46-267"><a href="#cb46-267" aria-hidden="true" tabindex="-1"></a>  <span class="st">", "</span>,</span>
+<span id="cb46-268"><a href="#cb46-268" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(binom_test<span class="sc">$</span>conf.int[<span class="dv">2</span>], <span class="dv">3</span>),</span>
+<span id="cb46-269"><a href="#cb46-269" aria-hidden="true" tabindex="-1"></a>  <span class="st">"]"</span></span>
+<span id="cb46-270"><a href="#cb46-270" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb46-271"><a href="#cb46-271" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb46-272"><a href="#cb46-272" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-273"><a href="#cb46-273" aria-hidden="true" tabindex="-1"></a><span class="fu">## 3.5 Exploratory Data Analysis: Visualizing Binary Outcomes</span></span>
-<span id="cb46-274"><a href="#cb46-274" aria-hidden="true" tabindex="-1"></a>Before building our logistic regression models, it's useful to visually explore the outcome variable to get a sense of its distribution and possible predictors. Since our dependent variable—approach_confounded—is binary, we’ll focus on proportion-based plots rather than traditional histograms or scatterplots.</span>
-<span id="cb46-275"><a href="#cb46-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-276"><a href="#cb46-276" aria-hidden="true" tabindex="-1"></a>###Distribution of Approaches</span>
-<span id="cb46-277"><a href="#cb46-277" aria-hidden="true" tabindex="-1"></a>First, let’s look at how often toddlers approached the confounded toy versus the unconfounded one.</span>
+<span id="cb46-273"><a href="#cb46-273" aria-hidden="true" tabindex="-1"></a>This initial analysis shows that toddlers approached the confounded toy</span>
+<span id="cb46-274"><a href="#cb46-274" aria-hidden="true" tabindex="-1"></a>first in about 62% of trials, which is significantly different from</span>
+<span id="cb46-275"><a href="#cb46-275" aria-hidden="true" tabindex="-1"></a>chance (50%).</span>
+<span id="cb46-276"><a href="#cb46-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-277"><a href="#cb46-277" aria-hidden="true" tabindex="-1"></a><span class="fu">## 3.5 Exploratory Data Analysis: Visualizing Binary Outcomes</span></span>
 <span id="cb46-278"><a href="#cb46-278" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-281"><a href="#cb46-281" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb46-282"><a href="#cb46-282" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(analysis_data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(approach_confounded))) <span class="sc">+</span></span>
-<span id="cb46-283"><a href="#cb46-283" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"skyblue"</span>) <span class="sc">+</span></span>
-<span id="cb46-284"><a href="#cb46-284" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Unconfounded"</span>, <span class="st">"Confounded"</span>)) <span class="sc">+</span></span>
-<span id="cb46-285"><a href="#cb46-285" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb46-286"><a href="#cb46-286" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribution of First Toy Approached"</span>,</span>
-<span id="cb46-287"><a href="#cb46-287" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Toy Type"</span>,</span>
-<span id="cb46-288"><a href="#cb46-288" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Count"</span></span>
-<span id="cb46-289"><a href="#cb46-289" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb46-290"><a href="#cb46-290" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb46-291"><a href="#cb46-291" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-292"><a href="#cb46-292" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-293"><a href="#cb46-293" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-294"><a href="#cb46-294" aria-hidden="true" tabindex="-1"></a>This plot shows the raw count of trials where toddlers approached each type of toy first.</span>
-<span id="cb46-295"><a href="#cb46-295" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-296"><a href="#cb46-296" aria-hidden="true" tabindex="-1"></a><span class="fu">### Why this matters:</span></span>
-<span id="cb46-297"><a href="#cb46-297" aria-hidden="true" tabindex="-1"></a>This bar plot gives a high-level view of the overall tendency across participants. If we saw roughly equal counts, it might suggest no strong preference. In this dataset, the confounded toy is chosen more often, hinting that toddlers might indeed be seeking out uncertainty about their own competence.</span>
-<span id="cb46-298"><a href="#cb46-298" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-299"><a href="#cb46-299" aria-hidden="true" tabindex="-1"></a><span class="fu">### What to look for:</span></span>
-<span id="cb46-300"><a href="#cb46-300" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-301"><a href="#cb46-301" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Is one bar clearly taller than the other?</span>
+<span id="cb46-279"><a href="#cb46-279" aria-hidden="true" tabindex="-1"></a>Before building our logistic regression models, it's useful to visually</span>
+<span id="cb46-280"><a href="#cb46-280" aria-hidden="true" tabindex="-1"></a>explore the outcome variable to get a sense of its distribution and</span>
+<span id="cb46-281"><a href="#cb46-281" aria-hidden="true" tabindex="-1"></a>possible predictors. Since our dependent variable—approach_confounded—is</span>
+<span id="cb46-282"><a href="#cb46-282" aria-hidden="true" tabindex="-1"></a>binary, we’ll focus on proportion-based plots rather than traditional</span>
+<span id="cb46-283"><a href="#cb46-283" aria-hidden="true" tabindex="-1"></a>histograms or scatter plots.</span>
+<span id="cb46-284"><a href="#cb46-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-285"><a href="#cb46-285" aria-hidden="true" tabindex="-1"></a><span class="fu">### Distribution of Approaches </span></span>
+<span id="cb46-286"><a href="#cb46-286" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-287"><a href="#cb46-287" aria-hidden="true" tabindex="-1"></a>First, let’s look at how often toddlers approached the confounded toy</span>
+<span id="cb46-288"><a href="#cb46-288" aria-hidden="true" tabindex="-1"></a>versus the unconfounded one.</span>
+<span id="cb46-289"><a href="#cb46-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-292"><a href="#cb46-292" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb46-293"><a href="#cb46-293" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(analysis_data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(approach_confounded))) <span class="sc">+</span></span>
+<span id="cb46-294"><a href="#cb46-294" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"skyblue"</span>) <span class="sc">+</span></span>
+<span id="cb46-295"><a href="#cb46-295" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Unconfounded"</span>, <span class="st">"Confounded"</span>)) <span class="sc">+</span></span>
+<span id="cb46-296"><a href="#cb46-296" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb46-297"><a href="#cb46-297" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribution of First Toy Approached"</span>,</span>
+<span id="cb46-298"><a href="#cb46-298" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Toy Type"</span>,</span>
+<span id="cb46-299"><a href="#cb46-299" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Count"</span></span>
+<span id="cb46-300"><a href="#cb46-300" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb46-301"><a href="#cb46-301" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
 <span id="cb46-302"><a href="#cb46-302" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-303"><a href="#cb46-303" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Does this pattern support your hypothesis?</span>
+<span id="cb46-303"><a href="#cb46-303" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb46-304"><a href="#cb46-304" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-305"><a href="#cb46-305" aria-hidden="true" tabindex="-1"></a>###Proportion of Confounded Toy Choices by Age Group</span>
-<span id="cb46-306"><a href="#cb46-306" aria-hidden="true" tabindex="-1"></a>Next, Next, we examine whether this preference for the confounded toy varies across different age groups. Age is treated here in coarse bins (e.g., 24–27 months, 28–30 months, etc.) to help spot nonlinear trends that might be hard to detect in regression.</span>
+<span id="cb46-305"><a href="#cb46-305" aria-hidden="true" tabindex="-1"></a>This plot shows the raw count of trials where toddlers approached each</span>
+<span id="cb46-306"><a href="#cb46-306" aria-hidden="true" tabindex="-1"></a>type of toy first.</span>
 <span id="cb46-307"><a href="#cb46-307" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-310"><a href="#cb46-310" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb46-311"><a href="#cb46-311" aria-hidden="true" tabindex="-1"></a><span class="co"># Create age groups in 3-month bins</span></span>
-<span id="cb46-312"><a href="#cb46-312" aria-hidden="true" tabindex="-1"></a>analysis_data <span class="ot">&lt;-</span> analysis_data <span class="sc">%&gt;%</span></span>
-<span id="cb46-313"><a href="#cb46-313" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_group =</span> <span class="fu">cut</span>(age_centered <span class="sc">+</span> <span class="fu">mean</span>(age_centered <span class="sc">+</span> <span class="fu">mean</span>(analysis_data<span class="sc">$</span>age)), </span>
-<span id="cb46-314"><a href="#cb46-314" aria-hidden="true" tabindex="-1"></a>                         <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">24</span>, <span class="dv">36</span>, <span class="at">by =</span> <span class="dv">3</span>), </span>
-<span id="cb46-315"><a href="#cb46-315" aria-hidden="true" tabindex="-1"></a>                         <span class="at">include.lowest =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb46-316"><a href="#cb46-316" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-317"><a href="#cb46-317" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot proportion of confounded choices by age group</span></span>
-<span id="cb46-318"><a href="#cb46-318" aria-hidden="true" tabindex="-1"></a>analysis_data <span class="sc">%&gt;%</span></span>
-<span id="cb46-319"><a href="#cb46-319" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(age_group) <span class="sc">%&gt;%</span></span>
-<span id="cb46-320"><a href="#cb46-320" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">prop_confounded =</span> <span class="fu">mean</span>(approach_confounded)) <span class="sc">%&gt;%</span></span>
-<span id="cb46-321"><a href="#cb46-321" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age_group, <span class="at">y =</span> prop_confounded)) <span class="sc">+</span></span>
-<span id="cb46-322"><a href="#cb46-322" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
-<span id="cb46-323"><a href="#cb46-323" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb46-324"><a href="#cb46-324" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Proportion Approaching Confounded Toy by Age Group"</span>,</span>
-<span id="cb46-325"><a href="#cb46-325" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Age Group (Months)"</span>,</span>
-<span id="cb46-326"><a href="#cb46-326" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Proportion Confounded"</span></span>
-<span id="cb46-327"><a href="#cb46-327" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb46-328"><a href="#cb46-328" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb46-329"><a href="#cb46-329" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">0.5</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"gray"</span>) <span class="sc">+</span></span>
-<span id="cb46-330"><a href="#cb46-330" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb46-331"><a href="#cb46-331" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-332"><a href="#cb46-332" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-333"><a href="#cb46-333" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-334"><a href="#cb46-334" aria-hidden="true" tabindex="-1"></a><span class="fu">### Why this matters:</span></span>
-<span id="cb46-335"><a href="#cb46-335" aria-hidden="true" tabindex="-1"></a>This grouped bar plot allows us to explore whether age moderates the tendency to choose the confounded toy. Even though we’ll test age as a continuous predictor in our regression model, this visualization helps uncover possible nonlinear patterns or developmental shifts.</span>
-<span id="cb46-336"><a href="#cb46-336" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-337"><a href="#cb46-337" aria-hidden="true" tabindex="-1"></a><span class="fu">### What to look for:</span></span>
-<span id="cb46-338"><a href="#cb46-338" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-339"><a href="#cb46-339" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Are proportions consistently above 0.5 in all age groups?</span>
-<span id="cb46-340"><a href="#cb46-340" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-341"><a href="#cb46-341" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Is there any trend—e.g., a decrease or increase with age?</span>
-<span id="cb46-342"><a href="#cb46-342" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-343"><a href="#cb46-343" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Are any age groups particularly variable?</span>
-<span id="cb46-344"><a href="#cb46-344" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-345"><a href="#cb46-345" aria-hidden="true" tabindex="-1"></a><span class="fu">### Interpretation:</span></span>
-<span id="cb46-346"><a href="#cb46-346" aria-hidden="true" tabindex="-1"></a>In our sample, toddlers in all age groups seem to prefer the confounded toy, although the strength of this preference may vary slightly. There’s no obvious linear trend, which may help explain why age did not emerge as a significant predictor in our model.</span>
-<span id="cb46-347"><a href="#cb46-347" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-348"><a href="#cb46-348" aria-hidden="true" tabindex="-1"></a><span class="fu">## 4. Building Logistic Regression Models</span></span>
-<span id="cb46-349"><a href="#cb46-349" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-350"><a href="#cb46-350" aria-hidden="true" tabindex="-1"></a>Now we're ready to build our logistic regression models. Since each</span>
-<span id="cb46-351"><a href="#cb46-351" aria-hidden="true" tabindex="-1"></a>child completed multiple trials, we'll use mixed-effects logistic</span>
-<span id="cb46-352"><a href="#cb46-352" aria-hidden="true" tabindex="-1"></a>regression to account for the non-independence of observations.</span>
-<span id="cb46-353"><a href="#cb46-353" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-354"><a href="#cb46-354" aria-hidden="true" tabindex="-1"></a><span class="fu">### Simple Logistic Regression with an Intercept Only</span></span>
-<span id="cb46-355"><a href="#cb46-355" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-356"><a href="#cb46-356" aria-hidden="true" tabindex="-1"></a>Let's start with a simple model that just estimates the overall tendency</span>
-<span id="cb46-357"><a href="#cb46-357" aria-hidden="true" tabindex="-1"></a>to approach the confounded toy:</span>
-<span id="cb46-358"><a href="#cb46-358" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-359"><a href="#cb46-359" aria-hidden="true" tabindex="-1"></a><span class="in">```{r model1}</span></span>
-<span id="cb46-360"><a href="#cb46-360" aria-hidden="true" tabindex="-1"></a><span class="in"># Simple logistic regression model with just an intercept</span></span>
-<span id="cb46-361"><a href="#cb46-361" aria-hidden="true" tabindex="-1"></a><span class="in">model1 &lt;- glmer(approach_confounded ~ 1 + (1|subject_id), </span></span>
-<span id="cb46-362"><a href="#cb46-362" aria-hidden="true" tabindex="-1"></a><span class="in">                family = binomial(link = "logit"), </span></span>
-<span id="cb46-363"><a href="#cb46-363" aria-hidden="true" tabindex="-1"></a><span class="in">                data = analysis_data)</span></span>
-<span id="cb46-364"><a href="#cb46-364" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-365"><a href="#cb46-365" aria-hidden="true" tabindex="-1"></a><span class="in">summary(model1)</span></span>
-<span id="cb46-366"><a href="#cb46-366" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb46-308"><a href="#cb46-308" aria-hidden="true" tabindex="-1"></a><span class="fu">### Why this matters:</span></span>
+<span id="cb46-309"><a href="#cb46-309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-310"><a href="#cb46-310" aria-hidden="true" tabindex="-1"></a>This bar plot gives a high-level view of the overall tendency across</span>
+<span id="cb46-311"><a href="#cb46-311" aria-hidden="true" tabindex="-1"></a>participants. If we saw roughly equal counts, it might suggest no strong</span>
+<span id="cb46-312"><a href="#cb46-312" aria-hidden="true" tabindex="-1"></a>preference. In this dataset, the confounded toy is chosen more often,</span>
+<span id="cb46-313"><a href="#cb46-313" aria-hidden="true" tabindex="-1"></a>hinting that toddlers might indeed be seeking out uncertainty about</span>
+<span id="cb46-314"><a href="#cb46-314" aria-hidden="true" tabindex="-1"></a>their own competence.</span>
+<span id="cb46-315"><a href="#cb46-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-316"><a href="#cb46-316" aria-hidden="true" tabindex="-1"></a><span class="fu">### What to look for:</span></span>
+<span id="cb46-317"><a href="#cb46-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-318"><a href="#cb46-318" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Is one bar clearly taller than the other?</span>
+<span id="cb46-319"><a href="#cb46-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-320"><a href="#cb46-320" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Does this pattern support your hypothesis?</span>
+<span id="cb46-321"><a href="#cb46-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-322"><a href="#cb46-322" aria-hidden="true" tabindex="-1"></a><span class="fu">### Proportion of Confounded Toy Choices by Age Group</span></span>
+<span id="cb46-323"><a href="#cb46-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-324"><a href="#cb46-324" aria-hidden="true" tabindex="-1"></a>Next, we examine whether this preference for the confounded toy varies</span>
+<span id="cb46-325"><a href="#cb46-325" aria-hidden="true" tabindex="-1"></a>across different age groups. Age is treated here in coarse bins (e.g.,</span>
+<span id="cb46-326"><a href="#cb46-326" aria-hidden="true" tabindex="-1"></a>24–27 months, 28–30 months, etc.) to help spot nonlinear trends that</span>
+<span id="cb46-327"><a href="#cb46-327" aria-hidden="true" tabindex="-1"></a>might be hard to detect in regression.</span>
+<span id="cb46-328"><a href="#cb46-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-331"><a href="#cb46-331" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb46-332"><a href="#cb46-332" aria-hidden="true" tabindex="-1"></a><span class="co"># Create age groups in 3-month bins</span></span>
+<span id="cb46-333"><a href="#cb46-333" aria-hidden="true" tabindex="-1"></a>analysis_data <span class="ot">&lt;-</span> analysis_data <span class="sc">%&gt;%</span></span>
+<span id="cb46-334"><a href="#cb46-334" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_group =</span> <span class="fu">cut</span>(age_centered <span class="sc">+</span> <span class="fu">mean</span>(age_centered <span class="sc">+</span> <span class="fu">mean</span>(analysis_data<span class="sc">$</span>age)), </span>
+<span id="cb46-335"><a href="#cb46-335" aria-hidden="true" tabindex="-1"></a>                         <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">24</span>, <span class="dv">36</span>, <span class="at">by =</span> <span class="dv">3</span>), </span>
+<span id="cb46-336"><a href="#cb46-336" aria-hidden="true" tabindex="-1"></a>                         <span class="at">include.lowest =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb46-337"><a href="#cb46-337" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-338"><a href="#cb46-338" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot proportion of confounded choices by age group</span></span>
+<span id="cb46-339"><a href="#cb46-339" aria-hidden="true" tabindex="-1"></a>analysis_data <span class="sc">%&gt;%</span></span>
+<span id="cb46-340"><a href="#cb46-340" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(age_group) <span class="sc">%&gt;%</span></span>
+<span id="cb46-341"><a href="#cb46-341" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">prop_confounded =</span> <span class="fu">mean</span>(approach_confounded)) <span class="sc">%&gt;%</span></span>
+<span id="cb46-342"><a href="#cb46-342" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age_group, <span class="at">y =</span> prop_confounded)) <span class="sc">+</span></span>
+<span id="cb46-343"><a href="#cb46-343" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
+<span id="cb46-344"><a href="#cb46-344" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb46-345"><a href="#cb46-345" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Proportion Approaching Confounded Toy by Age Group"</span>,</span>
+<span id="cb46-346"><a href="#cb46-346" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Age Group (Months)"</span>,</span>
+<span id="cb46-347"><a href="#cb46-347" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Proportion Confounded"</span></span>
+<span id="cb46-348"><a href="#cb46-348" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb46-349"><a href="#cb46-349" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb46-350"><a href="#cb46-350" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">0.5</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"gray"</span>) <span class="sc">+</span></span>
+<span id="cb46-351"><a href="#cb46-351" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb46-352"><a href="#cb46-352" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-353"><a href="#cb46-353" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb46-354"><a href="#cb46-354" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-355"><a href="#cb46-355" aria-hidden="true" tabindex="-1"></a><span class="fu">### Why this matters:</span></span>
+<span id="cb46-356"><a href="#cb46-356" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-357"><a href="#cb46-357" aria-hidden="true" tabindex="-1"></a>This grouped bar plot allows us to explore whether age moderates the</span>
+<span id="cb46-358"><a href="#cb46-358" aria-hidden="true" tabindex="-1"></a>tendency to choose the confounded toy. Even though we’ll test age as a</span>
+<span id="cb46-359"><a href="#cb46-359" aria-hidden="true" tabindex="-1"></a>continuous predictor in our regression model, this visualization helps</span>
+<span id="cb46-360"><a href="#cb46-360" aria-hidden="true" tabindex="-1"></a>uncover possible nonlinear patterns or developmental shifts.</span>
+<span id="cb46-361"><a href="#cb46-361" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-362"><a href="#cb46-362" aria-hidden="true" tabindex="-1"></a><span class="fu">### What to look for:</span></span>
+<span id="cb46-363"><a href="#cb46-363" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-364"><a href="#cb46-364" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Are proportions consistently above 0.5 in all age groups?</span>
+<span id="cb46-365"><a href="#cb46-365" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-366"><a href="#cb46-366" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Is there any trend—e.g., a decrease or increase with age?</span>
 <span id="cb46-367"><a href="#cb46-367" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-368"><a href="#cb46-368" aria-hidden="true" tabindex="-1"></a>In this model:</span>
+<span id="cb46-368"><a href="#cb46-368" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Are any age groups particularly variable?</span>
 <span id="cb46-369"><a href="#cb46-369" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-370"><a href="#cb46-370" aria-hidden="true" tabindex="-1"></a>The formula ‘approach_confounded \~ 1 + (1\|subject_id)’ specifies:</span>
+<span id="cb46-370"><a href="#cb46-370" aria-hidden="true" tabindex="-1"></a><span class="fu">### Interpretation:</span></span>
 <span id="cb46-371"><a href="#cb46-371" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-372"><a href="#cb46-372" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>approach_confounded is our binary outcome</span>
-<span id="cb46-373"><a href="#cb46-373" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>\~ 1 means we're only estimating an intercept (no predictors)</span>
-<span id="cb46-374"><a href="#cb46-374" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span></span>
-<span id="cb46-375"><a href="#cb46-375" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>(1\|subject_id) adds a random intercept for each subject to</span>
-<span id="cb46-376"><a href="#cb46-376" aria-hidden="true" tabindex="-1"></a>        account for repeated measures</span>
-<span id="cb46-377"><a href="#cb46-377" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>family = binomial(link = "logit") specifies that we're using</span>
-<span id="cb46-378"><a href="#cb46-378" aria-hidden="true" tabindex="-1"></a>    logistic regression</span>
-<span id="cb46-379"><a href="#cb46-379" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-380"><a href="#cb46-380" aria-hidden="true" tabindex="-1"></a>The intercept coefficient represents the log odds of approaching the</span>
-<span id="cb46-381"><a href="#cb46-381" aria-hidden="true" tabindex="-1"></a>confounded toy. Let's convert this to a probability and odds ratio:</span>
+<span id="cb46-372"><a href="#cb46-372" aria-hidden="true" tabindex="-1"></a>In our sample, toddlers in all age groups seem to prefer the confounded</span>
+<span id="cb46-373"><a href="#cb46-373" aria-hidden="true" tabindex="-1"></a>toy, although the strength of this preference may vary slightly. There’s</span>
+<span id="cb46-374"><a href="#cb46-374" aria-hidden="true" tabindex="-1"></a>no obvious linear trend, which may help explain why age did not emerge</span>
+<span id="cb46-375"><a href="#cb46-375" aria-hidden="true" tabindex="-1"></a>as a significant predictor in our model.</span>
+<span id="cb46-376"><a href="#cb46-376" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-377"><a href="#cb46-377" aria-hidden="true" tabindex="-1"></a><span class="fu">## 4. Building Logistic Regression Models</span></span>
+<span id="cb46-378"><a href="#cb46-378" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-379"><a href="#cb46-379" aria-hidden="true" tabindex="-1"></a>Now we're ready to build our logistic regression models. Since each</span>
+<span id="cb46-380"><a href="#cb46-380" aria-hidden="true" tabindex="-1"></a>child completed multiple trials, we'll use mixed-effects logistic</span>
+<span id="cb46-381"><a href="#cb46-381" aria-hidden="true" tabindex="-1"></a>regression to account for the non-independence of observations.</span>
 <span id="cb46-382"><a href="#cb46-382" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-385"><a href="#cb46-385" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb46-386"><a href="#cb46-386" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the fixed effect (intercept)</span></span>
-<span id="cb46-387"><a href="#cb46-387" aria-hidden="true" tabindex="-1"></a>intercept <span class="ot">&lt;-</span> <span class="fu">fixef</span>(model1)[<span class="dv">1</span>]</span>
-<span id="cb46-388"><a href="#cb46-388" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-389"><a href="#cb46-389" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert log odds to probability</span></span>
-<span id="cb46-390"><a href="#cb46-390" aria-hidden="true" tabindex="-1"></a>probability <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span>intercept))</span>
-<span id="cb46-391"><a href="#cb46-391" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Probability of approaching the confounded toy:"</span>, probability, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb46-392"><a href="#cb46-392" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-393"><a href="#cb46-393" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to odds ratio</span></span>
-<span id="cb46-394"><a href="#cb46-394" aria-hidden="true" tabindex="-1"></a>odds_ratio <span class="ot">&lt;-</span> <span class="fu">exp</span>(intercept)</span>
-<span id="cb46-395"><a href="#cb46-395" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Odds ratio:"</span>, odds_ratio, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb46-396"><a href="#cb46-396" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"This means the odds of approaching the confounded toy are"</span>, </span>
-<span id="cb46-397"><a href="#cb46-397" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(odds_ratio, <span class="dv">2</span>), <span class="st">"times higher than approaching the unconfounded toy"</span>)</span>
-<span id="cb46-398"><a href="#cb46-398" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-399"><a href="#cb46-399" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-400"><a href="#cb46-400" aria-hidden="true" tabindex="-1"></a><span class="fu">### Adding Age as a Predictor (Multiple Logistic Regression)</span></span>
-<span id="cb46-401"><a href="#cb46-401" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-402"><a href="#cb46-402" aria-hidden="true" tabindex="-1"></a>Next, let's add age as a predictor to see if older children are more or</span>
-<span id="cb46-403"><a href="#cb46-403" aria-hidden="true" tabindex="-1"></a>less likely to approach the confounded toy:</span>
-<span id="cb46-404"><a href="#cb46-404" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-405"><a href="#cb46-405" aria-hidden="true" tabindex="-1"></a><span class="in">```{r model2}</span></span>
-<span id="cb46-406"><a href="#cb46-406" aria-hidden="true" tabindex="-1"></a><span class="in"># Logistic regression model with age as predictor</span></span>
-<span id="cb46-407"><a href="#cb46-407" aria-hidden="true" tabindex="-1"></a><span class="in">model2 &lt;- glmer(approach_confounded ~ age_centered + (1|subject_id), </span></span>
-<span id="cb46-408"><a href="#cb46-408" aria-hidden="true" tabindex="-1"></a><span class="in">                family = binomial(link = "logit"), </span></span>
-<span id="cb46-409"><a href="#cb46-409" aria-hidden="true" tabindex="-1"></a><span class="in">                data = analysis_data)</span></span>
-<span id="cb46-410"><a href="#cb46-410" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-411"><a href="#cb46-411" aria-hidden="true" tabindex="-1"></a><span class="in">summary(model2)</span></span>
-<span id="cb46-412"><a href="#cb46-412" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-413"><a href="#cb46-413" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-414"><a href="#cb46-414" aria-hidden="true" tabindex="-1"></a>In this model, we included age as a continuous predictor. The</span>
-<span id="cb46-415"><a href="#cb46-415" aria-hidden="true" tabindex="-1"></a>coefficient for age represents the change in log odds of approaching the</span>
-<span id="cb46-416"><a href="#cb46-416" aria-hidden="true" tabindex="-1"></a>confounded toy for each additional month of age. The results reveal a</span>
-<span id="cb46-417"><a href="#cb46-417" aria-hidden="true" tabindex="-1"></a>significant tendency for toddlers to approach confounded toys first (β =</span>
-<span id="cb46-418"><a href="#cb46-418" aria-hidden="true" tabindex="-1"></a>0.487, p <span class="sc">\&lt;</span> 0.01), with the odds of selecting a confounded toy being</span>
-<span id="cb46-419"><a href="#cb46-419" aria-hidden="true" tabindex="-1"></a>1.63 times higher than selecting an unconfounded toy. Interestingly, the</span>
-<span id="cb46-420"><a href="#cb46-420" aria-hidden="true" tabindex="-1"></a>age coefficient was negative but not statistically significant (β =</span>
-<span id="cb46-421"><a href="#cb46-421" aria-hidden="true" tabindex="-1"></a>-0.045, p = 0.408), suggesting that this motivation to explore one's own</span>
-<span id="cb46-422"><a href="#cb46-422" aria-hidden="true" tabindex="-1"></a>competence remains relatively stable across the 24-35 month age range in</span>
-<span id="cb46-423"><a href="#cb46-423" aria-hidden="true" tabindex="-1"></a>our sample.</span>
-<span id="cb46-424"><a href="#cb46-424" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-425"><a href="#cb46-425" aria-hidden="true" tabindex="-1"></a>These findings support our hypothesis that toddlers seek out tasks to</span>
-<span id="cb46-426"><a href="#cb46-426" aria-hidden="true" tabindex="-1"></a>explore their own abilities, similar to how they explore to understand</span>
-<span id="cb46-427"><a href="#cb46-427" aria-hidden="true" tabindex="-1"></a>the physical world around them.</span>
+<span id="cb46-383"><a href="#cb46-383" aria-hidden="true" tabindex="-1"></a><span class="fu">### Simple Logistic Regression with an Intercept Only</span></span>
+<span id="cb46-384"><a href="#cb46-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-385"><a href="#cb46-385" aria-hidden="true" tabindex="-1"></a>Let's start with a simple model that just estimates the overall tendency</span>
+<span id="cb46-386"><a href="#cb46-386" aria-hidden="true" tabindex="-1"></a>to approach the confounded toy:</span>
+<span id="cb46-387"><a href="#cb46-387" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-388"><a href="#cb46-388" aria-hidden="true" tabindex="-1"></a><span class="in">```{r model1}</span></span>
+<span id="cb46-389"><a href="#cb46-389" aria-hidden="true" tabindex="-1"></a><span class="in"># Simple logistic regression model with just an intercept</span></span>
+<span id="cb46-390"><a href="#cb46-390" aria-hidden="true" tabindex="-1"></a><span class="in">model1 &lt;- glmer(approach_confounded ~ 1 + (1|subject_id), </span></span>
+<span id="cb46-391"><a href="#cb46-391" aria-hidden="true" tabindex="-1"></a><span class="in">                family = binomial(link = "logit"), </span></span>
+<span id="cb46-392"><a href="#cb46-392" aria-hidden="true" tabindex="-1"></a><span class="in">                data = analysis_data)</span></span>
+<span id="cb46-393"><a href="#cb46-393" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-394"><a href="#cb46-394" aria-hidden="true" tabindex="-1"></a><span class="in">summary(model1)</span></span>
+<span id="cb46-395"><a href="#cb46-395" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb46-396"><a href="#cb46-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-397"><a href="#cb46-397" aria-hidden="true" tabindex="-1"></a>In this model:</span>
+<span id="cb46-398"><a href="#cb46-398" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-399"><a href="#cb46-399" aria-hidden="true" tabindex="-1"></a>The formula ‘approach_confounded \~ 1 + (1\|subject_id)’ specifies:</span>
+<span id="cb46-400"><a href="#cb46-400" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-401"><a href="#cb46-401" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>approach_confounded is our binary outcome</span>
+<span id="cb46-402"><a href="#cb46-402" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>\~ 1 means we're only estimating an intercept (no predictors)</span>
+<span id="cb46-403"><a href="#cb46-403" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span></span>
+<span id="cb46-404"><a href="#cb46-404" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>(1\|subject_id) adds a random intercept for each subject to</span>
+<span id="cb46-405"><a href="#cb46-405" aria-hidden="true" tabindex="-1"></a>        account for repeated measures</span>
+<span id="cb46-406"><a href="#cb46-406" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>family = binomial(link = "logit") specifies that we're using</span>
+<span id="cb46-407"><a href="#cb46-407" aria-hidden="true" tabindex="-1"></a>    logistic regression</span>
+<span id="cb46-408"><a href="#cb46-408" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-409"><a href="#cb46-409" aria-hidden="true" tabindex="-1"></a>The intercept coefficient represents the log odds of approaching the</span>
+<span id="cb46-410"><a href="#cb46-410" aria-hidden="true" tabindex="-1"></a>confounded toy. Let's convert this to a probability and odds ratio:</span>
+<span id="cb46-411"><a href="#cb46-411" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-414"><a href="#cb46-414" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb46-415"><a href="#cb46-415" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the fixed effect (intercept)</span></span>
+<span id="cb46-416"><a href="#cb46-416" aria-hidden="true" tabindex="-1"></a>intercept <span class="ot">&lt;-</span> <span class="fu">fixef</span>(model1)[<span class="dv">1</span>]</span>
+<span id="cb46-417"><a href="#cb46-417" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-418"><a href="#cb46-418" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert log odds to probability</span></span>
+<span id="cb46-419"><a href="#cb46-419" aria-hidden="true" tabindex="-1"></a>probability <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span>intercept))</span>
+<span id="cb46-420"><a href="#cb46-420" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Probability of approaching the confounded toy:"</span>, probability, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb46-421"><a href="#cb46-421" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-422"><a href="#cb46-422" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to odds ratio</span></span>
+<span id="cb46-423"><a href="#cb46-423" aria-hidden="true" tabindex="-1"></a>odds_ratio <span class="ot">&lt;-</span> <span class="fu">exp</span>(intercept)</span>
+<span id="cb46-424"><a href="#cb46-424" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Odds ratio:"</span>, odds_ratio, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb46-425"><a href="#cb46-425" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"This means the odds of approaching the confounded toy are"</span>, </span>
+<span id="cb46-426"><a href="#cb46-426" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(odds_ratio, <span class="dv">2</span>), <span class="st">"times higher than approaching the unconfounded toy"</span>)</span>
+<span id="cb46-427"><a href="#cb46-427" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb46-428"><a href="#cb46-428" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-429"><a href="#cb46-429" aria-hidden="true" tabindex="-1"></a><span class="fu">## 5. Model Evaluation and Selection</span></span>
+<span id="cb46-429"><a href="#cb46-429" aria-hidden="true" tabindex="-1"></a><span class="fu">### Adding Age as a Predictor (Multiple Logistic Regression)</span></span>
 <span id="cb46-430"><a href="#cb46-430" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-431"><a href="#cb46-431" aria-hidden="true" tabindex="-1"></a>How do we know which model best explains our data? Let's explore several</span>
-<span id="cb46-432"><a href="#cb46-432" aria-hidden="true" tabindex="-1"></a>methods for comparing our models.</span>
+<span id="cb46-431"><a href="#cb46-431" aria-hidden="true" tabindex="-1"></a>Next, let's add age as a predictor to see if older children are more or</span>
+<span id="cb46-432"><a href="#cb46-432" aria-hidden="true" tabindex="-1"></a>less likely to approach the confounded toy:</span>
 <span id="cb46-433"><a href="#cb46-433" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-434"><a href="#cb46-434" aria-hidden="true" tabindex="-1"></a><span class="fu">### Assessing Model Fit with Information Criteria</span></span>
-<span id="cb46-435"><a href="#cb46-435" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-436"><a href="#cb46-436" aria-hidden="true" tabindex="-1"></a>First, we can compare models using information criteria such as AIC</span>
-<span id="cb46-437"><a href="#cb46-437" aria-hidden="true" tabindex="-1"></a>(Akaike Information Criterion) and BIC (Bayesian Information Criterion):</span>
-<span id="cb46-438"><a href="#cb46-438" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-441"><a href="#cb46-441" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb46-442"><a href="#cb46-442" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare models using AIC and BIC</span></span>
-<span id="cb46-443"><a href="#cb46-443" aria-hidden="true" tabindex="-1"></a>aic_values <span class="ot">&lt;-</span> <span class="fu">AIC</span>(model1, model2)</span>
-<span id="cb46-444"><a href="#cb46-444" aria-hidden="true" tabindex="-1"></a>bic_values <span class="ot">&lt;-</span> <span class="fu">BIC</span>(model1, model2)</span>
-<span id="cb46-445"><a href="#cb46-445" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-446"><a href="#cb46-446" aria-hidden="true" tabindex="-1"></a>comparison_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb46-447"><a href="#cb46-447" aria-hidden="true" tabindex="-1"></a>  <span class="at">Model =</span> <span class="fu">c</span>(<span class="st">"Intercept Only"</span>, <span class="st">"Age"</span>),</span>
-<span id="cb46-448"><a href="#cb46-448" aria-hidden="true" tabindex="-1"></a>  <span class="at">AIC =</span> aic_values<span class="sc">$</span>AIC,</span>
-<span id="cb46-449"><a href="#cb46-449" aria-hidden="true" tabindex="-1"></a>  <span class="at">BIC =</span> bic_values<span class="sc">$</span>BIC,</span>
-<span id="cb46-450"><a href="#cb46-450" aria-hidden="true" tabindex="-1"></a>  <span class="at">df =</span> <span class="fu">c</span>(<span class="fu">attr</span>(<span class="fu">logLik</span>(model1), <span class="st">"df"</span>), <span class="fu">attr</span>(<span class="fu">logLik</span>(model2), <span class="st">"df"</span>))</span>
-<span id="cb46-451"><a href="#cb46-451" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb46-452"><a href="#cb46-452" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-453"><a href="#cb46-453" aria-hidden="true" tabindex="-1"></a>comparison_df</span>
-<span id="cb46-454"><a href="#cb46-454" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-455"><a href="#cb46-455" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-456"><a href="#cb46-456" aria-hidden="true" tabindex="-1"></a>Lower AIC and BIC values indicate better model fit, with a penalty for</span>
-<span id="cb46-457"><a href="#cb46-457" aria-hidden="true" tabindex="-1"></a>model complexity. The difference in AIC values can be interpreted as</span>
-<span id="cb46-458"><a href="#cb46-458" aria-hidden="true" tabindex="-1"></a>follows:</span>
+<span id="cb46-434"><a href="#cb46-434" aria-hidden="true" tabindex="-1"></a><span class="in">```{r model2}</span></span>
+<span id="cb46-435"><a href="#cb46-435" aria-hidden="true" tabindex="-1"></a><span class="in"># Logistic regression model with age as predictor</span></span>
+<span id="cb46-436"><a href="#cb46-436" aria-hidden="true" tabindex="-1"></a><span class="in">model2 &lt;- glmer(approach_confounded ~ age_centered + (1|subject_id), </span></span>
+<span id="cb46-437"><a href="#cb46-437" aria-hidden="true" tabindex="-1"></a><span class="in">                family = binomial(link = "logit"), </span></span>
+<span id="cb46-438"><a href="#cb46-438" aria-hidden="true" tabindex="-1"></a><span class="in">                data = analysis_data)</span></span>
+<span id="cb46-439"><a href="#cb46-439" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-440"><a href="#cb46-440" aria-hidden="true" tabindex="-1"></a><span class="in">summary(model2)</span></span>
+<span id="cb46-441"><a href="#cb46-441" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb46-442"><a href="#cb46-442" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-443"><a href="#cb46-443" aria-hidden="true" tabindex="-1"></a>In this model, we included age as a continuous predictor. The</span>
+<span id="cb46-444"><a href="#cb46-444" aria-hidden="true" tabindex="-1"></a>coefficient for age represents the change in log odds of approaching the</span>
+<span id="cb46-445"><a href="#cb46-445" aria-hidden="true" tabindex="-1"></a>confounded toy for each additional month of age. The results reveal a</span>
+<span id="cb46-446"><a href="#cb46-446" aria-hidden="true" tabindex="-1"></a>significant tendency for toddlers to approach confounded toys first (β =</span>
+<span id="cb46-447"><a href="#cb46-447" aria-hidden="true" tabindex="-1"></a>0.487, p <span class="sc">\&lt;</span> 0.01), with the odds of selecting a confounded toy being</span>
+<span id="cb46-448"><a href="#cb46-448" aria-hidden="true" tabindex="-1"></a>1.63 times higher than selecting an unconfounded toy. Interestingly, the</span>
+<span id="cb46-449"><a href="#cb46-449" aria-hidden="true" tabindex="-1"></a>age coefficient was negative but not statistically significant (β =</span>
+<span id="cb46-450"><a href="#cb46-450" aria-hidden="true" tabindex="-1"></a>-0.045, p = 0.408), suggesting that this motivation to explore one's own</span>
+<span id="cb46-451"><a href="#cb46-451" aria-hidden="true" tabindex="-1"></a>competence remains relatively stable across the 24-35 month age range in</span>
+<span id="cb46-452"><a href="#cb46-452" aria-hidden="true" tabindex="-1"></a>our sample.</span>
+<span id="cb46-453"><a href="#cb46-453" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-454"><a href="#cb46-454" aria-hidden="true" tabindex="-1"></a>These findings support our hypothesis that toddlers seek out tasks to</span>
+<span id="cb46-455"><a href="#cb46-455" aria-hidden="true" tabindex="-1"></a>explore their own abilities, similar to how they explore to understand</span>
+<span id="cb46-456"><a href="#cb46-456" aria-hidden="true" tabindex="-1"></a>the physical world around them.</span>
+<span id="cb46-457"><a href="#cb46-457" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-458"><a href="#cb46-458" aria-hidden="true" tabindex="-1"></a><span class="fu">## 5. Model Evaluation and Selection</span></span>
 <span id="cb46-459"><a href="#cb46-459" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-460"><a href="#cb46-460" aria-hidden="true" tabindex="-1"></a>Difference of 0-2: Little support for difference between models</span>
-<span id="cb46-461"><a href="#cb46-461" aria-hidden="true" tabindex="-1"></a>Difference of 4-7: Moderate support for the model with lower AIC</span>
-<span id="cb46-462"><a href="#cb46-462" aria-hidden="true" tabindex="-1"></a>Difference <span class="sc">\&gt;</span> 10: Strong support for the model with lower AIC</span>
-<span id="cb46-463"><a href="#cb46-463" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-464"><a href="#cb46-464" aria-hidden="true" tabindex="-1"></a>Looking at our results, the Intercept Only model has an AIC of 188.7851</span>
-<span id="cb46-465"><a href="#cb46-465" aria-hidden="true" tabindex="-1"></a>while the Age model has an AIC of 190.0969, a difference of about 1.31.</span>
-<span id="cb46-466"><a href="#cb46-466" aria-hidden="true" tabindex="-1"></a>This small difference (<span class="sc">\&lt;</span> 2) suggests there is little support for</span>
-<span id="cb46-467"><a href="#cb46-467" aria-hidden="true" tabindex="-1"></a>choosing the Intercept Only model over the Age model, despite it having</span>
-<span id="cb46-468"><a href="#cb46-468" aria-hidden="true" tabindex="-1"></a>a slightly lower AIC. The BIC values tell a similar story, with the</span>
-<span id="cb46-469"><a href="#cb46-469" aria-hidden="true" tabindex="-1"></a>Intercept Only model having a lower BIC (194.6540) compared to the Age</span>
-<span id="cb46-470"><a href="#cb46-470" aria-hidden="true" tabindex="-1"></a>model (198.9003), but the difference is still relatively small.</span>
-<span id="cb46-471"><a href="#cb46-471" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-472"><a href="#cb46-472" aria-hidden="true" tabindex="-1"></a>In a nutshell, adding age to the model did not improve the better.</span>
-<span id="cb46-473"><a href="#cb46-473" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-474"><a href="#cb46-474" aria-hidden="true" tabindex="-1"></a><span class="fu">### Comparing Nested Models with Likelihood Ratio Tests</span></span>
-<span id="cb46-475"><a href="#cb46-475" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-476"><a href="#cb46-476" aria-hidden="true" tabindex="-1"></a>We can formally compare nested models using likelihood ratio tests:</span>
-<span id="cb46-477"><a href="#cb46-477" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-478"><a href="#cb46-478" aria-hidden="true" tabindex="-1"></a><span class="in">```{r compare-models}</span></span>
-<span id="cb46-479"><a href="#cb46-479" aria-hidden="true" tabindex="-1"></a><span class="in"># Test if adding age improves the model</span></span>
-<span id="cb46-480"><a href="#cb46-480" aria-hidden="true" tabindex="-1"></a><span class="in">anova(model1, model2)</span></span>
+<span id="cb46-460"><a href="#cb46-460" aria-hidden="true" tabindex="-1"></a>How do we know which model best explains our data? Let's explore several</span>
+<span id="cb46-461"><a href="#cb46-461" aria-hidden="true" tabindex="-1"></a>methods for comparing our models.</span>
+<span id="cb46-462"><a href="#cb46-462" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-463"><a href="#cb46-463" aria-hidden="true" tabindex="-1"></a><span class="fu">### Assessing Model Fit with Information Criteria</span></span>
+<span id="cb46-464"><a href="#cb46-464" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-465"><a href="#cb46-465" aria-hidden="true" tabindex="-1"></a>First, we can compare models using information criteria such as AIC</span>
+<span id="cb46-466"><a href="#cb46-466" aria-hidden="true" tabindex="-1"></a>(Akaike Information Criterion) and BIC (Bayesian Information Criterion):</span>
+<span id="cb46-467"><a href="#cb46-467" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-470"><a href="#cb46-470" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb46-471"><a href="#cb46-471" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare models using AIC and BIC</span></span>
+<span id="cb46-472"><a href="#cb46-472" aria-hidden="true" tabindex="-1"></a>aic_values <span class="ot">&lt;-</span> <span class="fu">AIC</span>(model1, model2)</span>
+<span id="cb46-473"><a href="#cb46-473" aria-hidden="true" tabindex="-1"></a>bic_values <span class="ot">&lt;-</span> <span class="fu">BIC</span>(model1, model2)</span>
+<span id="cb46-474"><a href="#cb46-474" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-475"><a href="#cb46-475" aria-hidden="true" tabindex="-1"></a>comparison_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb46-476"><a href="#cb46-476" aria-hidden="true" tabindex="-1"></a>  <span class="at">Model =</span> <span class="fu">c</span>(<span class="st">"Intercept Only"</span>, <span class="st">"Age"</span>),</span>
+<span id="cb46-477"><a href="#cb46-477" aria-hidden="true" tabindex="-1"></a>  <span class="at">AIC =</span> aic_values<span class="sc">$</span>AIC,</span>
+<span id="cb46-478"><a href="#cb46-478" aria-hidden="true" tabindex="-1"></a>  <span class="at">BIC =</span> bic_values<span class="sc">$</span>BIC,</span>
+<span id="cb46-479"><a href="#cb46-479" aria-hidden="true" tabindex="-1"></a>  <span class="at">df =</span> <span class="fu">c</span>(<span class="fu">attr</span>(<span class="fu">logLik</span>(model1), <span class="st">"df"</span>), <span class="fu">attr</span>(<span class="fu">logLik</span>(model2), <span class="st">"df"</span>))</span>
+<span id="cb46-480"><a href="#cb46-480" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb46-481"><a href="#cb46-481" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-482"><a href="#cb46-482" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-483"><a href="#cb46-483" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-484"><a href="#cb46-484" aria-hidden="true" tabindex="-1"></a>The test produces a chi-square statistic of 0.6882 with 1 degree of</span>
-<span id="cb46-485"><a href="#cb46-485" aria-hidden="true" tabindex="-1"></a>freedom (corresponding to the one additional parameter in model2). The</span>
-<span id="cb46-486"><a href="#cb46-486" aria-hidden="true" tabindex="-1"></a>p-value is 0.4068, which is not statistically significant (p <span class="sc">\&gt;</span> 0.05)</span>
-<span id="cb46-487"><a href="#cb46-487" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-488"><a href="#cb46-488" aria-hidden="true" tabindex="-1"></a>This non-significant result indicates that adding age as a predictor</span>
-<span id="cb46-489"><a href="#cb46-489" aria-hidden="true" tabindex="-1"></a>does not significantly improve the model fit compared to the</span>
-<span id="cb46-490"><a href="#cb46-490" aria-hidden="true" tabindex="-1"></a>intercept-only model. In other words, the data does not provide strong</span>
-<span id="cb46-491"><a href="#cb46-491" aria-hidden="true" tabindex="-1"></a>evidence that a child's age significantly predicts whether they will</span>
-<span id="cb46-492"><a href="#cb46-492" aria-hidden="true" tabindex="-1"></a>approach the confounded toy first.</span>
-<span id="cb46-493"><a href="#cb46-493" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-494"><a href="#cb46-494" aria-hidden="true" tabindex="-1"></a><span class="fu">### Classification Performance with ROC Curves</span></span>
-<span id="cb46-495"><a href="#cb46-495" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-496"><a href="#cb46-496" aria-hidden="true" tabindex="-1"></a>ROC curves provide a visual way to evaluate classification performance</span>
-<span id="cb46-497"><a href="#cb46-497" aria-hidden="true" tabindex="-1"></a>across different thresholds. The Area Under the Curve (AUC) summarizes</span>
-<span id="cb46-498"><a href="#cb46-498" aria-hidden="true" tabindex="-1"></a>the overall discrimination ability of the model, with values closer to 1</span>
-<span id="cb46-499"><a href="#cb46-499" aria-hidden="true" tabindex="-1"></a>indicating better performance:</span>
+<span id="cb46-482"><a href="#cb46-482" aria-hidden="true" tabindex="-1"></a>comparison_df</span>
+<span id="cb46-483"><a href="#cb46-483" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb46-484"><a href="#cb46-484" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-485"><a href="#cb46-485" aria-hidden="true" tabindex="-1"></a>Lower AIC and BIC values indicate better model fit, with a penalty for</span>
+<span id="cb46-486"><a href="#cb46-486" aria-hidden="true" tabindex="-1"></a>model complexity. The difference in AIC values can be interpreted as</span>
+<span id="cb46-487"><a href="#cb46-487" aria-hidden="true" tabindex="-1"></a>follows:</span>
+<span id="cb46-488"><a href="#cb46-488" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-489"><a href="#cb46-489" aria-hidden="true" tabindex="-1"></a>Difference of 0-2: Little support for difference between models</span>
+<span id="cb46-490"><a href="#cb46-490" aria-hidden="true" tabindex="-1"></a>Difference of 4-7: Moderate support for the model with lower AIC</span>
+<span id="cb46-491"><a href="#cb46-491" aria-hidden="true" tabindex="-1"></a>Difference <span class="sc">\&gt;</span> 10: Strong support for the model with lower AIC</span>
+<span id="cb46-492"><a href="#cb46-492" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-493"><a href="#cb46-493" aria-hidden="true" tabindex="-1"></a>Looking at our results, the Intercept Only model has an AIC of 188.7851</span>
+<span id="cb46-494"><a href="#cb46-494" aria-hidden="true" tabindex="-1"></a>while the Age model has an AIC of 190.0969, a difference of about 1.31.</span>
+<span id="cb46-495"><a href="#cb46-495" aria-hidden="true" tabindex="-1"></a>This small difference (<span class="sc">\&lt;</span> 2) suggests there is little support for</span>
+<span id="cb46-496"><a href="#cb46-496" aria-hidden="true" tabindex="-1"></a>choosing the Intercept Only model over the Age model, despite it having</span>
+<span id="cb46-497"><a href="#cb46-497" aria-hidden="true" tabindex="-1"></a>a slightly lower AIC. The BIC values tell a similar story, with the</span>
+<span id="cb46-498"><a href="#cb46-498" aria-hidden="true" tabindex="-1"></a>Intercept Only model having a lower BIC (194.6540) compared to the Age</span>
+<span id="cb46-499"><a href="#cb46-499" aria-hidden="true" tabindex="-1"></a>model (198.9003), but the difference is still relatively small.</span>
 <span id="cb46-500"><a href="#cb46-500" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-503"><a href="#cb46-503" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb46-504"><a href="#cb46-504" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate ROC curves for both models</span></span>
-<span id="cb46-505"><a href="#cb46-505" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pROC)</span>
-<span id="cb46-506"><a href="#cb46-506" aria-hidden="true" tabindex="-1"></a>roc1 <span class="ot">&lt;-</span> <span class="fu">roc</span>(analysis_data<span class="sc">$</span>approach_confounded, <span class="fu">fitted</span>(model1))</span>
-<span id="cb46-507"><a href="#cb46-507" aria-hidden="true" tabindex="-1"></a>roc2 <span class="ot">&lt;-</span> <span class="fu">roc</span>(analysis_data<span class="sc">$</span>approach_confounded, <span class="fu">fitted</span>(model2))</span>
-<span id="cb46-508"><a href="#cb46-508" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-509"><a href="#cb46-509" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot ROC curves</span></span>
-<span id="cb46-510"><a href="#cb46-510" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(roc1, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">main =</span> <span class="st">"ROC Curves for Model Comparison"</span>,</span>
-<span id="cb46-511"><a href="#cb46-511" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"False Positive Rate (1-Specificity)"</span>, </span>
-<span id="cb46-512"><a href="#cb46-512" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"True Positive Rate (Sensitivity)"</span>)</span>
-<span id="cb46-513"><a href="#cb46-513" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(roc2, <span class="at">col =</span> <span class="st">"red"</span>)</span>
-<span id="cb46-514"><a href="#cb46-514" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"bottomright"</span>, </span>
-<span id="cb46-515"><a href="#cb46-515" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="fu">paste</span>(<span class="st">"Model 1 (Intercept Only), AUC ="</span>, <span class="fu">round</span>(<span class="fu">auc</span>(roc1), <span class="dv">3</span>)), </span>
-<span id="cb46-516"><a href="#cb46-516" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">paste</span>(<span class="st">"Model 2 (Age), AUC ="</span>, <span class="fu">round</span>(<span class="fu">auc</span>(roc2), <span class="dv">3</span>))),</span>
-<span id="cb46-517"><a href="#cb46-517" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>), <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb46-518"><a href="#cb46-518" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-519"><a href="#cb46-519" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare AUC values</span></span>
-<span id="cb46-520"><a href="#cb46-520" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Model 1 AUC:"</span>, <span class="fu">round</span>(<span class="fu">auc</span>(roc1), <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb46-521"><a href="#cb46-521" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Model 2 AUC:"</span>, <span class="fu">round</span>(<span class="fu">auc</span>(roc2), <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb46-522"><a href="#cb46-522" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-523"><a href="#cb46-523" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-524"><a href="#cb46-524" aria-hidden="true" tabindex="-1"></a>The graph shows the ROC curves for both models:</span>
-<span id="cb46-525"><a href="#cb46-525" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-526"><a href="#cb46-526" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The blue line represents Model 1 (Intercept Only)</span>
-<span id="cb46-527"><a href="#cb46-527" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The red line represents Model 2 (Age)</span>
-<span id="cb46-528"><a href="#cb46-528" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-529"><a href="#cb46-529" aria-hidden="true" tabindex="-1"></a>Model 1 has an AUC of 0.5, which indicates it has no discriminative</span>
-<span id="cb46-530"><a href="#cb46-530" aria-hidden="true" tabindex="-1"></a>ability beyond random chance. This makes sense for an intercept-only</span>
-<span id="cb46-531"><a href="#cb46-531" aria-hidden="true" tabindex="-1"></a>model, as it assigns the same probability to all observations regardless</span>
-<span id="cb46-532"><a href="#cb46-532" aria-hidden="true" tabindex="-1"></a>of their characteristics. Model 2 has an AUC of 0.541, which is only</span>
-<span id="cb46-533"><a href="#cb46-533" aria-hidden="true" tabindex="-1"></a>marginally better than random chance (0.5). This slight improvement</span>
-<span id="cb46-534"><a href="#cb46-534" aria-hidden="true" tabindex="-1"></a>suggests that adding age as a predictor provides very minimal</span>
-<span id="cb46-535"><a href="#cb46-535" aria-hidden="true" tabindex="-1"></a>enhancement in classification performance.</span>
-<span id="cb46-536"><a href="#cb46-536" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-537"><a href="#cb46-537" aria-hidden="true" tabindex="-1"></a>This result is consistent with our AIC and BIC comparison, which also</span>
-<span id="cb46-538"><a href="#cb46-538" aria-hidden="true" tabindex="-1"></a>suggested that the additional complexity of including age as a predictor</span>
-<span id="cb46-539"><a href="#cb46-539" aria-hidden="true" tabindex="-1"></a>was not justified by a sufficient improvement in model fit.</span>
-<span id="cb46-540"><a href="#cb46-540" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-541"><a href="#cb46-541" aria-hidden="true" tabindex="-1"></a>When all of these model comparison methods point to the same conclusion,</span>
-<span id="cb46-542"><a href="#cb46-542" aria-hidden="true" tabindex="-1"></a>we can be more confident in our model selection decision.</span>
-<span id="cb46-543"><a href="#cb46-543" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-544"><a href="#cb46-544" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6. Visualizing Results</span></span>
-<span id="cb46-545"><a href="#cb46-545" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-546"><a href="#cb46-546" aria-hidden="true" tabindex="-1"></a><span class="fu">### Plotting Intercept-Only Model (Model 1)</span></span>
+<span id="cb46-501"><a href="#cb46-501" aria-hidden="true" tabindex="-1"></a>In a nutshell, adding age to the model did not improve the better.</span>
+<span id="cb46-502"><a href="#cb46-502" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-503"><a href="#cb46-503" aria-hidden="true" tabindex="-1"></a><span class="fu">### Comparing Nested Models with Likelihood Ratio Tests</span></span>
+<span id="cb46-504"><a href="#cb46-504" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-505"><a href="#cb46-505" aria-hidden="true" tabindex="-1"></a>We can formally compare nested models using likelihood ratio tests:</span>
+<span id="cb46-506"><a href="#cb46-506" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-507"><a href="#cb46-507" aria-hidden="true" tabindex="-1"></a><span class="in">```{r compare-models}</span></span>
+<span id="cb46-508"><a href="#cb46-508" aria-hidden="true" tabindex="-1"></a><span class="in"># Test if adding age improves the model</span></span>
+<span id="cb46-509"><a href="#cb46-509" aria-hidden="true" tabindex="-1"></a><span class="in">anova(model1, model2)</span></span>
+<span id="cb46-510"><a href="#cb46-510" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-511"><a href="#cb46-511" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb46-512"><a href="#cb46-512" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-513"><a href="#cb46-513" aria-hidden="true" tabindex="-1"></a>The test produces a chi-square statistic of 0.6882 with 1 degree of</span>
+<span id="cb46-514"><a href="#cb46-514" aria-hidden="true" tabindex="-1"></a>freedom (corresponding to the one additional parameter in model2). The</span>
+<span id="cb46-515"><a href="#cb46-515" aria-hidden="true" tabindex="-1"></a>p-value is 0.4068, which is not statistically significant (p <span class="sc">\&gt;</span> 0.05)</span>
+<span id="cb46-516"><a href="#cb46-516" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-517"><a href="#cb46-517" aria-hidden="true" tabindex="-1"></a>This non-significant result indicates that adding age as a predictor</span>
+<span id="cb46-518"><a href="#cb46-518" aria-hidden="true" tabindex="-1"></a>does not significantly improve the model fit compared to the</span>
+<span id="cb46-519"><a href="#cb46-519" aria-hidden="true" tabindex="-1"></a>intercept-only model. In other words, the data does not provide strong</span>
+<span id="cb46-520"><a href="#cb46-520" aria-hidden="true" tabindex="-1"></a>evidence that a child's age significantly predicts whether they will</span>
+<span id="cb46-521"><a href="#cb46-521" aria-hidden="true" tabindex="-1"></a>approach the confounded toy first.</span>
+<span id="cb46-522"><a href="#cb46-522" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-523"><a href="#cb46-523" aria-hidden="true" tabindex="-1"></a><span class="fu">### Classification Performance with ROC Curves</span></span>
+<span id="cb46-524"><a href="#cb46-524" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-525"><a href="#cb46-525" aria-hidden="true" tabindex="-1"></a>ROC curves provide a visual way to evaluate classification performance</span>
+<span id="cb46-526"><a href="#cb46-526" aria-hidden="true" tabindex="-1"></a>across different thresholds. The Area Under the Curve (AUC) summarizes</span>
+<span id="cb46-527"><a href="#cb46-527" aria-hidden="true" tabindex="-1"></a>the overall discrimination ability of the model, with values closer to 1</span>
+<span id="cb46-528"><a href="#cb46-528" aria-hidden="true" tabindex="-1"></a>indicating better performance:</span>
+<span id="cb46-529"><a href="#cb46-529" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-532"><a href="#cb46-532" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb46-533"><a href="#cb46-533" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate ROC curves for both models</span></span>
+<span id="cb46-534"><a href="#cb46-534" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pROC)</span>
+<span id="cb46-535"><a href="#cb46-535" aria-hidden="true" tabindex="-1"></a>roc1 <span class="ot">&lt;-</span> <span class="fu">roc</span>(analysis_data<span class="sc">$</span>approach_confounded, <span class="fu">fitted</span>(model1))</span>
+<span id="cb46-536"><a href="#cb46-536" aria-hidden="true" tabindex="-1"></a>roc2 <span class="ot">&lt;-</span> <span class="fu">roc</span>(analysis_data<span class="sc">$</span>approach_confounded, <span class="fu">fitted</span>(model2))</span>
+<span id="cb46-537"><a href="#cb46-537" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-538"><a href="#cb46-538" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot ROC curves</span></span>
+<span id="cb46-539"><a href="#cb46-539" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(roc1, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">main =</span> <span class="st">"ROC Curves for Model Comparison"</span>,</span>
+<span id="cb46-540"><a href="#cb46-540" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"False Positive Rate (1-Specificity)"</span>, </span>
+<span id="cb46-541"><a href="#cb46-541" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"True Positive Rate (Sensitivity)"</span>)</span>
+<span id="cb46-542"><a href="#cb46-542" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(roc2, <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb46-543"><a href="#cb46-543" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"bottomright"</span>, </span>
+<span id="cb46-544"><a href="#cb46-544" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="fu">paste</span>(<span class="st">"Model 1 (Intercept Only), AUC ="</span>, <span class="fu">round</span>(<span class="fu">auc</span>(roc1), <span class="dv">3</span>)), </span>
+<span id="cb46-545"><a href="#cb46-545" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">paste</span>(<span class="st">"Model 2 (Age), AUC ="</span>, <span class="fu">round</span>(<span class="fu">auc</span>(roc2), <span class="dv">3</span>))),</span>
+<span id="cb46-546"><a href="#cb46-546" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>), <span class="at">lwd =</span> <span class="dv">2</span>)</span>
 <span id="cb46-547"><a href="#cb46-547" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-550"><a href="#cb46-550" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb46-551"><a href="#cb46-551" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the fixed effect (intercept)</span></span>
-<span id="cb46-552"><a href="#cb46-552" aria-hidden="true" tabindex="-1"></a>intercept <span class="ot">&lt;-</span> <span class="fu">fixef</span>(model1)[<span class="dv">1</span>]</span>
-<span id="cb46-553"><a href="#cb46-553" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-554"><a href="#cb46-554" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert log odds to probability</span></span>
-<span id="cb46-555"><a href="#cb46-555" aria-hidden="true" tabindex="-1"></a>probability <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span>intercept))</span>
-<span id="cb46-556"><a href="#cb46-556" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-557"><a href="#cb46-557" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a simple visualization of the intercept model</span></span>
-<span id="cb46-558"><a href="#cb46-558" aria-hidden="true" tabindex="-1"></a>intercept_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb46-559"><a href="#cb46-559" aria-hidden="true" tabindex="-1"></a>  <span class="at">Model =</span> <span class="st">"Intercept Only"</span>,</span>
-<span id="cb46-560"><a href="#cb46-560" aria-hidden="true" tabindex="-1"></a>  <span class="at">Probability =</span> probability</span>
-<span id="cb46-561"><a href="#cb46-561" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb46-562"><a href="#cb46-562" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-563"><a href="#cb46-563" aria-hidden="true" tabindex="-1"></a><span class="co"># Add confidence interval</span></span>
-<span id="cb46-564"><a href="#cb46-564" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract variance of random effect</span></span>
-<span id="cb46-565"><a href="#cb46-565" aria-hidden="true" tabindex="-1"></a>random_effect_var <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">VarCorr</span>(model1))<span class="sc">$</span>vcov[<span class="dv">1</span>]</span>
-<span id="cb46-566"><a href="#cb46-566" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate standard error</span></span>
-<span id="cb46-567"><a href="#cb46-567" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(random_effect_var)</span>
-<span id="cb46-568"><a href="#cb46-568" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate 95% confidence interval</span></span>
-<span id="cb46-569"><a href="#cb46-569" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)  <span class="co"># 1.96 for 95% CI</span></span>
-<span id="cb46-570"><a href="#cb46-570" aria-hidden="true" tabindex="-1"></a>lower_ci <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span>(intercept <span class="sc">-</span> z<span class="sc">*</span>se)))</span>
-<span id="cb46-571"><a href="#cb46-571" aria-hidden="true" tabindex="-1"></a>upper_ci <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span>(intercept <span class="sc">+</span> z<span class="sc">*</span>se)))</span>
+<span id="cb46-548"><a href="#cb46-548" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare AUC values</span></span>
+<span id="cb46-549"><a href="#cb46-549" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Model 1 AUC:"</span>, <span class="fu">round</span>(<span class="fu">auc</span>(roc1), <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb46-550"><a href="#cb46-550" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Model 2 AUC:"</span>, <span class="fu">round</span>(<span class="fu">auc</span>(roc2), <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb46-551"><a href="#cb46-551" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb46-552"><a href="#cb46-552" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-553"><a href="#cb46-553" aria-hidden="true" tabindex="-1"></a>The graph shows the ROC curves for both models:</span>
+<span id="cb46-554"><a href="#cb46-554" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-555"><a href="#cb46-555" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The blue line represents Model 1 (Intercept Only)</span>
+<span id="cb46-556"><a href="#cb46-556" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The red line represents Model 2 (Age)</span>
+<span id="cb46-557"><a href="#cb46-557" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-558"><a href="#cb46-558" aria-hidden="true" tabindex="-1"></a>Model 1 has an AUC of 0.5, which indicates it has no discriminative</span>
+<span id="cb46-559"><a href="#cb46-559" aria-hidden="true" tabindex="-1"></a>ability beyond random chance. This makes sense for an intercept-only</span>
+<span id="cb46-560"><a href="#cb46-560" aria-hidden="true" tabindex="-1"></a>model, as it assigns the same probability to all observations regardless</span>
+<span id="cb46-561"><a href="#cb46-561" aria-hidden="true" tabindex="-1"></a>of their characteristics. Model 2 has an AUC of 0.541, which is only</span>
+<span id="cb46-562"><a href="#cb46-562" aria-hidden="true" tabindex="-1"></a>marginally better than random chance (0.5). This slight improvement</span>
+<span id="cb46-563"><a href="#cb46-563" aria-hidden="true" tabindex="-1"></a>suggests that adding age as a predictor provides very minimal</span>
+<span id="cb46-564"><a href="#cb46-564" aria-hidden="true" tabindex="-1"></a>enhancement in classification performance.</span>
+<span id="cb46-565"><a href="#cb46-565" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-566"><a href="#cb46-566" aria-hidden="true" tabindex="-1"></a>This result is consistent with our AIC and BIC comparison, which also</span>
+<span id="cb46-567"><a href="#cb46-567" aria-hidden="true" tabindex="-1"></a>suggested that the additional complexity of including age as a predictor</span>
+<span id="cb46-568"><a href="#cb46-568" aria-hidden="true" tabindex="-1"></a>was not justified by a sufficient improvement in model fit.</span>
+<span id="cb46-569"><a href="#cb46-569" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-570"><a href="#cb46-570" aria-hidden="true" tabindex="-1"></a>When all of these model comparison methods point to the same conclusion,</span>
+<span id="cb46-571"><a href="#cb46-571" aria-hidden="true" tabindex="-1"></a>we can be more confident in our model selection decision.</span>
 <span id="cb46-572"><a href="#cb46-572" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-573"><a href="#cb46-573" aria-hidden="true" tabindex="-1"></a><span class="co"># Add to dataframe</span></span>
-<span id="cb46-574"><a href="#cb46-574" aria-hidden="true" tabindex="-1"></a>intercept_data<span class="sc">$</span>lower_ci <span class="ot">&lt;-</span> lower_ci</span>
-<span id="cb46-575"><a href="#cb46-575" aria-hidden="true" tabindex="-1"></a>intercept_data<span class="sc">$</span>upper_ci <span class="ot">&lt;-</span> upper_ci</span>
+<span id="cb46-573"><a href="#cb46-573" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6. Visualizing Results</span></span>
+<span id="cb46-574"><a href="#cb46-574" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-575"><a href="#cb46-575" aria-hidden="true" tabindex="-1"></a><span class="fu">### Plotting Intercept-Only Model (Model 1)</span></span>
 <span id="cb46-576"><a href="#cb46-576" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-577"><a href="#cb46-577" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
-<span id="cb46-578"><a href="#cb46-578" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(intercept_data, <span class="fu">aes</span>(<span class="at">x =</span> Model, <span class="at">y =</span> Probability)) <span class="sc">+</span></span>
-<span id="cb46-579"><a href="#cb46-579" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"skyblue"</span>, <span class="at">width =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb46-580"><a href="#cb46-580" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> lower_ci, <span class="at">ymax =</span> upper_ci), <span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb46-581"><a href="#cb46-581" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">0.5</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"darkgray"</span>) <span class="sc">+</span></span>
-<span id="cb46-582"><a href="#cb46-582" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb46-583"><a href="#cb46-583" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Probability of Approaching Confounded Toy (Model 1)"</span>,</span>
-<span id="cb46-584"><a href="#cb46-584" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Intercept-only model with 95% confidence interval"</span>,</span>
-<span id="cb46-585"><a href="#cb46-585" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Probability"</span>,</span>
-<span id="cb46-586"><a href="#cb46-586" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">""</span></span>
-<span id="cb46-587"><a href="#cb46-587" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb46-588"><a href="#cb46-588" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb46-589"><a href="#cb46-589" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb46-590"><a href="#cb46-590" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="fl">0.8</span>, </span>
-<span id="cb46-591"><a href="#cb46-591" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="fu">paste</span>(<span class="st">"Probability ="</span>, <span class="fu">round</span>(probability, <span class="dv">2</span>)))</span>
-<span id="cb46-592"><a href="#cb46-592" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-593"><a href="#cb46-593" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-594"><a href="#cb46-594" aria-hidden="true" tabindex="-1"></a><span class="fu">### Plotting Predicted Probabilities by Age</span></span>
-<span id="cb46-595"><a href="#cb46-595" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-596"><a href="#cb46-596" aria-hidden="true" tabindex="-1"></a><span class="in">```{r plot-age-effect}</span></span>
-<span id="cb46-597"><a href="#cb46-597" aria-hidden="true" tabindex="-1"></a><span class="in"># Create a data frame with ages for prediction</span></span>
-<span id="cb46-598"><a href="#cb46-598" aria-hidden="true" tabindex="-1"></a><span class="in">new_data &lt;- data.frame(</span></span>
-<span id="cb46-599"><a href="#cb46-599" aria-hidden="true" tabindex="-1"></a><span class="in">  age_centered = seq(min(analysis_data$age_centered), </span></span>
-<span id="cb46-600"><a href="#cb46-600" aria-hidden="true" tabindex="-1"></a><span class="in">                    max(analysis_data$age_centered), </span></span>
-<span id="cb46-601"><a href="#cb46-601" aria-hidden="true" tabindex="-1"></a><span class="in">                    length.out = 100),</span></span>
-<span id="cb46-602"><a href="#cb46-602" aria-hidden="true" tabindex="-1"></a><span class="in">  subject_id = NA  # Not used in prediction when re.form = NA</span></span>
-<span id="cb46-603"><a href="#cb46-603" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
-<span id="cb46-604"><a href="#cb46-604" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-605"><a href="#cb46-605" aria-hidden="true" tabindex="-1"></a><span class="in"># Add predicted probabilities</span></span>
-<span id="cb46-606"><a href="#cb46-606" aria-hidden="true" tabindex="-1"></a><span class="in">new_data$predicted_prob &lt;- predict(model2, newdata = new_data, </span></span>
-<span id="cb46-607"><a href="#cb46-607" aria-hidden="true" tabindex="-1"></a><span class="in">                                 re.form = NA, type = "response")</span></span>
-<span id="cb46-608"><a href="#cb46-608" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-609"><a href="#cb46-609" aria-hidden="true" tabindex="-1"></a><span class="in"># Convert age centered back to actual age for plotting</span></span>
-<span id="cb46-610"><a href="#cb46-610" aria-hidden="true" tabindex="-1"></a><span class="in"># First get the mean age from the original dataset</span></span>
-<span id="cb46-611"><a href="#cb46-611" aria-hidden="true" tabindex="-1"></a><span class="in">mean_age &lt;- mean(analysis_data$age)</span></span>
-<span id="cb46-612"><a href="#cb46-612" aria-hidden="true" tabindex="-1"></a><span class="in">new_data$age_in_months &lt;- new_data$age_centered + mean_age</span></span>
-<span id="cb46-613"><a href="#cb46-613" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-614"><a href="#cb46-614" aria-hidden="true" tabindex="-1"></a><span class="in"># Plot</span></span>
-<span id="cb46-615"><a href="#cb46-615" aria-hidden="true" tabindex="-1"></a><span class="in">ggplot(new_data, aes(x = age_in_months, y = predicted_prob)) +</span></span>
-<span id="cb46-616"><a href="#cb46-616" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_line(size = 1, color = "blue") +</span></span>
-<span id="cb46-617"><a href="#cb46-617" aria-hidden="true" tabindex="-1"></a><span class="in">  labs(x = "Age (months)", </span></span>
-<span id="cb46-618"><a href="#cb46-618" aria-hidden="true" tabindex="-1"></a><span class="in">       y = "Probability of Approaching Confounded Toy",</span></span>
-<span id="cb46-619"><a href="#cb46-619" aria-hidden="true" tabindex="-1"></a><span class="in">       title = "Predicted Probability by Age") +</span></span>
-<span id="cb46-620"><a href="#cb46-620" aria-hidden="true" tabindex="-1"></a><span class="in">  theme_minimal() +</span></span>
-<span id="cb46-621"><a href="#cb46-621" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_hline(yintercept = 0.5, linetype = "dashed", color = "darkgray") +</span></span>
-<span id="cb46-622"><a href="#cb46-622" aria-hidden="true" tabindex="-1"></a><span class="in">  ylim(0, 1) +</span></span>
-<span id="cb46-623"><a href="#cb46-623" aria-hidden="true" tabindex="-1"></a><span class="in">  scale_x_continuous(breaks = seq(24, 36, by = 2))</span></span>
-<span id="cb46-624"><a href="#cb46-624" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-625"><a href="#cb46-625" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-626"><a href="#cb46-626" aria-hidden="true" tabindex="-1"></a><span class="fu">## 8. Extended Applications</span></span>
-<span id="cb46-627"><a href="#cb46-627" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-628"><a href="#cb46-628" aria-hidden="true" tabindex="-1"></a>For more complex developmental data, we may need more sophisticated</span>
-<span id="cb46-629"><a href="#cb46-629" aria-hidden="true" tabindex="-1"></a>models.</span>
-<span id="cb46-630"><a href="#cb46-630" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-631"><a href="#cb46-631" aria-hidden="true" tabindex="-1"></a><span class="fu">### Mixed-Effects Logistic Regression for Nested Data</span></span>
-<span id="cb46-632"><a href="#cb46-632" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-633"><a href="#cb46-633" aria-hidden="true" tabindex="-1"></a>The models we've been using already incorporate random effects for</span>
-<span id="cb46-634"><a href="#cb46-634" aria-hidden="true" tabindex="-1"></a>subjects. We can extend this to include random slopes when we have</span>
-<span id="cb46-635"><a href="#cb46-635" aria-hidden="true" tabindex="-1"></a>strong theoretical reasons to believe that the effect of a predictor</span>
-<span id="cb46-636"><a href="#cb46-636" aria-hidden="true" tabindex="-1"></a>varies across participants:</span>
+<span id="cb46-579"><a href="#cb46-579" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb46-580"><a href="#cb46-580" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the fixed effect (intercept)</span></span>
+<span id="cb46-581"><a href="#cb46-581" aria-hidden="true" tabindex="-1"></a>intercept <span class="ot">&lt;-</span> <span class="fu">fixef</span>(model1)[<span class="dv">1</span>]</span>
+<span id="cb46-582"><a href="#cb46-582" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-583"><a href="#cb46-583" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert log odds to probability</span></span>
+<span id="cb46-584"><a href="#cb46-584" aria-hidden="true" tabindex="-1"></a>probability <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span>intercept))</span>
+<span id="cb46-585"><a href="#cb46-585" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-586"><a href="#cb46-586" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a simple visualization of the intercept model</span></span>
+<span id="cb46-587"><a href="#cb46-587" aria-hidden="true" tabindex="-1"></a>intercept_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb46-588"><a href="#cb46-588" aria-hidden="true" tabindex="-1"></a>  <span class="at">Model =</span> <span class="st">"Intercept Only"</span>,</span>
+<span id="cb46-589"><a href="#cb46-589" aria-hidden="true" tabindex="-1"></a>  <span class="at">Probability =</span> probability</span>
+<span id="cb46-590"><a href="#cb46-590" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb46-591"><a href="#cb46-591" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-592"><a href="#cb46-592" aria-hidden="true" tabindex="-1"></a><span class="co"># Add confidence interval</span></span>
+<span id="cb46-593"><a href="#cb46-593" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract variance of random effect</span></span>
+<span id="cb46-594"><a href="#cb46-594" aria-hidden="true" tabindex="-1"></a>random_effect_var <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">VarCorr</span>(model1))<span class="sc">$</span>vcov[<span class="dv">1</span>]</span>
+<span id="cb46-595"><a href="#cb46-595" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate standard error</span></span>
+<span id="cb46-596"><a href="#cb46-596" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(random_effect_var)</span>
+<span id="cb46-597"><a href="#cb46-597" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate 95% confidence interval</span></span>
+<span id="cb46-598"><a href="#cb46-598" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)  <span class="co"># 1.96 for 95% CI</span></span>
+<span id="cb46-599"><a href="#cb46-599" aria-hidden="true" tabindex="-1"></a>lower_ci <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span>(intercept <span class="sc">-</span> z<span class="sc">*</span>se)))</span>
+<span id="cb46-600"><a href="#cb46-600" aria-hidden="true" tabindex="-1"></a>upper_ci <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span>(intercept <span class="sc">+</span> z<span class="sc">*</span>se)))</span>
+<span id="cb46-601"><a href="#cb46-601" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-602"><a href="#cb46-602" aria-hidden="true" tabindex="-1"></a><span class="co"># Add to dataframe</span></span>
+<span id="cb46-603"><a href="#cb46-603" aria-hidden="true" tabindex="-1"></a>intercept_data<span class="sc">$</span>lower_ci <span class="ot">&lt;-</span> lower_ci</span>
+<span id="cb46-604"><a href="#cb46-604" aria-hidden="true" tabindex="-1"></a>intercept_data<span class="sc">$</span>upper_ci <span class="ot">&lt;-</span> upper_ci</span>
+<span id="cb46-605"><a href="#cb46-605" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-606"><a href="#cb46-606" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb46-607"><a href="#cb46-607" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(intercept_data, <span class="fu">aes</span>(<span class="at">x =</span> Model, <span class="at">y =</span> Probability)) <span class="sc">+</span></span>
+<span id="cb46-608"><a href="#cb46-608" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"skyblue"</span>, <span class="at">width =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb46-609"><a href="#cb46-609" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> lower_ci, <span class="at">ymax =</span> upper_ci), <span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb46-610"><a href="#cb46-610" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">0.5</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"darkgray"</span>) <span class="sc">+</span></span>
+<span id="cb46-611"><a href="#cb46-611" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb46-612"><a href="#cb46-612" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Probability of Approaching Confounded Toy (Model 1)"</span>,</span>
+<span id="cb46-613"><a href="#cb46-613" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Intercept-only model with 95% confidence interval"</span>,</span>
+<span id="cb46-614"><a href="#cb46-614" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Probability"</span>,</span>
+<span id="cb46-615"><a href="#cb46-615" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">""</span></span>
+<span id="cb46-616"><a href="#cb46-616" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb46-617"><a href="#cb46-617" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb46-618"><a href="#cb46-618" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb46-619"><a href="#cb46-619" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="fl">0.8</span>, </span>
+<span id="cb46-620"><a href="#cb46-620" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="fu">paste</span>(<span class="st">"Probability ="</span>, <span class="fu">round</span>(probability, <span class="dv">2</span>)))</span>
+<span id="cb46-621"><a href="#cb46-621" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb46-622"><a href="#cb46-622" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-623"><a href="#cb46-623" aria-hidden="true" tabindex="-1"></a><span class="fu">### Plotting Predicted Probabilities by Age</span></span>
+<span id="cb46-624"><a href="#cb46-624" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-625"><a href="#cb46-625" aria-hidden="true" tabindex="-1"></a><span class="in">```{r plot-age-effect}</span></span>
+<span id="cb46-626"><a href="#cb46-626" aria-hidden="true" tabindex="-1"></a><span class="in"># Create a data frame with ages for prediction</span></span>
+<span id="cb46-627"><a href="#cb46-627" aria-hidden="true" tabindex="-1"></a><span class="in">new_data &lt;- data.frame(</span></span>
+<span id="cb46-628"><a href="#cb46-628" aria-hidden="true" tabindex="-1"></a><span class="in">  age_centered = seq(min(analysis_data$age_centered), </span></span>
+<span id="cb46-629"><a href="#cb46-629" aria-hidden="true" tabindex="-1"></a><span class="in">                    max(analysis_data$age_centered), </span></span>
+<span id="cb46-630"><a href="#cb46-630" aria-hidden="true" tabindex="-1"></a><span class="in">                    length.out = 100),</span></span>
+<span id="cb46-631"><a href="#cb46-631" aria-hidden="true" tabindex="-1"></a><span class="in">  subject_id = NA  # Not used in prediction when re.form = NA</span></span>
+<span id="cb46-632"><a href="#cb46-632" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb46-633"><a href="#cb46-633" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-634"><a href="#cb46-634" aria-hidden="true" tabindex="-1"></a><span class="in"># Add predicted probabilities</span></span>
+<span id="cb46-635"><a href="#cb46-635" aria-hidden="true" tabindex="-1"></a><span class="in">new_data$predicted_prob &lt;- predict(model2, newdata = new_data, </span></span>
+<span id="cb46-636"><a href="#cb46-636" aria-hidden="true" tabindex="-1"></a><span class="in">                                 re.form = NA, type = "response")</span></span>
 <span id="cb46-637"><a href="#cb46-637" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-638"><a href="#cb46-638" aria-hidden="true" tabindex="-1"></a><span class="in">```{r random-slopes, eval=FALSE}</span></span>
-<span id="cb46-639"><a href="#cb46-639" aria-hidden="true" tabindex="-1"></a><span class="in"># Random slopes model (if we had a time-varying predictor)</span></span>
-<span id="cb46-640"><a href="#cb46-640" aria-hidden="true" tabindex="-1"></a><span class="in"># model_random_slopes &lt;- glmer(approached_confounded ~ age_centered + </span></span>
-<span id="cb46-641"><a href="#cb46-641" aria-hidden="true" tabindex="-1"></a><span class="in">#                             (1 + time|subject_id), </span></span>
-<span id="cb46-642"><a href="#cb46-642" aria-hidden="true" tabindex="-1"></a><span class="in">#                             family = binomial(link = "logit"), </span></span>
-<span id="cb46-643"><a href="#cb46-643" aria-hidden="true" tabindex="-1"></a><span class="in">#                             data = analysis_data)</span></span>
-<span id="cb46-644"><a href="#cb46-644" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-645"><a href="#cb46-645" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-646"><a href="#cb46-646" aria-hidden="true" tabindex="-1"></a><span class="fu">### Longitudinal Logistic Models</span></span>
-<span id="cb46-647"><a href="#cb46-647" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-648"><a href="#cb46-648" aria-hidden="true" tabindex="-1"></a>For longitudinal data, we can include time as a predictor and account</span>
-<span id="cb46-649"><a href="#cb46-649" aria-hidden="true" tabindex="-1"></a>for repeated measures:</span>
-<span id="cb46-650"><a href="#cb46-650" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-651"><a href="#cb46-651" aria-hidden="true" tabindex="-1"></a><span class="in">```{r longitudinal, eval=FALSE}</span></span>
-<span id="cb46-652"><a href="#cb46-652" aria-hidden="true" tabindex="-1"></a><span class="in"># Longitudinal model (if we had multiple time points)</span></span>
-<span id="cb46-653"><a href="#cb46-653" aria-hidden="true" tabindex="-1"></a><span class="in"># model_longitudinal &lt;- glmer(approached_confounded ~ age_centered * time + </span></span>
-<span id="cb46-654"><a href="#cb46-654" aria-hidden="true" tabindex="-1"></a><span class="in">#                            (time|subject_id), </span></span>
-<span id="cb46-655"><a href="#cb46-655" aria-hidden="true" tabindex="-1"></a><span class="in">#                            family = binomial(link = "logit"), </span></span>
-<span id="cb46-656"><a href="#cb46-656" aria-hidden="true" tabindex="-1"></a><span class="in">#                            data = analysis_data)</span></span>
-<span id="cb46-657"><a href="#cb46-657" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-658"><a href="#cb46-658" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-659"><a href="#cb46-659" aria-hidden="true" tabindex="-1"></a><span class="fu">### Handling Age as a Continuous Predictor</span></span>
-<span id="cb46-660"><a href="#cb46-660" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-661"><a href="#cb46-661" aria-hidden="true" tabindex="-1"></a>When working with age, we might want to test for non-linear effects:</span>
-<span id="cb46-662"><a href="#cb46-662" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-663"><a href="#cb46-663" aria-hidden="true" tabindex="-1"></a><span class="in">```{r age-quadratic}</span></span>
-<span id="cb46-664"><a href="#cb46-664" aria-hidden="true" tabindex="-1"></a><span class="in"># Create squared age term</span></span>
-<span id="cb46-665"><a href="#cb46-665" aria-hidden="true" tabindex="-1"></a><span class="in">analysis_data$age_centered_squared &lt;- analysis_data$age_centered^2</span></span>
+<span id="cb46-638"><a href="#cb46-638" aria-hidden="true" tabindex="-1"></a><span class="in"># Convert age centered back to actual age for plotting</span></span>
+<span id="cb46-639"><a href="#cb46-639" aria-hidden="true" tabindex="-1"></a><span class="in"># First get the mean age from the original dataset</span></span>
+<span id="cb46-640"><a href="#cb46-640" aria-hidden="true" tabindex="-1"></a><span class="in">mean_age &lt;- mean(analysis_data$age)</span></span>
+<span id="cb46-641"><a href="#cb46-641" aria-hidden="true" tabindex="-1"></a><span class="in">new_data$age_in_months &lt;- new_data$age_centered + mean_age</span></span>
+<span id="cb46-642"><a href="#cb46-642" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-643"><a href="#cb46-643" aria-hidden="true" tabindex="-1"></a><span class="in"># Plot</span></span>
+<span id="cb46-644"><a href="#cb46-644" aria-hidden="true" tabindex="-1"></a><span class="in">ggplot(new_data, aes(x = age_in_months, y = predicted_prob)) +</span></span>
+<span id="cb46-645"><a href="#cb46-645" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_line(size = 1, color = "blue") +</span></span>
+<span id="cb46-646"><a href="#cb46-646" aria-hidden="true" tabindex="-1"></a><span class="in">  labs(x = "Age (months)", </span></span>
+<span id="cb46-647"><a href="#cb46-647" aria-hidden="true" tabindex="-1"></a><span class="in">       y = "Probability of Approaching Confounded Toy",</span></span>
+<span id="cb46-648"><a href="#cb46-648" aria-hidden="true" tabindex="-1"></a><span class="in">       title = "Predicted Probability by Age") +</span></span>
+<span id="cb46-649"><a href="#cb46-649" aria-hidden="true" tabindex="-1"></a><span class="in">  theme_minimal() +</span></span>
+<span id="cb46-650"><a href="#cb46-650" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_hline(yintercept = 0.5, linetype = "dashed", color = "darkgray") +</span></span>
+<span id="cb46-651"><a href="#cb46-651" aria-hidden="true" tabindex="-1"></a><span class="in">  ylim(0, 1) +</span></span>
+<span id="cb46-652"><a href="#cb46-652" aria-hidden="true" tabindex="-1"></a><span class="in">  scale_x_continuous(breaks = seq(24, 36, by = 2))</span></span>
+<span id="cb46-653"><a href="#cb46-653" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb46-654"><a href="#cb46-654" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-655"><a href="#cb46-655" aria-hidden="true" tabindex="-1"></a><span class="fu">## 8. Extended Applications</span></span>
+<span id="cb46-656"><a href="#cb46-656" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-657"><a href="#cb46-657" aria-hidden="true" tabindex="-1"></a>For more complex developmental data, we may need more sophisticated</span>
+<span id="cb46-658"><a href="#cb46-658" aria-hidden="true" tabindex="-1"></a>models.</span>
+<span id="cb46-659"><a href="#cb46-659" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-660"><a href="#cb46-660" aria-hidden="true" tabindex="-1"></a><span class="fu">### Mixed-Effects Logistic Regression for Nested Data</span></span>
+<span id="cb46-661"><a href="#cb46-661" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-662"><a href="#cb46-662" aria-hidden="true" tabindex="-1"></a>The models we've been using already incorporate random effects for</span>
+<span id="cb46-663"><a href="#cb46-663" aria-hidden="true" tabindex="-1"></a>subjects. We can extend this to include random slopes when we have</span>
+<span id="cb46-664"><a href="#cb46-664" aria-hidden="true" tabindex="-1"></a>strong theoretical reasons to believe that the effect of a predictor</span>
+<span id="cb46-665"><a href="#cb46-665" aria-hidden="true" tabindex="-1"></a>varies across participants:</span>
 <span id="cb46-666"><a href="#cb46-666" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-667"><a href="#cb46-667" aria-hidden="true" tabindex="-1"></a><span class="in"># Model with quadratic age term</span></span>
-<span id="cb46-668"><a href="#cb46-668" aria-hidden="true" tabindex="-1"></a><span class="in">model_age_quadratic &lt;- glmer(approach_confounded ~ age_centered + </span></span>
-<span id="cb46-669"><a href="#cb46-669" aria-hidden="true" tabindex="-1"></a><span class="in">                            age_centered_squared + (1|subject_id), </span></span>
-<span id="cb46-670"><a href="#cb46-670" aria-hidden="true" tabindex="-1"></a><span class="in">                            family = binomial(link = "logit"), </span></span>
-<span id="cb46-671"><a href="#cb46-671" aria-hidden="true" tabindex="-1"></a><span class="in">                            data = analysis_data)</span></span>
-<span id="cb46-672"><a href="#cb46-672" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-673"><a href="#cb46-673" aria-hidden="true" tabindex="-1"></a><span class="in">summary(model_age_quadratic)</span></span>
-<span id="cb46-674"><a href="#cb46-674" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-675"><a href="#cb46-675" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-676"><a href="#cb46-676" aria-hidden="true" tabindex="-1"></a><span class="fu">## 9. Troubleshooting Common Issues</span></span>
-<span id="cb46-677"><a href="#cb46-677" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-678"><a href="#cb46-678" aria-hidden="true" tabindex="-1"></a><span class="fu">### Sample Size Considerations</span></span>
+<span id="cb46-667"><a href="#cb46-667" aria-hidden="true" tabindex="-1"></a><span class="in">```{r random-slopes, eval=FALSE}</span></span>
+<span id="cb46-668"><a href="#cb46-668" aria-hidden="true" tabindex="-1"></a><span class="in"># Random slopes model (if we had a time-varying predictor)</span></span>
+<span id="cb46-669"><a href="#cb46-669" aria-hidden="true" tabindex="-1"></a><span class="in"># model_random_slopes &lt;- glmer(approached_confounded ~ age_centered + </span></span>
+<span id="cb46-670"><a href="#cb46-670" aria-hidden="true" tabindex="-1"></a><span class="in">#                             (1 + time|subject_id), </span></span>
+<span id="cb46-671"><a href="#cb46-671" aria-hidden="true" tabindex="-1"></a><span class="in">#                             family = binomial(link = "logit"), </span></span>
+<span id="cb46-672"><a href="#cb46-672" aria-hidden="true" tabindex="-1"></a><span class="in">#                             data = analysis_data)</span></span>
+<span id="cb46-673"><a href="#cb46-673" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb46-674"><a href="#cb46-674" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-675"><a href="#cb46-675" aria-hidden="true" tabindex="-1"></a><span class="fu">### Longitudinal Logistic Models</span></span>
+<span id="cb46-676"><a href="#cb46-676" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-677"><a href="#cb46-677" aria-hidden="true" tabindex="-1"></a>For longitudinal data, we can include time as a predictor and account</span>
+<span id="cb46-678"><a href="#cb46-678" aria-hidden="true" tabindex="-1"></a>for repeated measures:</span>
 <span id="cb46-679"><a href="#cb46-679" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-680"><a href="#cb46-680" aria-hidden="true" tabindex="-1"></a>A common rule of thumb is to have at least 10 events per predictor. We</span>
-<span id="cb46-681"><a href="#cb46-681" aria-hidden="true" tabindex="-1"></a>can check this:</span>
-<span id="cb46-682"><a href="#cb46-682" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-683"><a href="#cb46-683" aria-hidden="true" tabindex="-1"></a><span class="in">```{r check-events}</span></span>
-<span id="cb46-684"><a href="#cb46-684" aria-hidden="true" tabindex="-1"></a><span class="in"># Check number of events (successes)</span></span>
-<span id="cb46-685"><a href="#cb46-685" aria-hidden="true" tabindex="-1"></a><span class="in">sum(analysis_data$approach_confounded)</span></span>
-<span id="cb46-686"><a href="#cb46-686" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-687"><a href="#cb46-687" aria-hidden="true" tabindex="-1"></a><span class="in"># Check events per variable (EPV) for model2 (or another model that exists)</span></span>
-<span id="cb46-688"><a href="#cb46-688" aria-hidden="true" tabindex="-1"></a><span class="in">sum(analysis_data$approach_confounded) / length(fixef(model2))</span></span>
-<span id="cb46-689"><a href="#cb46-689" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb46-690"><a href="#cb46-690" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-691"><a href="#cb46-691" aria-hidden="true" tabindex="-1"></a><span class="fu">### Multicollinearity</span></span>
-<span id="cb46-692"><a href="#cb46-692" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-693"><a href="#cb46-693" aria-hidden="true" tabindex="-1"></a>Multicollinearity can be assessed with variance inflation factors</span>
-<span id="cb46-694"><a href="#cb46-694" aria-hidden="true" tabindex="-1"></a>(VIFs):</span>
+<span id="cb46-680"><a href="#cb46-680" aria-hidden="true" tabindex="-1"></a><span class="in">```{r longitudinal, eval=FALSE}</span></span>
+<span id="cb46-681"><a href="#cb46-681" aria-hidden="true" tabindex="-1"></a><span class="in"># Longitudinal model (if we had multiple time points)</span></span>
+<span id="cb46-682"><a href="#cb46-682" aria-hidden="true" tabindex="-1"></a><span class="in"># model_longitudinal &lt;- glmer(approached_confounded ~ age_centered * time + </span></span>
+<span id="cb46-683"><a href="#cb46-683" aria-hidden="true" tabindex="-1"></a><span class="in">#                            (time|subject_id), </span></span>
+<span id="cb46-684"><a href="#cb46-684" aria-hidden="true" tabindex="-1"></a><span class="in">#                            family = binomial(link = "logit"), </span></span>
+<span id="cb46-685"><a href="#cb46-685" aria-hidden="true" tabindex="-1"></a><span class="in">#                            data = analysis_data)</span></span>
+<span id="cb46-686"><a href="#cb46-686" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb46-687"><a href="#cb46-687" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-688"><a href="#cb46-688" aria-hidden="true" tabindex="-1"></a><span class="fu">### Handling Age as a Continuous Predictor</span></span>
+<span id="cb46-689"><a href="#cb46-689" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-690"><a href="#cb46-690" aria-hidden="true" tabindex="-1"></a>When working with age, we might want to test for non-linear effects:</span>
+<span id="cb46-691"><a href="#cb46-691" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-692"><a href="#cb46-692" aria-hidden="true" tabindex="-1"></a><span class="in">```{r age-quadratic}</span></span>
+<span id="cb46-693"><a href="#cb46-693" aria-hidden="true" tabindex="-1"></a><span class="in"># Create squared age term</span></span>
+<span id="cb46-694"><a href="#cb46-694" aria-hidden="true" tabindex="-1"></a><span class="in">analysis_data$age_centered_squared &lt;- analysis_data$age_centered^2</span></span>
 <span id="cb46-695"><a href="#cb46-695" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-696"><a href="#cb46-696" aria-hidden="true" tabindex="-1"></a><span class="in">```{r check-vif}</span></span>
-<span id="cb46-697"><a href="#cb46-697" aria-hidden="true" tabindex="-1"></a><span class="in"># Create a linear model for VIF calculation</span></span>
-<span id="cb46-698"><a href="#cb46-698" aria-hidden="true" tabindex="-1"></a><span class="in">model_lm &lt;- lm(as.numeric(approach_confounded) ~ age_centered, </span></span>
-<span id="cb46-699"><a href="#cb46-699" aria-hidden="true" tabindex="-1"></a><span class="in">              data = analysis_data)</span></span>
-<span id="cb46-700"><a href="#cb46-700" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-701"><a href="#cb46-701" aria-hidden="true" tabindex="-1"></a><span class="in"># Calculate VIFs (requires car package)</span></span>
-<span id="cb46-702"><a href="#cb46-702" aria-hidden="true" tabindex="-1"></a><span class="in"># car::vif(model_lm)</span></span>
+<span id="cb46-696"><a href="#cb46-696" aria-hidden="true" tabindex="-1"></a><span class="in"># Model with quadratic age term</span></span>
+<span id="cb46-697"><a href="#cb46-697" aria-hidden="true" tabindex="-1"></a><span class="in">model_age_quadratic &lt;- glmer(approach_confounded ~ age_centered + </span></span>
+<span id="cb46-698"><a href="#cb46-698" aria-hidden="true" tabindex="-1"></a><span class="in">                            age_centered_squared + (1|subject_id), </span></span>
+<span id="cb46-699"><a href="#cb46-699" aria-hidden="true" tabindex="-1"></a><span class="in">                            family = binomial(link = "logit"), </span></span>
+<span id="cb46-700"><a href="#cb46-700" aria-hidden="true" tabindex="-1"></a><span class="in">                            data = analysis_data)</span></span>
+<span id="cb46-701"><a href="#cb46-701" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-702"><a href="#cb46-702" aria-hidden="true" tabindex="-1"></a><span class="in">summary(model_age_quadratic)</span></span>
 <span id="cb46-703"><a href="#cb46-703" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb46-704"><a href="#cb46-704" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-705"><a href="#cb46-705" aria-hidden="true" tabindex="-1"></a>VIF values above 5 or 10 indicate problematic multicollinearity.</span>
+<span id="cb46-705"><a href="#cb46-705" aria-hidden="true" tabindex="-1"></a><span class="fu">## 9. Troubleshooting Common Issues</span></span>
 <span id="cb46-706"><a href="#cb46-706" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-707"><a href="#cb46-707" aria-hidden="true" tabindex="-1"></a><span class="fu">## 10. Summary and Best Practices</span></span>
+<span id="cb46-707"><a href="#cb46-707" aria-hidden="true" tabindex="-1"></a><span class="fu">### Sample Size Considerations</span></span>
 <span id="cb46-708"><a href="#cb46-708" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-709"><a href="#cb46-709" aria-hidden="true" tabindex="-1"></a><span class="fu">### When to Use Alternatives to Logistic Regression</span></span>
-<span id="cb46-710"><a href="#cb46-710" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-711"><a href="#cb46-711" aria-hidden="true" tabindex="-1"></a>Consider alternatives when: - The outcome has more than two categories</span>
-<span id="cb46-712"><a href="#cb46-712" aria-hidden="true" tabindex="-1"></a>(use multinomial or ordinal logistic regression) - The data shows</span>
-<span id="cb46-713"><a href="#cb46-713" aria-hidden="true" tabindex="-1"></a>overdispersion (use quasi-binomial or negative binomial models) - The</span>
-<span id="cb46-714"><a href="#cb46-714" aria-hidden="true" tabindex="-1"></a>relationship between predictors and log odds is non-linear (use</span>
-<span id="cb46-715"><a href="#cb46-715" aria-hidden="true" tabindex="-1"></a>generalized additive models) - The sample size is very small (use exact</span>
-<span id="cb46-716"><a href="#cb46-716" aria-hidden="true" tabindex="-1"></a>logistic regression)</span>
-<span id="cb46-717"><a href="#cb46-717" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-718"><a href="#cb46-718" aria-hidden="true" tabindex="-1"></a><span class="fu">### Checklist for Reporting Logistic Regression</span></span>
+<span id="cb46-709"><a href="#cb46-709" aria-hidden="true" tabindex="-1"></a>A common rule of thumb is to have at least 10 events per predictor. We</span>
+<span id="cb46-710"><a href="#cb46-710" aria-hidden="true" tabindex="-1"></a>can check this:</span>
+<span id="cb46-711"><a href="#cb46-711" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-712"><a href="#cb46-712" aria-hidden="true" tabindex="-1"></a><span class="in">```{r check-events}</span></span>
+<span id="cb46-713"><a href="#cb46-713" aria-hidden="true" tabindex="-1"></a><span class="in"># Check number of events (successes)</span></span>
+<span id="cb46-714"><a href="#cb46-714" aria-hidden="true" tabindex="-1"></a><span class="in">sum(analysis_data$approach_confounded)</span></span>
+<span id="cb46-715"><a href="#cb46-715" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-716"><a href="#cb46-716" aria-hidden="true" tabindex="-1"></a><span class="in"># Check events per variable (EPV) for model2 (or another model that exists)</span></span>
+<span id="cb46-717"><a href="#cb46-717" aria-hidden="true" tabindex="-1"></a><span class="in">sum(analysis_data$approach_confounded) / length(fixef(model2))</span></span>
+<span id="cb46-718"><a href="#cb46-718" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb46-719"><a href="#cb46-719" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-720"><a href="#cb46-720" aria-hidden="true" tabindex="-1"></a>When reporting results: 1. Describe the model specification (fixed</span>
-<span id="cb46-721"><a href="#cb46-721" aria-hidden="true" tabindex="-1"></a>effects, random effects, link function) 2. Report coefficients and</span>
-<span id="cb46-722"><a href="#cb46-722" aria-hidden="true" tabindex="-1"></a>standard errors or confidence intervals 3. Include odds ratios for</span>
-<span id="cb46-723"><a href="#cb46-723" aria-hidden="true" tabindex="-1"></a>easier interpretation 4. Report model fit statistics (AIC, BIC, etc.) 5.</span>
-<span id="cb46-724"><a href="#cb46-724" aria-hidden="true" tabindex="-1"></a>Describe classification performance if relevant (accuracy, sensitivity,</span>
-<span id="cb46-725"><a href="#cb46-725" aria-hidden="true" tabindex="-1"></a>specificity) 6. Include visualizations of key effects 7. Discuss the</span>
-<span id="cb46-726"><a href="#cb46-726" aria-hidden="true" tabindex="-1"></a>findings in the context of developmental theory</span>
-<span id="cb46-727"><a href="#cb46-727" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-728"><a href="#cb46-728" aria-hidden="true" tabindex="-1"></a><span class="fu">### Final Thoughts</span></span>
+<span id="cb46-720"><a href="#cb46-720" aria-hidden="true" tabindex="-1"></a><span class="fu">### Multicollinearity</span></span>
+<span id="cb46-721"><a href="#cb46-721" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-722"><a href="#cb46-722" aria-hidden="true" tabindex="-1"></a>Multicollinearity can be assessed with variance inflation factors</span>
+<span id="cb46-723"><a href="#cb46-723" aria-hidden="true" tabindex="-1"></a>(VIFs):</span>
+<span id="cb46-724"><a href="#cb46-724" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-725"><a href="#cb46-725" aria-hidden="true" tabindex="-1"></a><span class="in">```{r check-vif}</span></span>
+<span id="cb46-726"><a href="#cb46-726" aria-hidden="true" tabindex="-1"></a><span class="in"># Create a linear model for VIF calculation</span></span>
+<span id="cb46-727"><a href="#cb46-727" aria-hidden="true" tabindex="-1"></a><span class="in">model_lm &lt;- lm(as.numeric(approach_confounded) ~ age_centered, </span></span>
+<span id="cb46-728"><a href="#cb46-728" aria-hidden="true" tabindex="-1"></a><span class="in">              data = analysis_data)</span></span>
 <span id="cb46-729"><a href="#cb46-729" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-730"><a href="#cb46-730" aria-hidden="true" tabindex="-1"></a>Logistic regression is a powerful tool for analyzing binary outcomes in</span>
-<span id="cb46-731"><a href="#cb46-731" aria-hidden="true" tabindex="-1"></a>developmental research. By properly specifying models, carefully</span>
-<span id="cb46-732"><a href="#cb46-732" aria-hidden="true" tabindex="-1"></a>interpreting results, and effectively communicating findings,</span>
-<span id="cb46-733"><a href="#cb46-733" aria-hidden="true" tabindex="-1"></a>researchers can gain valuable insights into developmental processes.</span>
-<span id="cb46-734"><a href="#cb46-734" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-735"><a href="#cb46-735" aria-hidden="true" tabindex="-1"></a>The finding that toddlers systematically explore to discover their own</span>
-<span id="cb46-736"><a href="#cb46-736" aria-hidden="true" tabindex="-1"></a>competence has important implications for theories of intrinsic</span>
-<span id="cb46-737"><a href="#cb46-737" aria-hidden="true" tabindex="-1"></a>motivation and self-directed learning in early childhood. Understanding</span>
-<span id="cb46-738"><a href="#cb46-738" aria-hidden="true" tabindex="-1"></a>how children become aware of and test their own abilities can help</span>
-<span id="cb46-739"><a href="#cb46-739" aria-hidden="true" tabindex="-1"></a>parents and educators better support children's natural curiosity and</span>
-<span id="cb46-740"><a href="#cb46-740" aria-hidden="true" tabindex="-1"></a>drive for mastery.</span>
+<span id="cb46-730"><a href="#cb46-730" aria-hidden="true" tabindex="-1"></a><span class="in"># Calculate VIFs (requires car package)</span></span>
+<span id="cb46-731"><a href="#cb46-731" aria-hidden="true" tabindex="-1"></a><span class="in"># car::vif(model_lm)</span></span>
+<span id="cb46-732"><a href="#cb46-732" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb46-733"><a href="#cb46-733" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-734"><a href="#cb46-734" aria-hidden="true" tabindex="-1"></a>VIF values above 5 or 10 indicate problematic multicollinearity.</span>
+<span id="cb46-735"><a href="#cb46-735" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-736"><a href="#cb46-736" aria-hidden="true" tabindex="-1"></a><span class="fu">## 10. Summary and Best Practices</span></span>
+<span id="cb46-737"><a href="#cb46-737" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-738"><a href="#cb46-738" aria-hidden="true" tabindex="-1"></a><span class="fu">### When to Use Alternatives to Logistic Regression</span></span>
+<span id="cb46-739"><a href="#cb46-739" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-740"><a href="#cb46-740" aria-hidden="true" tabindex="-1"></a>Consider alternatives when:</span>
+<span id="cb46-741"><a href="#cb46-741" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-742"><a href="#cb46-742" aria-hidden="true" tabindex="-1"></a><span class="sc">\-</span> The outcome has more than two categories (use multinomial or ordinal</span>
+<span id="cb46-743"><a href="#cb46-743" aria-hidden="true" tabindex="-1"></a>logistic regression)</span>
+<span id="cb46-744"><a href="#cb46-744" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-745"><a href="#cb46-745" aria-hidden="true" tabindex="-1"></a><span class="sc">\-</span> The data shows overdispersion (use quasi-binomial or negative</span>
+<span id="cb46-746"><a href="#cb46-746" aria-hidden="true" tabindex="-1"></a>binomial models)</span>
+<span id="cb46-747"><a href="#cb46-747" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-748"><a href="#cb46-748" aria-hidden="true" tabindex="-1"></a><span class="sc">\-</span> The relationship between predictors and log odds is non-linear (use</span>
+<span id="cb46-749"><a href="#cb46-749" aria-hidden="true" tabindex="-1"></a>generalized additive models)</span>
+<span id="cb46-750"><a href="#cb46-750" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-751"><a href="#cb46-751" aria-hidden="true" tabindex="-1"></a><span class="sc">\-</span> The sample size is very small (use exact logistic regression)</span>
+<span id="cb46-752"><a href="#cb46-752" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-753"><a href="#cb46-753" aria-hidden="true" tabindex="-1"></a><span class="fu">### Checklist for Reporting Logistic Regression</span></span>
+<span id="cb46-754"><a href="#cb46-754" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-755"><a href="#cb46-755" aria-hidden="true" tabindex="-1"></a>When reporting results: 1. Describe the model specification (fixed</span>
+<span id="cb46-756"><a href="#cb46-756" aria-hidden="true" tabindex="-1"></a>effects, random effects, link function) 2. Report coefficients and</span>
+<span id="cb46-757"><a href="#cb46-757" aria-hidden="true" tabindex="-1"></a>standard errors or confidence intervals 3. Include odds ratios for</span>
+<span id="cb46-758"><a href="#cb46-758" aria-hidden="true" tabindex="-1"></a>easier interpretation 4. Report model fit statistics (AIC, BIC, etc.) 5.</span>
+<span id="cb46-759"><a href="#cb46-759" aria-hidden="true" tabindex="-1"></a>Describe classification performance if relevant (accuracy, sensitivity,</span>
+<span id="cb46-760"><a href="#cb46-760" aria-hidden="true" tabindex="-1"></a>specificity) 6. Include visualizations of key effects 7. Discuss the</span>
+<span id="cb46-761"><a href="#cb46-761" aria-hidden="true" tabindex="-1"></a>findings in the context of developmental theory</span>
+<span id="cb46-762"><a href="#cb46-762" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-763"><a href="#cb46-763" aria-hidden="true" tabindex="-1"></a><span class="fu">### Final Thoughts</span></span>
+<span id="cb46-764"><a href="#cb46-764" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-765"><a href="#cb46-765" aria-hidden="true" tabindex="-1"></a>Logistic regression is a powerful tool for analyzing binary outcomes in</span>
+<span id="cb46-766"><a href="#cb46-766" aria-hidden="true" tabindex="-1"></a>developmental research. By properly specifying models, carefully</span>
+<span id="cb46-767"><a href="#cb46-767" aria-hidden="true" tabindex="-1"></a>interpreting results, and effectively communicating findings,</span>
+<span id="cb46-768"><a href="#cb46-768" aria-hidden="true" tabindex="-1"></a>researchers can gain valuable insights into developmental processes.</span>
+<span id="cb46-769"><a href="#cb46-769" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-770"><a href="#cb46-770" aria-hidden="true" tabindex="-1"></a>The finding that toddlers systematically explore to discover their own</span>
+<span id="cb46-771"><a href="#cb46-771" aria-hidden="true" tabindex="-1"></a>competence has important implications for theories of intrinsic</span>
+<span id="cb46-772"><a href="#cb46-772" aria-hidden="true" tabindex="-1"></a>motivation and self-directed learning in early childhood. Understanding</span>
+<span id="cb46-773"><a href="#cb46-773" aria-hidden="true" tabindex="-1"></a>how children become aware of and test their own abilities can help</span>
+<span id="cb46-774"><a href="#cb46-774" aria-hidden="true" tabindex="-1"></a>parents and educators better support children's natural curiosity and</span>
+<span id="cb46-775"><a href="#cb46-775" aria-hidden="true" tabindex="-1"></a>drive for mastery.</span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

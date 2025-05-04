@@ -135,11 +135,16 @@ while odds ratios less than 1 indicate the odds decrease.
 
 ### Statistical Assumptions of Logistic Regression
 
-Logistic regression has fewer assumptions than linear regression: 1.
-Independence of observations (unless accounted for with mixed models) 2.
-Little or no multicollinearity among predictors 3. Linear relationship
-between predictors and log odds 4. Large sample size (rule of thumb: at
-least 10 cases per predictor)
+Logistic regression has fewer assumptions than linear regression:
+
+1\. Independence of observations (unless accounted for with mixed
+models)
+
+2\. Little or no multicollinearity among predictors
+
+3\. Linear relationship between predictors and log odds
+
+4\. Large sample size (rule of thumb: at least 10 cases per predictor)
 
 ## 3. Case Study: Do Toddlers Explore Their Own Competence?
 
@@ -168,7 +173,7 @@ likely to approach the confounded toy.
 
 ### Data Preparation
 
-Let's Let's start by loading and exploring the dataset:
+Let's start by loading and exploring the dataset:
 
 ```{r load-data}
 library(tidyverse)
@@ -265,12 +270,18 @@ This initial analysis shows that toddlers approached the confounded toy
 first in about 62% of trials, which is significantly different from
 chance (50%).
 
-
 ## 3.5 Exploratory Data Analysis: Visualizing Binary Outcomes
-Before building our logistic regression models, it's useful to visually explore the outcome variable to get a sense of its distribution and possible predictors. Since our dependent variable—approach_confounded—is binary, we’ll focus on proportion-based plots rather than traditional histograms or scatterplots.
 
-###Distribution of Approaches
-First, let’s look at how often toddlers approached the confounded toy versus the unconfounded one.
+Before building our logistic regression models, it's useful to visually
+explore the outcome variable to get a sense of its distribution and
+possible predictors. Since our dependent variable—approach_confounded—is
+binary, we’ll focus on proportion-based plots rather than traditional
+histograms or scatter plots.
+
+### Distribution of Approaches 
+
+First, let’s look at how often toddlers approached the confounded toy
+versus the unconfounded one.
 
 ```{r}
 ggplot(analysis_data, aes(x = factor(approach_confounded))) +
@@ -285,19 +296,29 @@ ggplot(analysis_data, aes(x = factor(approach_confounded))) +
 
 ```
 
-This plot shows the raw count of trials where toddlers approached each type of toy first.
+This plot shows the raw count of trials where toddlers approached each
+type of toy first.
 
 ### Why this matters:
-This bar plot gives a high-level view of the overall tendency across participants. If we saw roughly equal counts, it might suggest no strong preference. In this dataset, the confounded toy is chosen more often, hinting that toddlers might indeed be seeking out uncertainty about their own competence.
+
+This bar plot gives a high-level view of the overall tendency across
+participants. If we saw roughly equal counts, it might suggest no strong
+preference. In this dataset, the confounded toy is chosen more often,
+hinting that toddlers might indeed be seeking out uncertainty about
+their own competence.
 
 ### What to look for:
 
-1. Is one bar clearly taller than the other?
+1.  Is one bar clearly taller than the other?
 
-2. Does this pattern support your hypothesis?
+2.  Does this pattern support your hypothesis?
 
-###Proportion of Confounded Toy Choices by Age Group
-Next, Next, we examine whether this preference for the confounded toy varies across different age groups. Age is treated here in coarse bins (e.g., 24–27 months, 28–30 months, etc.) to help spot nonlinear trends that might be hard to detect in regression.
+### Proportion of Confounded Toy Choices by Age Group
+
+Next, we examine whether this preference for the confounded toy varies
+across different age groups. Age is treated here in coarse bins (e.g.,
+24–27 months, 28–30 months, etc.) to help spot nonlinear trends that
+might be hard to detect in regression.
 
 ```{r}
 # Create age groups in 3-month bins
@@ -324,18 +345,26 @@ analysis_data %>%
 ```
 
 ### Why this matters:
-This grouped bar plot allows us to explore whether age moderates the tendency to choose the confounded toy. Even though we’ll test age as a continuous predictor in our regression model, this visualization helps uncover possible nonlinear patterns or developmental shifts.
+
+This grouped bar plot allows us to explore whether age moderates the
+tendency to choose the confounded toy. Even though we’ll test age as a
+continuous predictor in our regression model, this visualization helps
+uncover possible nonlinear patterns or developmental shifts.
 
 ### What to look for:
 
-1. Are proportions consistently above 0.5 in all age groups?
+1.  Are proportions consistently above 0.5 in all age groups?
 
-2. Is there any trend—e.g., a decrease or increase with age?
+2.  Is there any trend—e.g., a decrease or increase with age?
 
-3. Are any age groups particularly variable?
+3.  Are any age groups particularly variable?
 
 ### Interpretation:
-In our sample, toddlers in all age groups seem to prefer the confounded toy, although the strength of this preference may vary slightly. There’s no obvious linear trend, which may help explain why age did not emerge as a significant predictor in our model.
+
+In our sample, toddlers in all age groups seem to prefer the confounded
+toy, although the strength of this preference may vary slightly. There’s
+no obvious linear trend, which may help explain why age did not emerge
+as a significant predictor in our model.
 
 ## 4. Building Logistic Regression Models
 
@@ -692,12 +721,18 @@ VIF values above 5 or 10 indicate problematic multicollinearity.
 
 ### When to Use Alternatives to Logistic Regression
 
-Consider alternatives when: - The outcome has more than two categories
-(use multinomial or ordinal logistic regression) - The data shows
-overdispersion (use quasi-binomial or negative binomial models) - The
-relationship between predictors and log odds is non-linear (use
-generalized additive models) - The sample size is very small (use exact
+Consider alternatives when:
+
+\- The outcome has more than two categories (use multinomial or ordinal
 logistic regression)
+
+\- The data shows overdispersion (use quasi-binomial or negative
+binomial models)
+
+\- The relationship between predictors and log odds is non-linear (use
+generalized additive models)
+
+\- The sample size is very small (use exact logistic regression)
 
 ### Checklist for Reporting Logistic Regression
 
