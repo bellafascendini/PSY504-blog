@@ -75,7 +75,7 @@ where $\beta_0$ is the same as the unconditional population mean, and the popula
 
 #### Question 1: Why have we left some of the specification above unfilled / with questions marks at this point?
 
-We’ve left the priors for $\beta_0$ and $\sigma$ unspecified because we are in the process of exploring and evaluating different possible priors. This allows us to visually inspect and assess their plausibility and fit using prior predictive checks before committing to them. 
+We’ve left the priors for $\beta_0$ and $\sigma$ unspecified because we are in the process of exploring and evaluating different possible priors. This allows us to visually inspect and assess their plausibility and fit using prior predictive checks before committing to them.
 
 ### Visualize possible prior distributions.
 
@@ -157,9 +157,9 @@ The simulated values constitute predictions that are made using our prior belief
 
 #### Question 4: The prior predictive above is for one combination of our candidate priors. Why don't you also try the $\beta_0$ prior centered at 8, along with the $\sigma$ prior centered at 2? What do you observe? Among these two , which would you pick? And why? (Optional: try others too if you'd like)
 
-I'd observe that the prior predictive distribution is slightly more spread-out (i.e., flatter) curves due to the larger variance in the intercept and sigma. Compared to beta0 ~ Normal(5.5, 1), this prior is less conservative and assumes more prior belief that beauty ratings are higher and more variable.
+I'd observe that the prior predictive distribution is slightly more spread-out (i.e., flatter) curves due to the larger variance in the intercept and sigma. Compared to beta0 \~ Normal(5.5, 1), this prior is less conservative and assumes more prior belief that beauty ratings are higher and more variable.
 
-I’d pick beta0 ~ Normal(5.5, 1) and sigma ~ Exponential(1) because it centers the prior mean within the plausible range of the rating scale, and produces predictions mostly within the 1–10 range, which reflects more uncertainty but avoids implausibly extreme values.
+I’d pick beta0 \~ Normal(5.5, 1) and sigma \~ Exponential(1) because it centers the prior mean within the plausible range of the rating scale, and produces predictions mostly within the 1–10 range, which reflects more uncertainty but avoids implausibly extreme values.
 
 ```{r}
 # how many distributions do you want?

@@ -265,6 +265,78 @@ This initial analysis shows that toddlers approached the confounded toy
 first in about 62% of trials, which is significantly different from
 chance (50%).
 
+
+## 3.5 Exploratory Data Analysis: Visualizing Binary Outcomes
+Before building our logistic regression models, it's useful to visually explore the outcome variable to get a sense of its distribution and possible predictors. Since our dependent variable—approach_confounded—is binary, we’ll focus on proportion-based plots rather than traditional histograms or scatterplots.
+
+###Distribution of Approaches
+First, let’s look at how often toddlers approached the confounded toy versus the unconfounded one.
+
+```{r}
+ggplot(analysis_data, aes(x = factor(approach_confounded))) +
+  geom_bar(fill = "skyblue") +
+  scale_x_discrete(labels = c("Unconfounded", "Confounded")) +
+  labs(
+    title = "Distribution of First Toy Approached",
+    x = "Toy Type",
+    y = "Count"
+  ) +
+  theme_minimal()
+
+```
+
+This plot shows the raw count of trials where toddlers approached each type of toy first.
+
+### Why this matters:
+This bar plot gives a high-level view of the overall tendency across participants. If we saw roughly equal counts, it might suggest no strong preference. In this dataset, the confounded toy is chosen more often, hinting that toddlers might indeed be seeking out uncertainty about their own competence.
+
+### What to look for:
+
+1. Is one bar clearly taller than the other?
+
+2. Does this pattern support your hypothesis?
+
+###Proportion of Confounded Toy Choices by Age Group
+Next, Next, we examine whether this preference for the confounded toy varies across different age groups. Age is treated here in coarse bins (e.g., 24–27 months, 28–30 months, etc.) to help spot nonlinear trends that might be hard to detect in regression.
+
+```{r}
+# Create age groups in 3-month bins
+analysis_data <- analysis_data %>%
+  mutate(age_group = cut(age_centered + mean(age_centered + mean(analysis_data$age)), 
+                         breaks = seq(24, 36, by = 3), 
+                         include.lowest = TRUE))
+
+# Plot proportion of confounded choices by age group
+analysis_data %>%
+  group_by(age_group) %>%
+  summarize(prop_confounded = mean(approach_confounded)) %>%
+  ggplot(aes(x = age_group, y = prop_confounded)) +
+  geom_col(fill = "orange") +
+  labs(
+    title = "Proportion Approaching Confounded Toy by Age Group",
+    x = "Age Group (Months)",
+    y = "Proportion Confounded"
+  ) +
+  ylim(0, 1) +
+  geom_hline(yintercept = 0.5, linetype = "dashed", color = "gray") +
+  theme_minimal()
+
+```
+
+### Why this matters:
+This grouped bar plot allows us to explore whether age moderates the tendency to choose the confounded toy. Even though we’ll test age as a continuous predictor in our regression model, this visualization helps uncover possible nonlinear patterns or developmental shifts.
+
+### What to look for:
+
+1. Are proportions consistently above 0.5 in all age groups?
+
+2. Is there any trend—e.g., a decrease or increase with age?
+
+3. Are any age groups particularly variable?
+
+### Interpretation:
+In our sample, toddlers in all age groups seem to prefer the confounded toy, although the strength of this preference may vary slightly. There’s no obvious linear trend, which may help explain why age did not emerge as a significant predictor in our model.
+
 ## 4. Building Logistic Regression Models
 
 Now we're ready to build our logistic regression models. Since each
